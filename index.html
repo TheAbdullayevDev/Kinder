@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#FFF0F5" />
   <meta name="description" content="Senga kichkina bir romantik syurprizim bor ❤️" />
-  <title>Romantic Surprise ❤️</title>
+  <title>KUNJIM — Romantic Surprise ❤️</title>
 
   <!-- Google Fonts: Cormorant Garamond (Luxury Display), Great Vibes (Romantic Script), Plus Jakarta Sans (Clean Uzbek Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1671,7 +1671,7 @@
       <div class="luxury-envelope" id="luxuryEnvelope" role="button" tabindex="0" aria-label="Konvertni ochish">
         <!-- Inner Peek Letter -->
         <div class="envelope-letter-peek">
-          <div class="peek-script" id="peekRecipient">SAIDA uchun</div>
+          <div class="peek-script" id="peekRecipient">Sen uchun ❤️</div>
           <div class="peek-line"></div>
           <div class="peek-sub">Samimiy mehr bilan ❤️</div>
         </div>
@@ -1745,7 +1745,7 @@
 
       <div>
         <div class="recipient-pill">
-          <span class="recipient-script" id="heroRecipientBadge">Azizim SAIDA uchun</span>
+          <span class="recipient-script" id="heroRecipientBadge">Sen uchun ❤️</span>
         </div>
       </div>
 
@@ -1897,9 +1897,9 @@
       </div>
     </section>
 
-    <!-- FOOTER & PRINT-READY QR GENERATOR TRIGGER -->
+    <!-- FOOTER & PRINT-READY QR GENERATOR TRIGGER
     <footer class="app-footer container">
-      <div>Mehr bilan tayyorlandi • <strong id="footerRecipientName">SAIDA</strong> ❤️</div>
+      <div>Mehr bilan tayyorlandi • Sen uchun ❤️</div>
       <div class="footer-links">
         <button type="button" class="footer-qr-trigger" id="openQrModalBtn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1911,7 +1911,7 @@
           <span>QR-kod yaratish</span>
         </button>
       </div>
-    </footer>
+    </footer> -->
   </main>
 
   <!-- ========================================================================
@@ -1952,7 +1952,7 @@
           type="url"
           class="qr-input"
           id="qrUrlInput"
-          placeholder="https://SAIDA-surprise.vercel.app"
+          placeholder="https://your-site.vercel.app"
           autocomplete="off"
         />
         <div class="qr-warning" id="qrLocalWarning">
@@ -1960,15 +1960,6 @@
         </div>
       </div>
 
-      <div class="qr-field-group">
-        <label class="qr-label" for="qrNameInput">Qizning ismi (ixtiyoriy — havolaga qo‘shiladi)</label>
-        <input
-          type="text"
-          class="qr-input"
-          id="qrNameInput"
-          placeholder="Masalan: SAIDA"
-        />
-      </div>
 
       <div class="qr-preview-box">
         <canvas id="qrPreviewCanvas" width="300" height="300"></canvas>
@@ -1994,12 +1985,11 @@
   <script>
     /**
      * =========================================================================
-     * 1. SAIDA_CONFIG (Barcha matnlar, ism, video, musiqa va rasmlarni shu yerdan
+     * 1. KUNJIM_CONFIG (Barcha matnlar, video, musiqa va rasmlarni shu yerdan
      *    oson o'zgartirishingiz mumkin)
      * =========================================================================
      */
-    const SAIDA_CONFIG = {
-      recipientName: "SAIDA", // URL orqali ham o'zgartirish mumkin: ?name=Madina
+    const KUNJIM_CONFIG = {
       brandTag: "Kinder Chocolate • Maxsus Syurpriz",
 
       envelope: {
@@ -2067,20 +2057,20 @@
         items: [
           {
             src: "assets/images/image1.jpg",
-            title: "Shirin lahzalar",
-            caption: "Har bir kichik e’tibor — katta mehr belgisi",
+            title: "Go‘zallik 🌸",
+            caption: "Har bir gul o‘ziga xos, xuddi har bir qalb kabi betakror.",
             artTheme: "rose"
           },
           {
             src: "assets/images/image2.jpg",
-            title: "Bahoriy kayfiyat",
-            caption: "Tabassuming hech qachon arimasin",
+            title: "Orzudek lahza 🌅",
+            caption: "Ba’zi lahzalar so‘zsiz ham qalbga iliqlik ulashadi.",
             artTheme: "gold"
           },
           {
             src: "assets/images/image3.jpg",
-            title: "Unutilmas xotira",
-            caption: "Eng iliq kunlarimizdan esdalik",
+            title: "Shirin syurpriz 🍫",
+            caption: "Ba’zan eng kichkina sovg‘alar eng katta tabassumga sabab bo‘ladi. ❤️",
             artTheme: "blush"
           }
         ]
@@ -2098,20 +2088,16 @@
      * 2. APPLICATION CONTROLLER (app.js)
      * =========================================================================
      */
-    (function initSAIDAApp() {
-      // Allow recipient name override via URL parameter (?name=Madina)
+    (function initKUNJIMApp() {
+      // Universal experience: every visitor sees the same "Sen uchun" page.
       const urlParams = new URLSearchParams(window.location.search);
-      const customNameParam = urlParams.get("name");
-      const recipientName = (customNameParam && customNameParam.trim())
-        ? customNameParam.trim().slice(0, 32)
-        : SAIDA_CONFIG.recipientName;
 
       // State
       const state = {
         isEnvelopeOpened: false,
         isMusicPlaying: false,
         isMuted: false,
-        volume: SAIDA_CONFIG.music.defaultVolume,
+        volume: KUNJIM_CONFIG.music.defaultVolume,
         usingSynthFallback: false,
         resumeMusicAfterVideo: false,
         letterTyped: false,
@@ -2182,7 +2168,6 @@
         qrModal: document.getElementById("qrModal"),
         closeQrModalBtn: document.getElementById("closeQrModalBtn"),
         qrUrlInput: document.getElementById("qrUrlInput"),
-        qrNameInput: document.getElementById("qrNameInput"),
         qrLocalWarning: document.getElementById("qrLocalWarning"),
         qrPreviewCanvas: document.getElementById("qrPreviewCanvas"),
         qrEncodedUrlLabel: document.getElementById("qrEncodedUrlLabel"),
@@ -2190,25 +2175,24 @@
       };
 
       /* -----------------------------------------------------------------------
-         A. POPULATE CONTENT FROM SAIDA_CONFIG
+         A. POPULATE CONTENT FROM KUNJIM_CONFIG
          ----------------------------------------------------------------------- */
       function populateContent() {
-        document.title = `${recipientName.toUpperCase()} — Romantic QR Surprise ❤️`;
-        document.getElementById("envelopeBrandTag").textContent = SAIDA_CONFIG.brandTag;
-        document.getElementById("peekRecipient").textContent = `${recipientName} uchun`;
-        document.getElementById("envelopePromptText").textContent = SAIDA_CONFIG.envelope.prompt;
-        document.getElementById("envelopeBtnLabel").textContent = SAIDA_CONFIG.envelope.buttonText;
+        document.title = "KUNJIM — Romantic QR Surprise ❤️";
+        document.getElementById("envelopeBrandTag").textContent = KUNJIM_CONFIG.brandTag;
+        document.getElementById("peekRecipient").textContent = "Sen uchun ❤️";
+        document.getElementById("envelopePromptText").textContent = KUNJIM_CONFIG.envelope.prompt;
+        document.getElementById("envelopeBtnLabel").textContent = KUNJIM_CONFIG.envelope.buttonText;
 
-        document.getElementById("heroTag").textContent = SAIDA_CONFIG.brandTag;
-        document.getElementById("heroRecipientBadge").textContent =
-          `${SAIDA_CONFIG.hero.badgePrefix} ${recipientName} ${SAIDA_CONFIG.hero.badgeSuffix}`;
-        document.getElementById("heroTitle").textContent = SAIDA_CONFIG.hero.title;
-        document.getElementById("heroSubtitle").textContent = SAIDA_CONFIG.hero.subtitle;
+        document.getElementById("heroTag").textContent = KUNJIM_CONFIG.brandTag;
+        document.getElementById("heroRecipientBadge").textContent = "Sen uchun ❤️";
+        document.getElementById("heroTitle").textContent = KUNJIM_CONFIG.hero.title;
+        document.getElementById("heroSubtitle").textContent = KUNJIM_CONFIG.hero.subtitle;
 
         // Short Romantic Notes
         const notesGrid = document.getElementById("notesGrid");
         notesGrid.innerHTML = "";
-        SAIDA_CONFIG.shortNotes.forEach((note, idx) => {
+        KUNJIM_CONFIG.shortNotes.forEach((note, idx) => {
           const card = document.createElement("article");
           card.className = "note-card reveal-on-scroll";
           card.style.transitionDelay = `${idx * 90}ms`;
@@ -2223,15 +2207,14 @@
         });
 
         // Love Letter Headers
-        document.getElementById("letterTitle").textContent = SAIDA_CONFIG.loveLetter.title;
-        document.getElementById("letterDateLabel").textContent = SAIDA_CONFIG.loveLetter.dateLabel;
-        document.getElementById("letterSignature").textContent = SAIDA_CONFIG.loveLetter.signature;
+        document.getElementById("letterTitle").textContent = KUNJIM_CONFIG.loveLetter.title;
+        document.getElementById("letterDateLabel").textContent = KUNJIM_CONFIG.loveLetter.dateLabel;
+        document.getElementById("letterSignature").textContent = KUNJIM_CONFIG.loveLetter.signature;
 
         // Final Surprise
-        document.getElementById("finalText").textContent = SAIDA_CONFIG.finalSurprise.text;
-        document.getElementById("finalSubtext").textContent = SAIDA_CONFIG.finalSurprise.subtext;
-        document.getElementById("replayBtnLabel").textContent = SAIDA_CONFIG.finalSurprise.replayButtonText;
-        document.getElementById("footerRecipientName").textContent = recipientName.toUpperCase();
+        document.getElementById("finalText").textContent = KUNJIM_CONFIG.finalSurprise.text;
+        document.getElementById("finalSubtext").textContent = KUNJIM_CONFIG.finalSurprise.subtext;
+        document.getElementById("replayBtnLabel").textContent = KUNJIM_CONFIG.finalSurprise.replayButtonText;
       }
 
       function escapeHtml(str) {
@@ -2370,16 +2353,16 @@
       let synthGain = null;
 
       function initMusicPlayer() {
-        if (!SAIDA_CONFIG.music.enabled) {
+        if (!KUNJIM_CONFIG.music.enabled) {
           el.musicPill.classList.add("hidden-pill");
           return;
         }
-        el.musicLabel.textContent = SAIDA_CONFIG.music.label;
+        el.musicLabel.textContent = KUNJIM_CONFIG.music.label;
         el.volumeSlider.value = String(state.volume);
         el.bgAudio.volume = state.volume;
 
-        if (SAIDA_CONFIG.music.src) {
-          el.bgAudio.src = SAIDA_CONFIG.music.src;
+        if (KUNJIM_CONFIG.music.src) {
+          el.bgAudio.src = KUNJIM_CONFIG.music.src;
           el.bgAudio.addEventListener("error", () => {
             // If assets/music.mp3 is not present yet, seamlessly enable built-in melody
             state.usingSynthFallback = true;
@@ -2444,7 +2427,7 @@
       }
 
       async function startMusicPlayback() {
-        if (!SAIDA_CONFIG.music.enabled || state.isMusicPlaying) return;
+        if (!KUNJIM_CONFIG.music.enabled || state.isMusicPlaying) return;
 
         state.isMusicPlaying = true;
         updateMusicUI();
@@ -2525,20 +2508,20 @@
          E. VIDEO SECTION 🎬 (MP4 PLAYER + AUTO-HIDE / PREVIEW DEMO FALLBACK)
          ----------------------------------------------------------------------- */
       function initVideoSection() {
-        if (!SAIDA_CONFIG.video.enabled) {
+        if (!KUNJIM_CONFIG.video.enabled) {
           el.videoSection.classList.add("is-hidden");
           return;
         }
 
-        document.getElementById("videoPosterTitle").textContent = SAIDA_CONFIG.video.posterTitle;
-        document.getElementById("videoCaptionText").textContent = SAIDA_CONFIG.video.caption;
+        document.getElementById("videoPosterTitle").textContent = KUNJIM_CONFIG.video.posterTitle;
+        document.getElementById("videoCaptionText").textContent = KUNJIM_CONFIG.video.caption;
 
-        if (SAIDA_CONFIG.video.poster) {
-          el.videoPosterImg.src = SAIDA_CONFIG.video.poster;
+        if (KUNJIM_CONFIG.video.poster) {
+          el.videoPosterImg.src = KUNJIM_CONFIG.video.poster;
           el.videoPosterImg.style.display = "block";
         }
 
-        el.romanticVideo.src = SAIDA_CONFIG.video.src;
+        el.romanticVideo.src = KUNJIM_CONFIG.video.src;
 
         // If MP4 exists and loads metadata -> use real MP4 player
         el.romanticVideo.addEventListener("loadedmetadata", () => {
@@ -2549,7 +2532,7 @@
 
         // If assets/romantic-video.mp4 is missing -> either auto-hide or show demo preview
         el.romanticVideo.addEventListener("error", () => {
-          if (SAIDA_CONFIG.video.showDemoWhenMissing) {
+          if (KUNJIM_CONFIG.video.showDemoWhenMissing) {
             enableDemoVideoCanvas();
           } else {
             el.videoSection.classList.add("is-hidden");
@@ -2617,7 +2600,7 @@
           ctx.fillStyle = "rgba(255, 253, 249, 0.95)";
           ctx.font = "600 32px 'Cormorant Garamond', Georgia, serif";
           ctx.textAlign = "center";
-          ctx.fillText(`Azizim ${recipientName} uchun ❤️`, canvas.width / 2, canvas.height / 2 - 12);
+          ctx.fillText("Sen uchun ❤️", canvas.width / 2, canvas.height / 2 - 12);
 
           ctx.fillStyle = "rgba(255, 228, 230, 0.8)";
           ctx.font = "400 16px 'Plus Jakarta Sans', sans-serif";
@@ -2709,7 +2692,7 @@
         if (state.letterTyped) return;
         state.letterTyped = true;
 
-        const fullText = SAIDA_CONFIG.loveLetter.text;
+        const fullText = KUNJIM_CONFIG.loveLetter.text;
         let idx = 0;
         el.typedLetterText.textContent = "";
         el.typingCursor.classList.remove("is-done");
@@ -2726,7 +2709,7 @@
       function finishLetterTypewriter() {
         clearInterval(state.letterTypingTimer);
         state.letterTyped = true;
-        el.typedLetterText.textContent = SAIDA_CONFIG.loveLetter.text;
+        el.typedLetterText.textContent = KUNJIM_CONFIG.loveLetter.text;
         el.typingCursor.classList.add("is-done");
         el.skipTypingBtn.classList.add("is-hidden");
       }
@@ -2758,22 +2741,22 @@
             <path d="M200 162 C200 162 162 138 162 114 C162 102 171 94 182 94 C190 94 197 99 200 105 C203 99 210 94 218 94 C229 94 238 102 238 114 C238 138 200 162 200 162 Z" fill="${p.accent}" fill-opacity="0.88" />
             <path d="M125 222 Q200 196 275 222" stroke="${p.gold}" stroke-width="1.2" fill="none" />
             <text x="200" y="246" text-anchor="middle" fill="#7A4958" font-family="Georgia, serif" font-style="italic" font-size="16">
-              ${escapeHtml(recipientName)} • Xotira #${index + 1}
+              Sen uchun • Xotira #${index + 1}
             </text>
           </svg>
         `;
       }
 
       function initGallery() {
-        const items = Array.isArray(SAIDA_CONFIG.gallery.items) ? SAIDA_CONFIG.gallery.items : [];
-        if (!SAIDA_CONFIG.gallery.enabled || items.length === 0) {
+        const items = Array.isArray(KUNJIM_CONFIG.gallery.items) ? KUNJIM_CONFIG.gallery.items : [];
+        if (!KUNJIM_CONFIG.gallery.enabled || items.length === 0) {
           el.gallerySection.classList.add("is-hidden");
           return;
         }
 
         state.activeGalleryItems = items;
-        document.getElementById("galleryTitle").textContent = SAIDA_CONFIG.gallery.title;
-        document.getElementById("gallerySubtitle").textContent = SAIDA_CONFIG.gallery.subtitle;
+        document.getElementById("galleryTitle").textContent = KUNJIM_CONFIG.gallery.title;
+        document.getElementById("gallerySubtitle").textContent = KUNJIM_CONFIG.gallery.subtitle;
 
         if (items.length % 2 === 1) {
           el.galleryGrid.classList.add("odd-count");
@@ -3291,10 +3274,8 @@
       function buildTargetQrUrl() {
         let rawUrl = el.qrUrlInput.value.trim();
         if (!rawUrl) {
-          rawUrl = "https://SAIDA-surprise.vercel.app";
+          rawUrl = "https://your-site.vercel.app";
         }
-        const customName = el.qrNameInput.value.trim();
-
         const isLocal =
           rawUrl.startsWith("file://") ||
           rawUrl.includes("localhost") ||
@@ -3305,11 +3286,7 @@
 
         try {
           const u = new URL(rawUrl);
-          if (customName) {
-            u.searchParams.set("name", customName);
-          } else {
-            u.searchParams.delete("name");
-          }
+          u.searchParams.delete("name"); // Every visitor sees the same "Sen uchun" page.
           return u.toString();
         } catch (_) {
           return rawUrl;
@@ -3331,10 +3308,7 @@
         if (!el.qrUrlInput.value) {
           el.qrUrlInput.value = currentHref.startsWith("http")
             ? currentHref
-            : "https://SAIDA-surprise.vercel.app";
-        }
-        if (!el.qrNameInput.value) {
-          el.qrNameInput.value = recipientName;
+            : "https://your-site.vercel.app";
         }
         refreshQrPreview();
         el.qrModal.classList.add("is-open");
@@ -3362,7 +3336,6 @@
         if (e.target === el.qrModal) closeQrModal(false);
       });
       el.qrUrlInput.addEventListener("input", refreshQrPreview);
-      el.qrNameInput.addEventListener("input", refreshQrPreview);
 
       el.downloadQrPngBtn.addEventListener("click", () => {
         const targetUrl = buildTargetQrUrl();
@@ -3370,10 +3343,7 @@
         QRGenerator.drawToCanvas(exportCanvas, targetUrl, 1000);
 
         const link = document.createElement("a");
-        const safeSlug = (el.qrNameInput.value.trim() || "SAIDA")
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-");
-        link.download = `kinder-qr-${safeSlug}.png`;
+        link.download = "kinder-qr-sen-uchun.png";
         link.href = exportCanvas.toDataURL("image/png");
         document.body.appendChild(link);
         link.click();
