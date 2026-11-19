@@ -1,1734 +1,3366 @@
 <!DOCTYPE html>
-<html lang="uz" class="scroll-smooth">
+<html lang="uz">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#FFF0F5" />
-  <title>Senga kichkina syurprizim bor ❤️ | Kunjim</title>
+  <meta name="description" content="Senga kichkina bir romantik syurprizim bor ❤️" />
+  <title>KUNJIM — Romantic QR Surprise ❤️</title>
 
-  <!-- Google Fonts: Cormorant Garamond (Nafis sarlavhalar) + Plus Jakarta Sans (Zamonaviy matn) -->
+  <!-- Google Fonts: Cormorant Garamond (Luxury Display), Great Vibes (Romantic Script), Plus Jakarta Sans (Clean Uzbek Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- QRCode.js (Yuqori aniqlikdagi oq-qora PNG QR-kod yaratish uchun) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-          },
-          colors: {
-            blush: {
-              50: '#FFFDF9',
-              100: '#FFF0F5',
-              200: '#FFE4EC',
-              300: '#FECDD3',
-              400: '#FDA4AF',
-              500: '#FB7185',
-              600: '#E11D48',
-              700: '#BE123C',
-            },
-          },
-        },
-      },
-    };
-  </script>
-
-  <!-- =====================================================================
-       SECTION 1: CSS/STYLE.CSS (Premium Glassmorphism, 3D Envelope & Animations)
-       ===================================================================== -->
   <style>
+    /* ==========================================================================
+       1. DESIGN TOKENS & LUXURY ROMANTIC PALETTE
+       ========================================================================== */
     :root {
       --bg-cream: #FFFDF9;
-      --bg-pink: #FFF0F5;
-      --bg-rose: #FFE4EC;
+      --bg-blush: #FFF0F5;
+      --bg-petal: #FADADD;
+      --bg-rose-tint: #F8C8DC;
+      --surface-glass: rgba(255, 255, 255, 0.74);
+      --surface-glass-strong: rgba(255, 253, 249, 0.88);
+      --border-glass: rgba(255, 255, 255, 0.9);
+      --border-rose: rgba(217, 56, 90, 0.16);
+
+      --text-primary: #3B121E;      /* Deep velvet burgundy */
+      --text-secondary: #7A4958;    /* Warm rose-taupe */
+      --text-muted: #9E6E7D;
+
+      --accent-crimson: #D9385A;    /* Soft crimson / rose red */
       --accent-rose: #E11D48;
-      --accent-soft: #FB7185;
-      --text-main: #3F1D2B;
-      --text-muted: #7C4D60;
-      --glass-bg: rgba(255, 255, 255, 0.72);
-      --glass-border: rgba(255, 228, 236, 0.9);
-      --glass-shadow: 0 20px 50px -12px rgba(225, 29, 72, 0.14);
+      --accent-deep: #9F1239;
+      --accent-gold: #D4AF37;       /* Champagne gold */
+      --accent-gold-soft: #EFE0B9;
+
+      --shadow-soft: 0 20px 50px -15px rgba(217, 56, 90, 0.15);
+      --shadow-card: 0 12px 32px -8px rgba(59, 18, 30, 0.08);
+      --shadow-button: 0 14px 28px -8px rgba(217, 56, 90, 0.42);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
-    * {
+    /* ==========================================================================
+       2. RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-cream);
+      color: var(--text-primary);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(250, 218, 221, 0.72) 0%, transparent 45%),
+        radial-gradient(circle at 88% 22%, rgba(248, 200, 220, 0.55) 0%, transparent 48%),
+        radial-gradient(circle at 20% 65%, rgba(255, 240, 245, 0.85) 0%, transparent 52%),
+        radial-gradient(circle at 82% 88%, rgba(250, 218, 221, 0.65) 0%, transparent 48%),
+        linear-gradient(180deg, #FFFDF9 0%, #FFF5F8 50%, #FFFDF9 100%);
       min-height: 100dvh;
       overflow-x: hidden;
-      background: radial-gradient(circle at 15% 15%, #FFF0F5 0%, #FFFDF9 48%, #FFE4EC 100%);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Ambient Soft Orbs */
-    .ambient-orb {
+    img, video, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    /* ==========================================================================
+       3. AMBIENT FLOATING HEARTS & SPARKLES LAYER (NON-INTERACTIVE)
+       ========================================================================== */
+    .ambient-layer {
       position: fixed;
-      border-radius: 9999px;
-      filter: blur(70px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.65;
-      animation: orbFloat 14s ease-in-out infinite alternate;
-    }
-
-    @keyframes orbFloat {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(24px, -28px) scale(1.08); }
-    }
-
-    /* Glassmorphism Cards */
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1.5px solid var(--glass-border);
-      box-shadow: var(--glass-shadow);
-    }
-
-    .glass-pill {
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(251, 113, 133, 0.28);
-      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.12);
-    }
-
-    /* Twinkling Stars */
-    .star-twinkle {
-      animation: twinkle 3.6s ease-in-out infinite;
-    }
-    .star-twinkle-delay {
-      animation: twinkle 4.4s ease-in-out 1.4s infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.25; transform: scale(0.85) rotate(0deg); }
-      50% { opacity: 0.95; transform: scale(1.15) rotate(12deg); }
-    }
-
-    /* Floating Background Hearts */
-    .floating-heart {
-      position: fixed;
-      bottom: -40px;
+      inset: 0;
       pointer-events: none;
       z-index: 1;
-      animation: riseHeart linear forwards;
+      overflow: hidden;
+    }
+
+    .ambient-particle {
+      position: absolute;
+      bottom: -40px;
+      opacity: 0;
+      animation: floatUpParticle linear infinite;
       will-change: transform, opacity;
     }
 
-    @keyframes riseHeart {
+    @keyframes floatUpParticle {
       0% {
-        transform: translateY(0) translateX(0) scale(0.7) rotate(0deg);
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.75);
         opacity: 0;
       }
-      15% {
-        opacity: 0.75;
+      12% {
+        opacity: var(--p-opacity, 0.45);
       }
       85% {
-        opacity: 0.55;
+        opacity: var(--p-opacity, 0.45);
       }
       100% {
-        transform: translateY(-110vh) translateX(var(--sway, 25px)) scale(1.15) rotate(var(--rot, 20deg));
+        transform: translate3d(var(--p-drift, 24px), -110vh, 0) rotate(var(--p-rot, 25deg)) scale(1.05);
         opacity: 0;
       }
     }
 
-    /* 3D Interactive Envelope */
-    .envelope-stage {
-      perspective: 1200px;
+    /* Burst hearts when opening envelope or clicking replay */
+    .burst-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 20px;
+      animation: burstFly 1.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform, opacity;
     }
 
-    .envelope-wrapper {
-      position: relative;
-      width: min(320px, 84vw);
-      height: 215px;
-      margin: 0 auto;
+    @keyframes burstFly {
+      0% {
+        transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+        opacity: 1;
+      }
+      70% {
+        opacity: 0.95;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--bx)), calc(-50% + var(--by))) scale(1.15) rotate(var(--brot));
+        opacity: 0;
+      }
+    }
+
+    /* ==========================================================================
+       4. FLOATING MUSIC CONTROLLER PILL (TOP-RIGHT)
+       ========================================================================== */
+    .music-pill {
+      position: fixed;
+      top: calc(14px + var(--safe-top));
+      right: 14px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px 7px 8px;
+      background: rgba(255, 253, 249, 0.84);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(217, 56, 90, 0.2);
+      border-radius: 999px;
+      box-shadow: 0 10px 28px -8px rgba(59, 18, 30, 0.14);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+    }
+
+    .music-pill.hidden-pill {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+    }
+
+    .music-toggle-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-crimson), var(--accent-rose));
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 14px -4px rgba(217, 56, 90, 0.5);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .music-toggle-btn:active {
+      transform: scale(0.92);
+    }
+
+    .music-info {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding-right: 2px;
+    }
+
+    .equalizer {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 13px;
+      width: 12px;
+    }
+
+    .equalizer span {
+      display: block;
+      width: 2.5px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--accent-crimson);
+      transition: height 0.2s ease;
+    }
+
+    .music-pill.is-playing .equalizer span:nth-child(1) {
+      animation: eqBar 0.75s ease-in-out infinite alternate;
+    }
+    .music-pill.is-playing .equalizer span:nth-child(2) {
+      animation: eqBar 0.55s ease-in-out 0.2s infinite alternate;
+    }
+    .music-pill.is-playing .equalizer span:nth-child(3) {
+      animation: eqBar 0.85s ease-in-out 0.1s infinite alternate;
+    }
+
+    @keyframes eqBar {
+      0% { height: 3px; }
+      100% { height: 13px; }
+    }
+
+    .music-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .volume-control-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border-left: 1px solid rgba(217, 56, 90, 0.16);
+      padding-left: 7px;
+    }
+
+    .mute-btn {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      color: var(--text-secondary);
+      border-radius: 50%;
+    }
+
+    .mute-btn:hover {
+      background: rgba(217, 56, 90, 0.08);
+      color: var(--accent-crimson);
+    }
+
+    .volume-slider {
+      width: 48px;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(217, 56, 90, 0.2);
+      border-radius: 999px;
+      outline: none;
       cursor: pointer;
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      animation: envelopeHover 4s ease-in-out infinite;
     }
 
-    .envelope-wrapper:hover {
-      transform: translateY(-4px) scale(1.015);
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-crimson);
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
-    @keyframes envelopeHover {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+    @media (max-width: 380px) {
+      .volume-slider {
+        width: 36px;
+      }
+      .music-label {
+        font-size: 0.72rem;
+      }
     }
 
-    .envelope-body {
-      position: absolute;
+    /* ==========================================================================
+       5. SCREEN 1: OPENING LUXURY ENVELOPE EXPERIENCE
+       ========================================================================== */
+    .envelope-screen {
+      position: fixed;
       inset: 0;
-      background: linear-gradient(145deg, #FFFDF9 0%, #FFE8EF 100%);
-      border-radius: 18px;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(24px + var(--safe-top)) 20px calc(28px + var(--safe-bottom));
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 240, 245, 0.85) 55%, rgba(250, 218, 221, 0.75) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.85s;
+    }
+
+    .envelope-screen.is-dismissed {
+      opacity: 0;
+      transform: scale(1.04);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Subtle top brand whisper */
+    .kinder-whisper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(212, 175, 55, 0.32);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 26px;
+      box-shadow: 0 8px 20px -10px rgba(59, 18, 30, 0.12);
+    }
+
+    .kinder-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-crimson);
+    }
+
+    /* Envelope Stage & Orbiting Tiny Hearts */
+    .envelope-stage {
+      position: relative;
+      width: min(310px, 84vw);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      perspective: 1100px;
+    }
+
+    .envelope-glow {
+      position: absolute;
+      width: 260px;
+      height: 170px;
+      background: radial-gradient(circle, rgba(217, 56, 90, 0.22) 0%, rgba(212, 175, 55, 0.12) 45%, transparent 72%);
+      filter: blur(18px);
+      z-index: 0;
+      animation: breatheGlow 3.6s ease-in-out infinite;
+    }
+
+    @keyframes breatheGlow {
+      0%, 100% { transform: scale(0.95); opacity: 0.75; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    /* Orbiting micro-hearts around envelope */
+    .orbit-heart {
+      position: absolute;
+      color: var(--accent-crimson);
+      opacity: 0.75;
+      pointer-events: none;
+      animation: gentleFloat 3.4s ease-in-out infinite;
+    }
+    .orbit-heart.oh-1 { top: -12px; left: 14px; font-size: 15px; animation-delay: 0s; }
+    .orbit-heart.oh-2 { top: 8px; right: 10px; font-size: 13px; color: var(--accent-gold); animation-delay: 0.7s; }
+    .orbit-heart.oh-3 { bottom: 6px; left: 4px; font-size: 12px; animation-delay: 1.3s; }
+    .orbit-heart.oh-4 { bottom: -10px; right: 20px; font-size: 16px; animation-delay: 1.9s; }
+    .orbit-heart.oh-5 { top: 44%; left: -16px; font-size: 11px; color: var(--accent-gold); animation-delay: 2.3s; }
+    .orbit-heart.oh-6 { top: 38%; right: -14px; font-size: 12px; animation-delay: 1.1s; }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.12); }
+    }
+
+    /* 3D Cream & Gold Envelope */
+    .luxury-envelope {
+      position: relative;
+      width: 280px;
+      height: 184px;
+      border-radius: 16px;
+      background: linear-gradient(155deg, #FFFDF9 0%, #FDF3EA 100%);
+      border: 1.5px solid rgba(212, 175, 55, 0.55);
       box-shadow:
-        0 25px 50px -12px rgba(190, 18, 60, 0.22),
-        0 0 0 1.5px rgba(251, 113, 133, 0.35),
-        inset 0 2px 10px rgba(255, 255, 255, 0.9);
-      overflow: hidden;
+        0 24px 48px -14px rgba(59, 18, 30, 0.2),
+        0 0 0 5px rgba(255, 255, 255, 0.65);
+      cursor: pointer;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: envelopeHoverFloat 4.2s ease-in-out infinite;
       z-index: 2;
     }
 
-    /* Envelope Inner Letter Card */
-    .envelope-letter {
+    .luxury-envelope:hover {
+      transform: translateY(-4px) scale(1.015);
+    }
+
+    @keyframes envelopeHoverFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .luxury-envelope.is-opening {
+      animation: none;
+      transform: translateY(10px) scale(1.02);
+    }
+
+    /* Inner Letter Card that peeks and slides up */
+    .envelope-letter-peek {
       position: absolute;
-      left: 8%;
-      right: 8%;
-      bottom: 12px;
-      height: 175px;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      height: 148px;
       background: linear-gradient(180deg, #FFFFFF 0%, #FFF7FA 100%);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 12px;
-      border: 1px solid rgba(251, 113, 133, 0.25);
-      box-shadow: 0 6px 20px rgba(225, 29, 72, 0.1);
-      padding: 18px 16px;
+      padding: 16px 14px;
       text-align: center;
-      z-index: 3;
-      transition: transform 0.95s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease;
+      box-shadow: 0 6px 18px rgba(59, 18, 30, 0.08);
+      z-index: 2;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.28s;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
     }
 
-    /* Envelope Bottom & Side Folds */
+    .luxury-envelope.is-opening .envelope-letter-peek {
+      transform: translateY(-76px);
+    }
+
+    .peek-script {
+      font-family: var(--font-script);
+      font-size: 1.45rem;
+      color: var(--accent-crimson);
+      line-height: 1.2;
+    }
+
+    .peek-line {
+      width: 64px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      margin: 6px auto;
+    }
+
+    .peek-sub {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Envelope Pocket SVG Overlay */
     .envelope-pocket {
       position: absolute;
       inset: 0;
-      z-index: 4;
-      pointer-events: none;
-      border-radius: 18px;
+      border-radius: 15px;
       overflow: hidden;
+      z-index: 3;
+      pointer-events: none;
     }
 
-    .envelope-pocket::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 240, 245, 0.96) 0%, rgba(255, 224, 234, 0.98) 100%);
-      clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
-      border-top: 1px solid rgba(255, 255, 255, 0.8);
-    }
-
-    .envelope-pocket::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(251, 113, 133, 0.16) 100%);
-      clip-path: polygon(0 100%, 50% 48%, 100% 100%);
-    }
-
-    /* Envelope Top Flap */
+    /* Envelope Top Triangular Flap */
     .envelope-flap {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 122px;
-      background: linear-gradient(180deg, #FFD6E4 0%, #FFC2D6 100%);
-      clip-path: polygon(0 0, 100% 0, 50% 96%);
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 112px;
       transform-origin: top center;
-      transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.3s;
-      z-index: 5;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      filter: drop-shadow(0 6px 10px rgba(190, 18, 60, 0.14));
+      transform-style: preserve-3d;
+      transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 4;
+      pointer-events: none;
     }
 
-    /* Wax Heart Seal */
-    .wax-seal {
-      position: absolute;
-      top: 86px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 54px;
-      height: 54px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at 30% 30%, #FB7185 0%, #E11D48 65%, #9F1239 100%);
-      box-shadow:
-        0 8px 20px rgba(225, 29, 72, 0.42),
-        inset 0 2px 4px rgba(255, 255, 255, 0.45),
-        0 0 0 4px rgba(255, 240, 245, 0.85);
-      z-index: 6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
-    }
-
-    /* Opened Envelope State */
-    .envelope-wrapper.is-open {
-      animation: none;
-    }
-
-    .envelope-wrapper.is-open .wax-seal {
-      transform: translateX(-50%) scale(0) rotate(25deg);
-      opacity: 0;
-    }
-
-    .envelope-wrapper.is-open .envelope-flap {
+    .luxury-envelope.is-opening .envelope-flap {
       transform: rotateX(180deg);
       z-index: 1;
     }
 
-    .envelope-wrapper.is-open .envelope-letter {
-      transform: translateY(-95px);
-      box-shadow: 0 18px 36px rgba(225, 29, 72, 0.2);
+    /* Pulsing Crimson Wax Seal */
+    .wax-seal {
+      position: absolute;
+      top: 76px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 30%, #F43F5E 0%, #D9385A 52%, #9F1239 100%);
+      box-shadow:
+        0 8px 20px rgba(159, 18, 57, 0.42),
+        inset 0 2px 4px rgba(255, 255, 255, 0.42),
+        inset 0 -3px 6px rgba(88, 10, 32, 0.45);
+      display: grid;
+      place-items: center;
+      z-index: 5;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      animation: sealPulse 2.4s ease-in-out infinite;
     }
 
-    /* Primary Gradient Button */
-    .btn-romantic {
-      background: linear-gradient(135deg, #FB7185 0%, #E11D48 100%);
-      color: #FFFFFF;
-      box-shadow: 0 12px 28px -6px rgba(225, 29, 72, 0.45);
-      transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    .wax-seal::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 232, 214, 0.55);
     }
 
-    .btn-romantic:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 16px 34px -6px rgba(225, 29, 72, 0.55);
+    .wax-seal span {
+      font-size: 1.25rem;
+      filter: drop-shadow(0 1px 2px rgba(88, 10, 32, 0.4));
     }
 
-    .btn-romantic:active {
-      transform: translateY(1px) scale(0.98);
+    @keyframes sealPulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.07); }
     }
 
-    /* Scroll Reveal Utility */
-    .reveal-section {
+    .luxury-envelope.is-opening .wax-seal {
       opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateX(-50%) scale(0.65);
+      animation: none;
     }
 
-    .reveal-section.is-visible {
+    /* Envelope Text & CTA Button */
+    .envelope-copy {
+      text-align: center;
+      max-width: 340px;
+      z-index: 2;
+    }
+
+    .envelope-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 5.5vw, 2.05rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .envelope-hint {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .btn-romantic-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #E11D48 0%, #D9385A 55%, #BE123C 100%);
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: var(--shadow-button);
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+    }
+
+    .btn-romantic-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+      transform: skewX(-20deg);
+      animation: btnShimmer 3.5s ease-in-out infinite;
+    }
+
+    @keyframes btnShimmer {
+      0%, 55% { left: -100%; }
+      100% { left: 160%; }
+    }
+
+    .btn-romantic-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px -8px rgba(217, 56, 90, 0.52);
+    }
+
+    .btn-romantic-primary:active {
+      transform: scale(0.96);
+    }
+
+    /* ==========================================================================
+       6. SCREEN 2: MAIN SCROLLABLE ROMANTIC EXPERIENCE
+       ========================================================================== */
+    .main-experience {
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+    }
+
+    .main-experience.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .section-block {
+      padding: 36px 0;
+    }
+
+    /* Reveal animation on scroll */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-on-scroll.is-revealed {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Typewriter Cursor */
-    .typewriter-cursor::after {
-      content: '|';
+    /* Decorative Botanical Divider */
+    .botanical-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 8px auto 26px;
+      color: var(--accent-gold);
+      opacity: 0.85;
+    }
+
+    .botanical-divider::before,
+    .botanical-divider::after {
+      content: '';
+      height: 1px;
+      width: 56px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+    }
+
+    /* Section Headings */
+    .section-eyebrow {
+      display: block;
+      text-align: center;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-crimson);
+      margin-bottom: 6px;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 6vw, 2.3rem);
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .section-subheading {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+
+    /* --------------------------------------------------------------------------
+       HERO SECTION
+       -------------------------------------------------------------------------- */
+    .hero-section {
+      position: relative;
+      padding-top: calc(78px + var(--safe-top));
+      padding-bottom: 36px;
+      text-align: center;
+    }
+
+    .hero-botanical-corner {
+      position: absolute;
+      top: calc(56px + var(--safe-top));
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(360px, 92vw);
+      opacity: 0.42;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-kinder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(212, 175, 55, 0.36);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      box-shadow: 0 8px 22px -10px rgba(59, 18, 30, 0.1);
+      margin-bottom: 18px;
+    }
+
+    .recipient-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 240, 245, 0.92));
+      border: 1px solid rgba(217, 56, 90, 0.24);
+      box-shadow: 0 10px 26px -10px rgba(217, 56, 90, 0.25);
+      margin-bottom: 18px;
+    }
+
+    .recipient-script {
+      font-family: var(--font-script);
+      font-size: 1.85rem;
+      color: var(--accent-crimson);
+      line-height: 1.1;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 7.6vw, 3rem);
+      font-weight: 700;
+      line-height: 1.16;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      max-width: 430px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .scroll-cue {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .scroll-cue-mouse {
+      width: 22px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(217, 56, 90, 0.35);
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+
+    .scroll-cue-dot {
+      width: 4px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-crimson);
+      animation: scrollWheel 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollWheel {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(11px); opacity: 0; }
+    }
+
+    /* --------------------------------------------------------------------------
+       ROMANTIC SHORT NOTES (3 GLASS CARDS)
+       -------------------------------------------------------------------------- */
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .note-card {
+      position: relative;
+      padding: 22px 20px;
+      border-radius: var(--radius-lg);
+      background: var(--surface-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .note-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .note-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #FFF0F5, #FADADD);
+      border: 1px solid rgba(217, 56, 90, 0.16);
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .note-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .note-card-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* --------------------------------------------------------------------------
+       VIDEO SECTION 🎬
+       -------------------------------------------------------------------------- */
+    .video-section.is-hidden {
+      display: none !important;
+    }
+
+    .video-glass-frame {
+      position: relative;
+      padding: 12px;
+      border-radius: var(--radius-xl);
+      background: var(--surface-glass-strong);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .video-viewport {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 12;
+      max-height: 490px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #2D0E18 0%, #58162B 55%, #881337 100%);
+    }
+
+    .video-viewport video,
+    .video-viewport canvas.demo-video-canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Poster / Tap-to-Play Overlay */
+    .video-poster-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(217, 56, 90, 0.25), rgba(38, 10, 19, 0.72)),
+        linear-gradient(180deg, rgba(59, 18, 30, 0.35), rgba(38, 10, 19, 0.85));
+      color: #FFFFFF;
+      z-index: 3;
+      cursor: pointer;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .video-poster-overlay.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .video-poster-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.65;
+    }
+
+    .play-circle-btn {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--accent-crimson);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), 0 0 0 8px rgba(255, 255, 255, 0.2);
+      margin-bottom: 14px;
+      transition: transform 0.25s ease;
+    }
+
+    .video-poster-overlay:hover .play-circle-btn {
+      transform: scale(1.07);
+    }
+
+    .video-poster-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .video-poster-hint {
+      font-size: 0.8rem;
+      opacity: 0.86;
+    }
+
+    /* Custom Minimal Video Control Bar */
+    .video-controls-bar {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(28, 9, 15, 0.68);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .video-viewport.has-started .video-controls-bar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .v-ctrl-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.14);
+      flex-shrink: 0;
+    }
+
+    .v-progress-track {
+      flex: 1;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.25);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .v-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #F43F5E, #FBBF24);
+      border-radius: 999px;
+      transition: width 0.15s linear;
+    }
+
+    .video-caption-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 12px 6px 4px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .video-demo-toggle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* --------------------------------------------------------------------------
+       LOVE LETTER SECTION 💌 (STATIONERY + TYPEWRITER)
+       -------------------------------------------------------------------------- */
+    .letter-stationery {
+      position: relative;
+      padding: 34px 24px 30px;
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, #FFFDF9 0%, #FDF6F0 100%);
+      border: 1px solid rgba(212, 175, 55, 0.42);
+      box-shadow:
+        var(--shadow-soft),
+        inset 0 0 0 6px rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+    }
+
+    /* Subtle lined stationery texture */
+    .letter-stationery::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 31px,
+        rgba(217, 56, 90, 0.06) 32px
+      );
+      pointer-events: none;
+    }
+
+    .letter-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed rgba(212, 175, 55, 0.45);
+    }
+
+    .letter-header-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .letter-header-date {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--accent-crimson);
+      background: rgba(255, 240, 245, 0.9);
+      padding: 4px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(217, 56, 90, 0.16);
+    }
+
+    .letter-body {
+      position: relative;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-primary);
+      white-space: pre-line;
+      min-height: 140px;
+    }
+
+    .typing-cursor {
       display: inline-block;
+      width: 2px;
+      height: 1.15em;
+      background-color: var(--accent-crimson);
       margin-left: 2px;
-      color: #E11D48;
-      animation: blinkCursor 0.85s infinite;
+      vertical-align: text-bottom;
+      animation: blinkCursor 0.8s step-end infinite;
+    }
+
+    .typing-cursor.is-done {
+      display: none;
     }
 
     @keyframes blinkCursor {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
-    /* Finale Heart Pulse */
-    .heart-beat-3d {
-      animation: heartbeat3D 1.6s ease-in-out infinite;
-      filter: drop-shadow(0 18px 32px rgba(225, 29, 72, 0.38));
+    .letter-footer {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
     }
 
-    @keyframes heartbeat3D {
-      0%, 100% { transform: scale(1); }
-      14% { transform: scale(1.14); }
-      28% { transform: scale(1.02); }
-      42% { transform: scale(1.11); }
-      70% { transform: scale(1); }
+    .letter-signature {
+      font-family: var(--font-script);
+      font-size: 1.65rem;
+      color: var(--accent-crimson);
     }
 
-    /* Custom Range Input for Volume */
-    input[type="range"].rose-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      height: 5px;
+    .letter-skip-btn {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 6px 13px;
       border-radius: 999px;
-      background: #FECDD3;
+      background: rgba(255, 240, 245, 0.9);
+      border: 1px solid rgba(217, 56, 90, 0.2);
+      transition: background 0.2s ease;
+    }
+
+    .letter-skip-btn:hover {
+      background: #FADADD;
+    }
+
+    .letter-skip-btn.is-hidden {
+      display: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       PHOTO GALLERY SECTION 📸
+       -------------------------------------------------------------------------- */
+    .gallery-section.is-hidden {
+      display: none !important;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: 9px 9px 14px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
+      text-align: center;
+    }
+
+    /* Make 3rd card span full width nicely on mobile if odd count */
+    .gallery-grid.odd-count .gallery-card:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery-frame-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 15px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #FFF0F5, #FADADD);
+      margin-bottom: 10px;
+    }
+
+    .gallery-frame-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover .gallery-frame-media img {
+      transform: scale(1.05);
+    }
+
+    .gallery-card-caption {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 0 4px;
+    }
+
+    .gallery-zoom-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      color: var(--accent-crimson);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --------------------------------------------------------------------------
+       FINAL SURPRISE SECTION ❤️
+       -------------------------------------------------------------------------- */
+    .final-surprise-card {
+      position: relative;
+      text-align: center;
+      padding: 42px 24px 38px;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 50% 25%, rgba(255, 240, 245, 0.95) 0%, rgba(255, 253, 249, 0.88) 100%);
+      border: 1px solid rgba(217, 56, 90, 0.22);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .beating-heart-stage {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 22px;
+      display: grid;
+      place-items: center;
+    }
+
+    .heart-halo {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(225, 29, 72, 0.26) 0%, transparent 70%);
+      animation: haloExpand 1.6s ease-out infinite;
+    }
+
+    @keyframes haloExpand {
+      0% { transform: scale(0.75); opacity: 0.9; }
+      100% { transform: scale(1.65); opacity: 0; }
+    }
+
+    .luminous-heart-svg {
+      width: 78px;
+      height: 78px;
+      filter: drop-shadow(0 12px 22px rgba(217, 56, 90, 0.42));
+      animation: heartbeatLuxury 1.6s ease-in-out infinite;
+    }
+
+    @keyframes heartbeatLuxury {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.16); }
+      30% { transform: scale(1.02); }
+      45% { transform: scale(1.12); }
+    }
+
+    .final-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 6vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .final-subtext {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      max-width: 390px;
+      margin: 0 auto 26px;
+    }
+
+    /* Footer */
+    .app-footer {
+      text-align: center;
+      padding: 24px 16px calc(34px + var(--safe-bottom));
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .footer-qr-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(217, 56, 90, 0.18);
+      color: var(--text-secondary);
+      font-size: 0.76rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .footer-qr-trigger:hover {
+      background: #FFFFFF;
+      color: var(--accent-crimson);
+      box-shadow: 0 6px 16px -6px rgba(59, 18, 30, 0.15);
+    }
+
+    /* ==========================================================================
+       7. LIGHTBOX MODAL (GALLERY FULLSCREEN VIEW)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(28, 9, 15, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(20px + var(--safe-top)) 16px calc(20px + var(--safe-bottom));
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-dialog {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      background: #FFFDF9;
+      border-radius: var(--radius-xl);
+      padding: 14px 14px 20px;
+      box-shadow: 0 28px 64px rgba(0, 0, 0, 0.45);
+      transform: scale(0.94);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-backdrop.is-open .lightbox-dialog {
+      transform: scale(1);
+    }
+
+    .lightbox-media-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #FFF0F5;
+      margin-bottom: 14px;
+    }
+
+    .lightbox-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(28, 9, 15, 0.65);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
+
+    .lightbox-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 6px;
+    }
+
+    .lightbox-nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #FFF0F5;
+      border: 1px solid rgba(217, 56, 90, 0.2);
+      color: var(--accent-crimson);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .lightbox-caption-wrap {
+      text-align: center;
+      flex: 1;
+    }
+
+    .lightbox-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .lightbox-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       8. PRINT-READY QR CODE GENERATOR MODAL
+       ========================================================================== */
+    .qr-dialog {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      max-height: 88dvh;
+      overflow-y: auto;
+      background: #FFFDF9;
+      border-radius: var(--radius-xl);
+      padding: 24px 20px;
+      box-shadow: 0 28px 64px rgba(0, 0, 0, 0.45);
+      transform: translateY(16px);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-backdrop.is-open .qr-dialog {
+      transform: translateY(0);
+    }
+
+    .qr-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .qr-title {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .qr-close-x {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #FFF0F5;
+      color: var(--text-primary);
+      display: grid;
+      place-items: center;
+    }
+
+    .qr-field-group {
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    .qr-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .qr-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(217, 56, 90, 0.24);
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--text-primary);
       outline: none;
     }
-    input[type="range"].rose-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #E11D48;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.4);
+
+    .qr-input:focus {
+      border-color: var(--accent-crimson);
     }
 
-    /* Safe Area Spacing */
-    .pb-safe {
-      padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    .qr-warning {
+      display: none;
+      margin-top: 8px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      color: #991B1B;
+      font-size: 0.78rem;
+      line-height: 1.45;
     }
-    .pt-safe {
-      padding-top: max(1rem, env(safe-area-inset-top));
+
+    .qr-warning.is-visible {
+      display: block;
+    }
+
+    .qr-preview-box {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 16px 0;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    #qrPreviewCanvas {
+      width: 210px;
+      height: 210px;
+      image-rendering: pixelated;
+      background: #FFFFFF;
+    }
+
+    .qr-spec-note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .qr-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-qr-download {
+      width: 100%;
+      padding: 13px 20px;
+      border-radius: 14px;
+      background: #18181B;
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-qr-download:hover {
+      background: #27272A;
+    }
+
+    /* ==========================================================================
+       9. REDUCED MOTION ACCESSIBILITY
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
+<body>
 
-<body class="antialiased selection:bg-blush-200 selection:text-blush-700">
-  <!-- Ambient Background Soft Glows -->
-  <div class="ambient-orb w-72 h-72 bg-pink-200/70 -top-16 -left-16"></div>
-  <div class="ambient-orb w-80 h-80 bg-rose-200/60 top-1/3 -right-24" style="animation-delay: -5s;"></div>
-  <div class="ambient-orb w-72 h-72 bg-amber-100/70 bottom-10 left-1/4" style="animation-delay: -9s;"></div>
+  <!-- Ambient Floating Hearts & Gold Sparkles Layer -->
+  <div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
 
-  <!-- Floating Particles Container -->
-  <div id="hearts-canvas" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
-
-  <!-- Subtle Discreet Studio / QR Creator Trigger (Top-Left tiny sparkle icon, or open via ?admin=1) -->
-  <button
-    id="open-studio-btn"
-    type="button"
-    title="QR Kod va Sozlamalar"
-    aria-label="QR Kod va Sozlamalar"
-    class="fixed top-4 left-4 z-40 w-9 h-9 rounded-full glass-pill flex items-center justify-center text-blush-500/60 hover:text-blush-600 hover:scale-105 transition-all opacity-55 hover:opacity-100"
-  >
-    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-      <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-      <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-      <path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h2v2h-2zM19 14h2v2h-2z"></path>
-    </svg>
-  </button>
-
-  <!-- Floating Music Control Pill (Hidden until envelope opens) -->
-  <div
-    id="music-player-pill"
-    class="fixed top-4 right-4 z-40 hidden items-center gap-2.5 px-3.5 py-2 rounded-full glass-pill transition-all duration-500"
-  >
-    <button
-      id="music-toggle-btn"
-      type="button"
-      aria-label="Musiqani yoqish yoki to'xtatish"
-      class="w-8 h-8 rounded-full bg-gradient-to-br from-blush-500 to-blush-600 text-white flex items-center justify-center shadow-sm active:scale-95 transition"
-    >
+  <!-- Top-Right Floating Music Controller Pill -->
+  <aside class="music-pill" id="musicPill" aria-label="Fon musiqasi boshqaruvi">
+    <button type="button" class="music-toggle-btn" id="musicToggleBtn" aria-label="Musiqani ijro etish yoki pauza qilish">
       <!-- Play Icon -->
-      <svg id="icon-music-play" class="w-3.5 h-3.5 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M8 5v14l11-7z" />
+      <svg id="iconPlay" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5.14v14l11-7-11-7z"/>
       </svg>
       <!-- Pause Icon -->
-      <svg id="icon-music-pause" class="w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+      <svg id="iconPause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+        <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
       </svg>
     </button>
 
-    <div class="flex flex-col pr-1">
-      <span id="music-status-label" class="text-[11px] font-semibold text-blush-700 leading-tight">Romantik ohang</span>
-      <div class="flex items-center gap-1.5 mt-0.5">
-        <svg class="w-3 h-3 text-blush-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <div class="music-info">
+      <div class="equalizer" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="music-label" id="musicLabel">Romantik ohang</span>
+    </div>
+
+    <div class="volume-control-wrap">
+      <button type="button" class="mute-btn" id="muteToggleBtn" aria-label="Ovozni o‘chirish yoki yoqish">
+        <svg id="iconVolOn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
           <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         </svg>
-        <input
-          id="music-volume-slider"
-          type="range"
-          min="0"
-          max="1"
-          step="0.05"
-          value="0.65"
-          aria-label="Ovoz balandligi"
-          class="rose-slider w-14 sm:w-16"
-        />
-      </div>
+        <svg id="iconVolOff" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.65" aria-label="Ovoz balandligi" />
     </div>
-  </div>
+  </aside>
 
-  <!-- Hidden Native Audio Element for assets/music.mp3 -->
-  <audio id="bg-audio" loop preload="none"></audio>
+  <!-- Hidden HTML5 Audio Element (loads assets/music.mp3 if available) -->
+  <audio id="bgAudio" preload="none" loop></audio>
 
-  <!-- =====================================================================
-       SCREEN 1: INTRO / INTERACTIVE ENVELOPE SCREEN (FIRST VIEW)
-       ===================================================================== -->
-  <main
-    id="envelope-screen"
-    class="relative z-10 min-h-[100dvh] w-full flex flex-col items-center justify-center px-5 py-10 text-center transition-all duration-700"
-  >
-    <!-- Delicate Floral Corner SVG Accents -->
-    <svg class="w-36 h-36 text-blush-300/60 fixed top-0 right-0 pointer-events-none" viewBox="0 0 200 200" fill="none">
-      <path d="M180 10C150 45 140 85 165 120C130 105 95 115 70 145C85 105 70 65 35 45C80 50 120 35 150 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="152" cy="48" r="5" fill="#FDA4AF" fill-opacity="0.45"/>
-      <circle cx="118" cy="82" r="3.5" fill="#FB7185" fill-opacity="0.4"/>
-      <circle cx="168" cy="92" r="4" fill="#FECDD3" fill-opacity="0.7"/>
-    </svg>
-
-    <svg class="w-36 h-36 text-blush-300/60 fixed bottom-0 left-0 pointer-events-none rotate-180" viewBox="0 0 200 200" fill="none">
-      <path d="M180 10C150 45 140 85 165 120C130 105 95 115 70 145C85 105 70 65 35 45C80 50 120 35 150 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="152" cy="48" r="5" fill="#FDA4AF" fill-opacity="0.45"/>
-      <circle cx="118" cy="82" r="3.5" fill="#FB7185" fill-opacity="0.4"/>
-    </svg>
-
-    <!-- Top Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-medium tracking-wide text-blush-700 mb-8 shadow-sm">
-      <span class="w-2 h-2 rounded-full bg-blush-500 animate-ping"></span>
-      <span>Maxsus siz uchun tayyorlandi ✨</span>
+  <!-- ========================================================================
+       SCREEN 1: OPENING CLOSED ENVELOPE SCREEN
+       ======================================================================== -->
+  <section class="envelope-screen" id="envelopeScreen" aria-label="Syurpriz konverti">
+    <div class="kinder-whisper">
+      <span class="kinder-dot"></span>
+      <span id="envelopeBrandTag">Kinder Chocolate • Maxsus Syurpriz</span>
     </div>
 
-    <!-- Animated Envelope with Surrounding Mini Hearts & Stars -->
-    <div class="relative mb-9 envelope-stage">
-      <!-- Orbiting Decorative Hearts & Stars around Envelope -->
-      <span class="absolute -top-7 -left-4 text-blush-500 text-lg star-twinkle select-none">❤️</span>
-      <span class="absolute -top-5 -right-5 text-blush-400 text-base star-twinkle-delay select-none">✨</span>
-      <span class="absolute top-1/2 -left-8 text-blush-400 text-sm star-twinkle-delay select-none">💗</span>
-      <span class="absolute top-1/3 -right-8 text-blush-500 text-base star-twinkle select-none">💕</span>
-      <span class="absolute -bottom-5 left-4 text-amber-400 text-sm star-twinkle select-none">✦</span>
-      <span class="absolute -bottom-4 right-6 text-blush-400 text-sm star-twinkle-delay select-none">🌸</span>
+    <div class="envelope-stage">
+      <div class="envelope-glow"></div>
 
-      <div id="interactive-envelope" class="envelope-wrapper" role="button" tabindex="0" aria-label="Konvertni ochish">
-        <div class="envelope-body"></div>
+      <!-- Orbiting Tiny Hearts & Sparkles -->
+      <span class="orbit-heart oh-1" aria-hidden="true">❤️</span>
+      <span class="orbit-heart oh-2" aria-hidden="true">✦</span>
+      <span class="orbit-heart oh-3" aria-hidden="true">💗</span>
+      <span class="orbit-heart oh-4" aria-hidden="true">❤️</span>
+      <span class="orbit-heart oh-5" aria-hidden="true">✦</span>
+      <span class="orbit-heart oh-6" aria-hidden="true">💕</span>
 
-        <!-- Rising Mini Card Inside Envelope -->
-        <div class="envelope-letter">
-          <span class="text-[10px] uppercase tracking-[0.2em] text-blush-500 font-semibold mb-1">Maxsus maktub</span>
-          <p id="envelope-preview-name" class="font-serif italic text-xl font-semibold text-blush-700">Kunjim uchun ❤️</p>
-          <div class="w-10 h-0.5 bg-blush-200 rounded-full my-2"></div>
-          <p class="text-[11px] text-blush-600/80 leading-relaxed">Ichida faqat senga atalgan iliq so‘zlar bor...</p>
+      <!-- Luxury 3D Cream & Gold Envelope -->
+      <div class="luxury-envelope" id="luxuryEnvelope" role="button" tabindex="0" aria-label="Konvertni ochish">
+        <!-- Inner Peek Letter -->
+        <div class="envelope-letter-peek">
+          <div class="peek-script" id="peekRecipient">Kunjim uchun</div>
+          <div class="peek-line"></div>
+          <div class="peek-sub">Samimiy mehr bilan ❤️</div>
         </div>
 
-        <div class="envelope-pocket"></div>
-        <div class="envelope-flap"></div>
+        <!-- Pocket Folds SVG -->
+        <svg class="envelope-pocket" viewBox="0 0 280 184" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pocketLeft" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FDF4EB" />
+              <stop offset="100%" stop-color="#F7E4D8" />
+            </linearGradient>
+            <linearGradient id="pocketBottom" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FFFBF6" />
+              <stop offset="100%" stop-color="#F5DFD3" />
+            </linearGradient>
+          </defs>
+          <!-- Left & Right side flaps -->
+          <polygon points="0,0 146,96 0,184" fill="url(#pocketLeft)" />
+          <polygon points="280,0 134,96 280,184" fill="url(#pocketLeft)" />
+          <!-- Bottom fold -->
+          <polygon points="0,184 140,86 280,184" fill="url(#pocketBottom)" stroke="rgba(212,175,55,0.38)" stroke-width="1" />
+        </svg>
 
-        <!-- Wax Seal with Heart -->
-        <div class="wax-seal">
-          <svg class="w-6 h-6 text-white drop-shadow" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        <!-- Top 3D Animated Flap -->
+        <div class="envelope-flap">
+          <svg viewBox="0 0 280 112" width="100%" height="100%" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="topFlapGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FFFDF9" />
+                <stop offset="100%" stop-color="#F7E2D6" />
+              </linearGradient>
+            </defs>
+            <path d="M 0,0 L 280,0 L 148,104 Q 140,110 132,104 Z" fill="url(#topFlapGrad)" stroke="rgba(212,175,55,0.55)" stroke-width="1.2" />
           </svg>
         </div>
+
+        <!-- Pulsing Crimson Wax Seal -->
+        <div class="wax-seal" aria-hidden="true">
+          <span>❤️</span>
+        </div>
       </div>
     </div>
 
-    <!-- Intro Prompt Text -->
-    <h1 id="intro-headline" class="font-serif text-3xl sm:text-4xl font-semibold text-[#3F1D2B] leading-snug max-w-xs sm:max-w-md mb-3">
-      Senga kichkina bir syurprizim bor...
-    </h1>
+    <div class="envelope-copy">
+      <h1 class="envelope-title" id="envelopePromptText">Senga kichkina bir syurprizim bor...</h1>
+      <p class="envelope-hint">Konvert muhrini bosib ichidagi xabarni och ✨</p>
+      <button type="button" class="btn-romantic-primary" id="openEnvelopeBtn">
+        <span id="envelopeBtnLabel">Ochib ko‘r ❤️</span>
+      </button>
+    </div>
+  </section>
 
-    <p class="text-sm text-[#7C4D60] max-w-xs leading-relaxed mb-8">
-      Shirinlik bilan birga yurakdan chiqqan kichik bir e’tibor. Tayyormisan?
-    </p>
-
-    <!-- Primary Open Button -->
-    <button
-      id="open-surprise-btn"
-      type="button"
-      class="btn-romantic px-8 py-4 rounded-full font-semibold text-base tracking-wide inline-flex items-center gap-2.5 cursor-pointer"
-    >
-      <span>Ochib ko‘r ❤️</span>
-    </button>
-  </main>
-
-  <!-- =====================================================================
-       SCREEN 2: MAIN ROMANTIC EXPERIENCE (SCROLLABLE SECTIONS)
-       ===================================================================== -->
-  <div id="main-experience" class="hidden relative z-10 w-full max-w-lg mx-auto px-4 sm:px-6 pt-16 pb-safe">
+  <!-- ========================================================================
+       SCREEN 2: MAIN SCROLLABLE ROMANTIC EXPERIENCE
+       ======================================================================== -->
+  <main class="main-experience" id="mainExperience">
 
     <!-- 1. HERO SECTION -->
-    <section class="text-center pt-6 pb-10 reveal-section">
-      <!-- Recipient Name Pill -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill mb-5 shadow-sm">
-        <span class="text-xs uppercase tracking-[0.18em] text-blush-600 font-semibold">Faqat</span>
-        <span id="hero-recipient-name" class="font-serif italic text-lg font-bold text-blush-700">Kunjim</span>
-        <span class="text-sm">✨</span>
+    <header class="hero-section container">
+      <!-- Subtle Botanical Rose Line-Art Accent -->
+      <svg class="hero-botanical-corner" viewBox="0 0 360 120" fill="none" aria-hidden="true">
+        <path d="M30 95 C90 40, 145 25, 180 25 C215 25, 270 40, 330 95" stroke="#D4AF37" stroke-width="0.9" stroke-dasharray="3 4"/>
+        <circle cx="180" cy="25" r="4" fill="#D9385A" fill-opacity="0.45"/>
+        <path d="M168 25 C173 16, 187 16, 192 25 C187 34, 173 34, 168 25 Z" stroke="#D9385A" stroke-width="0.9"/>
+      </svg>
+
+      <div class="hero-kinder-badge">
+        <span>🍫</span>
+        <span id="heroTag">Kinder Chocolate • Maxsus Syurpriz</span>
       </div>
 
-      <!-- Romantic Hero Title -->
-      <h2 id="hero-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-[#3F1D2B] leading-[1.15] mb-5">
-        Bu kichkina syurpriz faqat sen uchun ❤️
-      </h2>
+      <div>
+        <div class="recipient-pill">
+          <span class="recipient-script" id="heroRecipientBadge">Azizim Kunjim uchun</span>
+        </div>
+      </div>
 
-      <!-- Short Romantic Subtitle -->
-      <p id="hero-subtitle" class="text-sm sm:text-base text-[#7C4D60] leading-relaxed max-w-md mx-auto mb-7">
-        Har bir shirin lahzada tabassuming yanada yorqinroq porlasin. Bugungi kuning o‘zgacha mehr va iliqlikka to‘la bo‘lsin.
+      <h1 class="hero-title" id="heroTitle">Bu kichkina syurpriz faqat sen uchun ❤️</h1>
+      <p class="hero-subtitle" id="heroSubtitle">
+        Ba’zan eng oddiy lahzalar ham samimiy e’tibor va shirin bir tabassum bilan unutilmas xotiraga aylanadi...
       </p>
 
-      <!-- Romantic Short Quote Cards (Horizontal / Stacked Elegant Pills) -->
-      <div id="quotes-container" class="grid grid-cols-1 gap-3 text-left mt-4">
-        <!-- Populated dynamically from CONTENT.quotes -->
-      </div>
+      <a href="#notesSection" class="scroll-cue" aria-label="Pastga tushish">
+        <div class="scroll-cue-mouse">
+          <div class="scroll-cue-dot"></div>
+        </div>
+        <span>Pastga siljiting</span>
+      </a>
+    </header>
 
-      <!-- Scroll Down Indicator -->
-      <div class="mt-9 flex flex-col items-center text-blush-500/80 animate-bounce">
-        <span class="text-[11px] font-medium tracking-wider uppercase mb-1">Pastga suring</span>
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+    <!-- 2. ROMANTIC SHORT NOTES -->
+    <section class="section-block container" id="notesSection" aria-label="Romantik qisqa yozuvlar">
+      <div class="botanical-divider" aria-hidden="true">✦ ❤️ ✦</div>
+      <div class="notes-grid" id="notesGrid"></div>
     </section>
 
-    <!-- 2. LOVE LETTER SECTION (💌 Typewriter Animation) -->
-    <section id="love-letter-section" class="py-6 reveal-section">
-      <div class="glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden">
-        <!-- Decorative Corner Rose SVG -->
-        <svg class="w-20 h-20 text-blush-300/40 absolute -top-2 -right-2 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50 15C62 15 72 25 72 37C72 52 50 72 50 72C50 72 28 52 28 37C28 25 38 15 50 15Z"/>
-        </svg>
+    <!-- 3. VIDEO SECTION 🎬 -->
+    <section class="section-block container video-section reveal-on-scroll" id="videoSection" aria-label="Shaxsiy romantik video">
+      <span class="section-eyebrow">Maxsus Lahza</span>
+      <h2 class="section-heading">Sen uchun kichik video 🎬</h2>
+      <p class="section-subheading">Videoni ovoz bilan tomosha qilish uchun ustiga bosing</p>
 
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-2.5">
-            <span class="w-9 h-9 rounded-2xl bg-blush-100 text-blush-600 flex items-center justify-center text-lg shadow-inner">💌</span>
-            <div>
-              <h3 class="font-serif text-2xl font-bold text-[#3F1D2B] leading-none">Qalbimdagi so‘zlar</h3>
-              <span class="text-[11px] text-blush-600/80 font-medium">Samimiy maktub</span>
-            </div>
-          </div>
-
-          <button
-            id="replay-letter-btn"
-            type="button"
-            title="Matnni qayta o‘qish"
-            class="text-xs font-medium text-blush-600 bg-blush-100/80 hover:bg-blush-200/80 px-3 py-1.5 rounded-full transition"
-          >
-            Qayta yozish ↻
-          </button>
-        </div>
-
-        <div class="h-px w-full bg-gradient-to-r from-transparent via-blush-300/60 to-transparent my-4"></div>
-
-        <!-- Typewriter Target Area -->
-        <div class="min-h-[145px] relative">
-          <p
-            id="love-letter-text"
-            class="font-serif text-xl sm:text-[22px] leading-relaxed text-[#3F1D2B] italic typewriter-cursor"
-          ></p>
-        </div>
-
-        <div class="mt-5 flex items-center justify-between text-xs text-[#7C4D60]">
-          <span id="letter-date-label" class="italic">Sen uchun maxsus ✨</span>
-          <span id="letter-signature" class="font-serif italic text-base font-semibold text-blush-600">Mehr bilan ❤️</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. VIDEO SECTION (🎬 Responsive Mobile-Friendly Player, Auto-Hides if Missing) -->
-    <section id="video-section" class="py-6 reveal-section">
-      <div class="glass-card rounded-3xl p-5 sm:p-6">
-        <div class="flex items-center gap-2.5 mb-4">
-          <span class="w-9 h-9 rounded-2xl bg-blush-100 text-blush-600 flex items-center justify-center text-lg">🎬</span>
-          <div>
-            <h3 id="video-section-title" class="font-serif text-2xl font-bold text-[#3F1D2B] leading-none">Unutilmas lahza</h3>
-            <span id="video-section-subtitle" class="text-[11px] text-[#7C4D60]">Ovozni yoqib tomosha qil</span>
-          </div>
-        </div>
-
-        <!-- Video Frame Container -->
-        <div class="relative w-full rounded-2xl overflow-hidden bg-blush-950/5 border border-blush-200/80 shadow-inner aspect-[9/12] sm:aspect-video group">
+      <div class="video-glass-frame">
+        <div class="video-viewport" id="videoViewport">
+          <!-- Real MP4 Video Element (loads assets/romantic-video.mp4 when placed) -->
           <video
-            id="romantic-video"
-            class="w-full h-full object-cover"
+            id="romanticVideo"
             playsinline
             webkit-playsinline
             preload="metadata"
-            poster="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=80"
-          >
-            <source id="romantic-video-source" src="assets/romantic-video.mp4" type="video/mp4" />
-          </video>
+          ></video>
 
-          <!-- Custom Mobile-Friendly Play Overlay (Ensures User Gesture for Sound) -->
-          <div
-            id="video-poster-overlay"
-            class="absolute inset-0 bg-gradient-to-t from-[#3F1D2B]/65 via-[#3F1D2B]/20 to-transparent flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-opacity duration-300"
-          >
-            <div class="w-16 h-16 rounded-full bg-white/95 text-blush-600 flex items-center justify-center shadow-xl mb-3 transform group-hover:scale-110 transition">
-              <svg class="w-7 h-7 ml-1" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
+          <!-- Built-in Artistic Canvas Fallback Stream (active only in preview demo if MP4 not added yet) -->
+          <canvas class="demo-video-canvas" id="demoVideoCanvas" style="display:none;"></canvas>
+
+          <!-- Poster / Tap-to-Play Overlay -->
+          <div class="video-poster-overlay" id="videoPosterOverlay" role="button" tabindex="0" aria-label="Videoni ovoz bilan ijro etish">
+            <img class="video-poster-img" id="videoPosterImg" alt="" style="display:none;" />
+            <div class="play-circle-btn">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5.14v14l11-7-11-7z"/>
               </svg>
             </div>
-            <span class="text-white font-semibold text-sm tracking-wide drop-shadow">Ovoz bilan ko‘rish ❤️</span>
-            <span class="text-white/80 text-xs mt-1">Videoni ijro etish uchun bosing</span>
+            <div class="video-poster-title" id="videoPosterTitle">Xotiralarimiz sahifasi</div>
+            <div class="video-poster-hint">Ovoz bilan ochish uchun bosing ✨</div>
           </div>
 
-          <!-- Custom Bottom Video Controls Bar -->
-          <div
-            id="video-controls-bar"
-            class="hidden absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-2xl bg-black/45 backdrop-blur-md text-white flex items-center justify-between gap-3"
-          >
-            <button id="video-play-pause-btn" type="button" class="text-xs font-semibold flex items-center gap-1.5">
-              <span id="video-pp-label">Pauza ⏸</span>
+          <!-- Custom Video Controls -->
+          <div class="video-controls-bar" id="videoControlsBar">
+            <button type="button" class="v-ctrl-btn" id="vPlayPauseBtn" aria-label="Pauza yoki ijro">
+              <svg id="vPauseIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+              </svg>
+              <svg id="vPlayIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                <path d="M8 5.14v14l11-7-11-7z"/>
+              </svg>
             </button>
-            <button id="video-mute-btn" type="button" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20">
-              <span id="video-mute-label">Ovoz: Yoqilgan 🔊</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 4. PHOTO GALLERY SECTION (📸 Aesthetic Frames + Lightbox, Auto-Hides if Empty) -->
-    <section id="gallery-section" class="py-6 reveal-section">
-      <div class="glass-card rounded-3xl p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-2.5">
-            <span class="w-9 h-9 rounded-2xl bg-blush-100 text-blush-600 flex items-center justify-center text-lg">📸</span>
-            <div>
-              <h3 class="font-serif text-2xl font-bold text-[#3F1D2B] leading-none">Shirin xotiralar</h3>
-              <span class="text-[11px] text-[#7C4D60]">Kattalashtirish uchun rasmga bosing</span>
+            <div class="v-progress-track" id="vProgressTrack">
+              <div class="v-progress-fill" id="vProgressFill"></div>
             </div>
+
+            <button type="button" class="v-ctrl-btn" id="vMuteBtn" aria-label="Video ovozi">
+              <svg id="vSoundOnIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <svg id="vSoundOffIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div id="gallery-grid" class="grid grid-cols-2 gap-3.5">
-          <!-- Populated dynamically from CONTENT.gallery -->
+        <div class="video-caption-bar">
+          <span id="videoCaptionText">Sen bilan bog‘liq eng iliq lahzalar ✨</span>
+          <button type="button" class="video-demo-toggle" id="toggleMissingVideoDemo" style="display:none;">
+            Videosiz holatni sinash
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- 5. FINALE SURPRISE SECTION (❤️ Big Heart + Replay) -->
-    <section id="finale-section" class="py-12 text-center reveal-section">
-      <div class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-        <!-- Soft Radial Glow Behind Heart -->
-        <div class="w-40 h-40 rounded-full bg-blush-300/40 blur-2xl mx-auto absolute left-1/2 -translate-x-1/2 top-8 pointer-events-none"></div>
+    <!-- 4. LOVE LETTER SECTION 💌 -->
+    <section class="section-block container reveal-on-scroll" id="letterSection" aria-label="Sevgi maktubi">
+      <span class="section-eyebrow">Qalb So‘zlari</span>
+      <h2 class="section-heading">Senga atalgan maktub 💌</h2>
+      <p class="section-subheading">Har bir satr samimiy mehr bilan bitilgan</p>
 
-        <!-- Big Pulsing 3D-Styled SVG Heart -->
-        <div class="relative inline-flex items-center justify-center mb-6 heart-beat-3d">
-          <svg class="w-24 h-24 sm:w-28 sm:h-28" viewBox="0 0 100 100" fill="none">
+      <article class="letter-stationery">
+        <div class="letter-header">
+          <h3 class="letter-header-title" id="letterTitle">Azizim uchun...</h3>
+          <span class="letter-header-date" id="letterDateLabel">Maxsus syurpriz</span>
+        </div>
+
+        <div class="letter-body">
+          <span id="typedLetterText"></span><span class="typing-cursor" id="typingCursor"></span>
+        </div>
+
+        <div class="letter-footer">
+          <span class="letter-signature" id="letterSignature">Samimiy mehr bilan ❤️</span>
+          <button type="button" class="letter-skip-btn" id="skipTypingBtn">Hammasini ko‘rsatish</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- 5. PHOTO GALLERY SECTION 📸 -->
+    <section class="section-block container gallery-section reveal-on-scroll" id="gallerySection" aria-label="Rasmlar galereyasi">
+      <span class="section-eyebrow">Xotiralar Albomi</span>
+      <h2 class="section-heading" id="galleryTitle">Eng go‘zal lahzalar ✨</h2>
+      <p class="section-subheading" id="gallerySubtitle">Kattalashtirib ko‘rish uchun surat ustiga bosing</p>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- 6. FINAL SURPRISE SECTION ❤️ -->
+    <section class="section-block container reveal-on-scroll" id="finalSection" aria-label="Yakuniy syurpriz">
+      <div class="final-surprise-card">
+        <div class="beating-heart-stage" aria-hidden="true">
+          <div class="heart-halo"></div>
+          <svg class="luminous-heart-svg" viewBox="0 0 100 90">
             <defs>
-              <radialGradient id="heart3dGrad" cx="35%" cy="30%" r="70%">
-                <stop offset="0%" stop-color="#FDA4AF" />
-                <stop offset="45%" stop-color="#FB7185" />
-                <stop offset="100%" stop-color="#BE123C" />
-              </radialGradient>
+              <linearGradient id="finalHeartGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FB7185" />
+                <stop offset="50%" stop-color="#E11D48" />
+                <stop offset="100%" stop-color="#9F1239" />
+              </linearGradient>
             </defs>
-            <path
-              d="M50 88.5C50 88.5 10 62.4 10 33.8C10 20.6 20.4 10 33.2 10C40.8 10 47.6 13.8 50 19.6C52.4 13.8 59.2 10 66.8 10C79.6 10 90 20.6 90 33.8C90 62.4 50 88.5 50 88.5Z"
-              fill="url(#heart3dGrad)"
-            />
-            <!-- Glossy Highlight -->
-            <ellipse cx="31" cy="27" rx="7" ry="4" transform="rotate(-28 31 27)" fill="white" fill-opacity="0.45" />
+            <path d="M50 84 C50 84 8 56 8 27 C8 13 19 4 31 4 C40 4 47 9 50 16 C53 9 60 4 69 4 C81 4 92 13 92 27 C92 56 50 84 50 84 Z" fill="url(#finalHeartGrad)" />
           </svg>
         </div>
 
-        <h3 id="finale-message" class="font-serif text-3xl sm:text-4xl font-bold text-[#3F1D2B] leading-snug mb-4">
-          Tabassuming hech qachon so'nmasin. Sen bunga loyiqsan! ❤️
-        </h3>
-
-        <p class="text-sm text-[#7C4D60] max-w-xs mx-auto mb-8 leading-relaxed">
-          Bu kichik syurpriz har safar kayfiyatingni ko‘tarish uchun shu yerda bo‘ladi.
+        <h2 class="final-title" id="finalText">Tabassuming hech qachon so'nmasin. Sen bunga loyiqsan! ❤️</h2>
+        <p class="final-subtext" id="finalSubtext">
+          Bugungi kuning xuddi shu shirinlik kabi yoqimli, yorqin va baxtli lahzalarga boy bo‘lsin.
         </p>
 
-        <button
-          id="replay-all-btn"
-          type="button"
-          class="btn-romantic px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base inline-flex items-center gap-2 cursor-pointer"
-        >
-          <span>Yana bir bor ko‘rish ❤️</span>
+        <button type="button" class="btn-romantic-primary" id="replayExperienceBtn">
+          <span id="replayBtnLabel">Yana bir bor ko‘rish ❤️</span>
         </button>
       </div>
-
-      <footer class="mt-8 text-[11px] text-[#7C4D60]/70">
-        PROJECT: KUNJIM • Mehr bilan yaratilgan ❤️
-      </footer>
     </section>
+
+    <!-- FOOTER & PRINT-READY QR GENERATOR TRIGGER -->
+    <footer class="app-footer container">
+      <div>Mehr bilan tayyorlandi • <strong id="footerRecipientName">KUNJIM</strong> ❤️</div>
+      <div class="footer-links">
+        <button type="button" class="footer-qr-trigger" id="openQrModalBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>QR-kod yaratish</span>
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========================================================================
+       LIGHTBOX MODAL FOR GALLERY PHOTOS
+       ======================================================================== -->
+  <div class="modal-backdrop" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Kattalashtirilgan rasm">
+    <div class="lightbox-dialog">
+      <button type="button" class="lightbox-close-btn" id="closeLightboxBtn" aria-label="Yopish">✕</button>
+      <div class="lightbox-media-box" id="lightboxMediaBox"></div>
+      <div class="lightbox-nav-row">
+        <button type="button" class="lightbox-nav-btn" id="lightboxPrevBtn" aria-label="Oldingi rasm">‹</button>
+        <div class="lightbox-caption-wrap">
+          <div class="lightbox-title" id="lightboxTitle"></div>
+          <div class="lightbox-desc" id="lightboxDesc"></div>
+        </div>
+        <button type="button" class="lightbox-nav-btn" id="lightboxNextBtn" aria-label="Keyingi rasm">›</button>
+      </div>
+    </div>
   </div>
 
-  <!-- =====================================================================
-       LIGHTBOX MODAL FOR FULL-SCREEN GALLERY PHOTOS
-       ===================================================================== -->
-  <div
-    id="photo-lightbox"
-    class="fixed inset-0 z-50 hidden bg-[#2A0E19]/90 backdrop-blur-md flex-col items-center justify-center p-4"
-    role="dialog"
-    aria-modal="true"
-  >
-    <button
-      id="lightbox-close-btn"
-      type="button"
-      aria-label="Yopish"
-      class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center text-xl transition"
-    >
-      ✕
-    </button>
+  <!-- ========================================================================
+       PRINT-READY QR CODE GENERATOR MODAL (FOR KINDER PACKAGING)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="qrModal" role="dialog" aria-modal="true" aria-label="QR-kod yaratish">
+    <div class="qr-dialog">
+      <div class="qr-header">
+        <h3 class="qr-title">Kinder uchun QR-kod 🍫</h3>
+        <button type="button" class="qr-close-x" id="closeQrModalBtn" aria-label="Yopish">✕</button>
+      </div>
 
-    <div class="relative max-w-md w-full flex flex-col items-center">
-      <img
-        id="lightbox-img"
-        src=""
-        alt="Romantik xotira"
-        class="w-full max-h-[72dvh] object-contain rounded-2xl shadow-2xl border border-white/20 transition-all duration-300"
-      />
-      <p id="lightbox-caption" class="text-white/95 font-serif italic text-xl mt-4 text-center"></p>
+      <p style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">
+        Saytni internetga (HTTPS hostingga) joylaganingizdan so‘ng havolani kiriting va qadoqqa bosib chiqarish uchun tiniq oq-qora PNG QR-kodni yuklab oling.
+      </p>
 
-      <div class="flex items-center gap-4 mt-4">
-        <button id="lightbox-prev-btn" type="button" class="px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs font-medium">
-          ← Oldingi
-        </button>
-        <span id="lightbox-counter" class="text-white/70 text-xs">1 / 4</span>
-        <button id="lightbox-next-btn" type="button" class="px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs font-medium">
-          Keyingi →
+      <div class="qr-field-group">
+        <label class="qr-label" for="qrUrlInput">Ommaviy HTTPS sayt manzili (URL)</label>
+        <input
+          type="url"
+          class="qr-input"
+          id="qrUrlInput"
+          placeholder="https://kunjim-surprise.vercel.app"
+          autocomplete="off"
+        />
+        <div class="qr-warning" id="qrLocalWarning">
+          ⚠️ Diqqat: Hozirgi manzil mahalliy (localhost yoki fayl) ko‘rinishida. Telefon kamerasi orqali ochilishi uchun saytni HTTPS hostingga joylab, o‘sha havolani kiriting!
+        </div>
+      </div>
+
+      <div class="qr-field-group">
+        <label class="qr-label" for="qrNameInput">Qizning ismi (ixtiyoriy — havolaga qo‘shiladi)</label>
+        <input
+          type="text"
+          class="qr-input"
+          id="qrNameInput"
+          placeholder="Masalan: Kunjim"
+        />
+      </div>
+
+      <div class="qr-preview-box">
+        <canvas id="qrPreviewCanvas" width="300" height="300"></canvas>
+        <div class="qr-spec-note" id="qrEncodedUrlLabel"></div>
+      </div>
+
+      <div class="qr-actions">
+        <button type="button" class="btn-qr-download" id="downloadQrPngBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Yuqori sifatli PNG yuklab olish (1000×1000px)</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- =====================================================================
-       CREATOR STUDIO & PRINT-READY QR CODE GENERATOR MODAL
-       (Opens via top-left subtle QR icon or ?admin=1 URL parameter)
-       ===================================================================== -->
-  <div
-    id="studio-modal"
-    class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm items-end sm:items-center justify-center p-0 sm:p-4"
-    role="dialog"
-    aria-modal="true"
-  >
-    <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl max-h-[90dvh] overflow-y-auto p-6 shadow-2xl border border-blush-200">
-      <div class="flex items-center justify-between pb-4 border-b border-blush-100">
-        <div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-blush-600">PROJECT: KUNJIM</span>
-          <h3 class="font-serif text-2xl font-bold text-[#3F1D2B]">QR-Kod va Tezkor Tahrirlash</h3>
-        </div>
-        <button
-          id="close-studio-btn"
-          type="button"
-          class="w-9 h-9 rounded-full bg-blush-100 text-blush-700 flex items-center justify-center font-bold"
-        >
-          ✕
-        </button>
-      </div>
-
-      <!-- Tab Switcher -->
-      <div class="grid grid-cols-2 gap-2 p-1 bg-blush-100/70 rounded-2xl my-4">
-        <button id="tab-qr-btn" type="button" class="py-2 rounded-xl text-xs font-semibold bg-white text-blush-700 shadow-sm">
-          1. QR-Kod Yaratish (PNG)
-        </button>
-        <button id="tab-edit-btn" type="button" class="py-2 rounded-xl text-xs font-semibold text-[#7C4D60]">
-          2. Matn va Ismni Sozlash
-        </button>
-      </div>
-
-      <!-- TAB 1: QR CODE GENERATOR -->
-      <div id="panel-qr" class="space-y-4">
-        <div class="p-3.5 rounded-2xl bg-blush-50 border border-blush-200 text-xs text-[#7C4D60] leading-relaxed">
-          <strong class="text-blush-700">Muhim:</strong> Kinder Chocolate qadog‘iga yopishtirish uchun saytni avval internetga (Netlify, Vercel yoki GitHub Pages) joylang va <strong>https://</strong> bilan boshlanuvchi manzilni kiriting.
-        </div>
-
-        <div>
-          <label for="qr-url-input" class="block text-xs font-semibold text-[#3F1D2B] mb-1.5">
-            Ommaviy HTTPS Sayt Manzili:
-          </label>
-          <div class="flex gap-2">
-            <input
-              id="qr-url-input"
-              type="url"
-              placeholder="https://kunjim-syurpriz.netlify.app"
-              class="flex-1 px-3.5 py-2.5 rounded-xl border border-blush-200 text-sm focus:outline-none focus:border-blush-500"
-            />
-            <button
-              id="generate-qr-btn"
-              type="button"
-              class="px-4 py-2.5 rounded-xl bg-blush-600 text-white text-xs font-semibold hover:bg-blush-700 transition shrink-0"
-            >
-              Yaratish
-            </button>
-          </div>
-          <p id="qr-warning-msg" class="hidden text-[11px] text-amber-600 mt-1.5 font-medium"></p>
-        </div>
-
-        <!-- High-Contrast Black & White Print-Ready QR Preview -->
-        <div class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white border-2 border-dashed border-blush-200">
-          <div id="qr-code-render" class="p-3 bg-white rounded-xl shadow-sm"></div>
-          <span id="qr-caption-url" class="text-[11px] text-gray-500 mt-3 break-all text-center max-w-xs"></span>
-        </div>
-
-        <button
-          id="download-qr-png-btn"
-          type="button"
-          class="w-full btn-romantic py-3.5 rounded-2xl font-semibold text-sm flex items-center justify-center gap-2"
-        >
-          <span>Yuqori sifatli PNG yuklab olish (Chop etish uchun)</span>
-        </button>
-      </div>
-
-      <!-- TAB 2: QUICK PERSONALIZATION -->
-      <div id="panel-edit" class="hidden space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-[#3F1D2B] mb-1">Qizning ismi (yoki erkalash ismi):</label>
-          <input
-            id="edit-name-input"
-            type="text"
-            class="w-full px-3.5 py-2.5 rounded-xl border border-blush-200 text-sm focus:outline-none focus:border-blush-500"
-          />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-[#3F1D2B] mb-1">Asosiy sarlavha:</label>
-          <input
-            id="edit-title-input"
-            type="text"
-            class="w-full px-3.5 py-2.5 rounded-xl border border-blush-200 text-sm focus:outline-none focus:border-blush-500"
-          />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-[#3F1D2B] mb-1">Sevgi maktubi matni (Harflab chiqadi):</label>
-          <textarea
-            id="edit-letter-input"
-            rows="4"
-            class="w-full px-3.5 py-2.5 rounded-xl border border-blush-200 text-sm focus:outline-none focus:border-blush-500"
-          ></textarea>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-[#3F1D2B] mb-1">Yakuniy tilak matni:</label>
-          <input
-            id="edit-finale-input"
-            type="text"
-            class="w-full px-3.5 py-2.5 rounded-xl border border-blush-200 text-sm focus:outline-none focus:border-blush-500"
-          />
-        </div>
-
-        <button
-          id="save-custom-content-btn"
-          type="button"
-          class="w-full btn-romantic py-3.5 rounded-2xl font-semibold text-sm"
-        >
-          O‘zgarishlarni qo‘llash ❤️
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =====================================================================
-       SECTION 2: JS/CONTENT.JS (Barcha matnlar, ism, media va rang sozlamalari)
-       ===================================================================== -->
+  <!-- ========================================================================
+       JAVASCRIPT: CENTRALIZED CONFIG (content.js) + INTERACTIVE APP (app.js)
+       ======================================================================== -->
   <script>
     /**
-     * CONTENT CONFIG (js/content.js)
-     * Ushbu obyekt orqali barcha matnlar, ism, video, musiqa va rasmlarni
-     * hech qanday murakkab kodga tegmasdan oson almashtirishingiz mumkin.
+     * =========================================================================
+     * 1. KUNJIM_CONFIG (Barcha matnlar, ism, video, musiqa va rasmlarni shu yerdan
+     *    oson o'zgartirishingiz mumkin)
+     * =========================================================================
      */
-    const CONTENT = {
-      recipientName: "Kunjim",
-      introHeadline: "Senga kichkina bir syurprizim bor...",
-      heroTitle: "Bu kichkina syurpriz faqat sen uchun ❤️",
-      heroSubtitle:
-        "Ba’zan eng oddiy kun ham bitta shirinlik va samimiy tabassum bilan ertakka aylanadi. Bugun aynan shunday kun!",
+    const KUNJIM_CONFIG = {
+      recipientName: "Kunjim", // URL orqali ham o'zgartirish mumkin: ?name=Madina
+      brandTag: "Kinder Chocolate • Maxsus Syurpriz",
 
-      // Qisqa romantik yozuvlar (Hero bo'limi ostida chiqadi)
-      quotes: [
+      envelope: {
+        prompt: "Senga kichkina bir syurprizim bor...",
+        buttonText: "Ochib ko‘r ❤️"
+      },
+
+      hero: {
+        badgePrefix: "Azizim",
+        badgeSuffix: "uchun",
+        title: "Bu kichkina syurpriz faqat sen uchun ❤️",
+        subtitle: "Har bir shirin lahzada tabassuming yanada yorqinroq porlasin. Bu kichik sahifa aynan sening kayfiyatingni ko‘tarish uchun yaratildi..."
+      },
+
+      shortNotes: [
         {
           icon: "🍫",
-          text: "Kinder shirinligi kabi hayoting ham doim yoqimli va kutilmagan quvonchlarga to‘la bo‘lsin.",
+          title: "Shirin bir bahona",
+          text: "Oddiy kunni ham bayramga aylantirish uchun ba’zan bitta shirinlik va samimiy tabassum kifoya."
         },
         {
           icon: "🌸",
-          text: "Sening kulging — bu dunyodagi eng chiroyli manzara.",
+          title: "Betakror nafislik",
+          text: "Sening samimiyliging va iliq nigohing atrofdagi hamma narsaga o‘zgacha go‘zallik bag‘ishlaydi."
         },
+        {
+          icon: "✨",
+          title: "Alohida e’tibor",
+          text: "Bu QR-kod ortidagi har bir so‘z sening qanchalik qadrli ekaningni eslatib turish uchun yozildi."
+        }
       ],
 
-      // Sevgi maktubi (Harflab yozilish animatsiyasi bilan chiqadi)
-      loveLetter:
-        "Ba'zan insonning kunini chiroyli qilish uchun katta sovg'alar kerak emas. Ba'zan kichkina bir shirinlik va samimiy bir e'tibor kifoya. Bu syurpriz esa aynan sen uchun... Har doim shunday nafis, samimiy va baxtli bo‘lib qol! ❤️",
-      letterDate: "Maxsus sen uchun",
-      letterSignature: "Cheksiz mehr bilan ❤️",
-
-      // Video sozlamalari (Fayl topilmasa bo'lim avtomatik yashiriladi)
       video: {
         enabled: true,
-        src: "assets/romantic-video.mp4",
-        poster:
-          "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=80",
-        title: "Sen bilan bog‘liq iliq hislar",
-        subtitle: "Ovozni yoqib tomosha qil ✨",
+        src: "assets/romantic-video.mp4", // O'z MP4 videongizni shu yo'lga joylang
+        poster: "", // Ixtiyoriy poster rasm: "assets/images/video-poster.jpg"
+        posterTitle: "Sen uchun maxsus video",
+        caption: "Sen bilan bog‘liq eng iliq lahzalar ✨",
+        // Agar assets/romantic-video.mp4 hali qo'yilmagan bo'lsa, previewda chiroyli
+        // demo oqimni ko'rsatadi; haqiqiy saytda false qilsangiz bo'lim avtomatik yashirinadi.
+        showDemoWhenMissing: true
       },
 
-      // Rasmlar galereyasi (Bo'sh qoldirilsa [] bo'lim avtomatik yashiriladi)
-      // O'zingizning rasmlaringiz uchun: "assets/images/photo1.jpg" ko'rinishida yozing
-      gallery: [
-        {
-          src: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=800&q=80",
-          caption: "Har bir kunimiz gullar kabi chiroyli bo‘lsin 🌸",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=80",
-          caption: "Shirin lahzalar va samimiy tabassum 🍫",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80",
-          caption: "Eng go‘zal xotiralar hali oldinda ✨",
-        },
-        {
-          src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80",
-          caption: "Sen hamma narsaning eng yaxshisiga loyiqsan ❤️",
-        },
-      ],
+      loveLetter: {
+        title: "Qalbimdagi samimiy so‘zlar",
+        dateLabel: "Maxsus sen uchun",
+        text: "Ba'zan insonning kunini chiroyli qilish uchun katta sovg'alar kerak emas. Ba'zan kichkina bir shirinlik va samimiy bir e'tibor kifoya. Bu syurpriz esa aynan sen uchun...\n\nHar safar tabassum qilganingda dunyo yanada yorishib ketadi. Bugun ham, ertaga ham va har doim o‘zingni qanchalik qadrli, nafis va betakror ekaningni unutma. ❤️",
+        signature: "Samimiy mehr bilan ❤️"
+      },
 
-      // Musiqa fayli (assets/music.mp3 mavjud bo'lmasa, mayin pianino ohangi avtomatik ishlaydi)
       music: {
-        src: "assets/music.mp3",
-        defaultVolume: 0.65,
+        enabled: true,
+        src: "assets/music.mp3", // O'z MP3 musiqangizni shu yo'lga joylang
+        label: "Romantik ohang",
+        defaultVolume: 0.65
       },
 
-      // Yakuniy tilak
-      finaleMessage: "Tabassuming hech qachon so'nmasin. Sen bunga loyiqsan! ❤️",
+      gallery: {
+        enabled: true,
+        title: "Eng go‘zal lahzalar ✨",
+        subtitle: "Kattalashtirib ko‘rish uchun surat ustiga bosing",
+        // Rasmlarni almashtirish uchun src ga "assets/images/rasm1.jpg" yozing.
+        // Agar rasm fayli hali qo'yilmagan bo'lsa, nafis romantik illyustratsiya ko'rinadi.
+        // Agar items: [] bo'sh qoldirilsa, galereya bo'limi avtomatik yashirinadi.
+        items: [
+          {
+            src: "assets/images/photo-1.jpg",
+            title: "Shirin lahzalar",
+            caption: "Har bir kichik e’tibor — katta mehr belgisi",
+            artTheme: "rose"
+          },
+          {
+            src: "assets/images/photo-2.jpg",
+            title: "Bahoriy kayfiyat",
+            caption: "Tabassuming hech qachon arimasin",
+            artTheme: "gold"
+          },
+          {
+            src: "assets/images/photo-3.jpg",
+            title: "Unutilmas xotira",
+            caption: "Eng iliq kunlarimizdan esdalik",
+            artTheme: "blush"
+          }
+        ]
+      },
 
-      // QR-kod uchun standart ommaviy manzil (O'zingizning HTTPS domeningizni kiriting)
-      defaultPublicUrl: "https://kunjim-surprise.netlify.app",
+      finalSurprise: {
+        text: "Tabassuming hech qachon so'nmasin. Sen bunga loyiqsan! ❤️",
+        subtext: "Bugungi kuning xuddi shu shirinlik kabi yoqimli, yorqin va baxtli lahzalarga boy bo‘lsin.",
+        replayButtonText: "Yana bir bor ko‘rish ❤️"
+      }
     };
-  </script>
 
-  <!-- =====================================================================
-       SECTION 3: JS/APP.JS (Interaktiv mantiq, Animatsiyalar, Audio & QR Tizimi)
-       ===================================================================== -->
-  <script>
-    (function () {
-      "use strict";
+    /**
+     * =========================================================================
+     * 2. APPLICATION CONTROLLER (app.js)
+     * =========================================================================
+     */
+    (function initKunjimApp() {
+      // Allow recipient name override via URL parameter (?name=Madina)
+      const urlParams = new URLSearchParams(window.location.search);
+      const customNameParam = urlParams.get("name");
+      const recipientName = (customNameParam && customNameParam.trim())
+        ? customNameParam.trim().slice(0, 32)
+        : KUNJIM_CONFIG.recipientName;
 
-      // State Management
+      // State
       const state = {
-        isEnvelopeOpen: false,
+        isEnvelopeOpened: false,
         isMusicPlaying: false,
-        usingSynthesizedMusic: false,
-        audioCtx: null,
-        synthInterval: null,
-        typewriterTimer: null,
-        hasTypedLetter: false,
-        currentLightboxIndex: 0,
+        isMuted: false,
+        volume: KUNJIM_CONFIG.music.defaultVolume,
+        usingSynthFallback: false,
+        letterTyped: false,
+        letterTypingTimer: null,
+        lightboxIndex: 0,
+        activeGalleryItems: [],
+        videoUsingDemo: false,
+        demoVideoAnimId: null
       };
 
-      // DOM Elements Cache
-      const dom = {
-        heartsCanvas: document.getElementById("hearts-canvas"),
-        envelopeScreen: document.getElementById("envelope-screen"),
-        interactiveEnvelope: document.getElementById("interactive-envelope"),
-        openSurpriseBtn: document.getElementById("open-surprise-btn"),
-        mainExperience: document.getElementById("main-experience"),
+      // DOM Elements
+      const el = {
+        ambientLayer: document.getElementById("ambientLayer"),
+        envelopeScreen: document.getElementById("envelopeScreen"),
+        luxuryEnvelope: document.getElementById("luxuryEnvelope"),
+        openEnvelopeBtn: document.getElementById("openEnvelopeBtn"),
+        mainExperience: document.getElementById("mainExperience"),
 
-        // Dynamic Text Targets
-        introHeadline: document.getElementById("intro-headline"),
-        envelopePreviewName: document.getElementById("envelope-preview-name"),
-        heroRecipientName: document.getElementById("hero-recipient-name"),
-        heroMainTitle: document.getElementById("hero-main-title"),
-        heroSubtitle: document.getElementById("hero-subtitle"),
-        quotesContainer: document.getElementById("quotes-container"),
-        loveLetterText: document.getElementById("love-letter-text"),
-        letterDateLabel: document.getElementById("letter-date-label"),
-        letterSignature: document.getElementById("letter-signature"),
-        replayLetterBtn: document.getElementById("replay-letter-btn"),
-        finaleMessage: document.getElementById("finale-message"),
-        replayAllBtn: document.getElementById("replay-all-btn"),
+        // Music
+        musicPill: document.getElementById("musicPill"),
+        musicToggleBtn: document.getElementById("musicToggleBtn"),
+        iconPlay: document.getElementById("iconPlay"),
+        iconPause: document.getElementById("iconPause"),
+        musicLabel: document.getElementById("musicLabel"),
+        muteToggleBtn: document.getElementById("muteToggleBtn"),
+        iconVolOn: document.getElementById("iconVolOn"),
+        iconVolOff: document.getElementById("iconVolOff"),
+        volumeSlider: document.getElementById("volumeSlider"),
+        bgAudio: document.getElementById("bgAudio"),
 
         // Video
-        videoSection: document.getElementById("video-section"),
-        videoSectionTitle: document.getElementById("video-section-title"),
-        videoSectionSubtitle: document.getElementById("video-section-subtitle"),
-        romanticVideo: document.getElementById("romantic-video"),
-        romanticVideoSource: document.getElementById("romantic-video-source"),
-        videoPosterOverlay: document.getElementById("video-poster-overlay"),
-        videoControlsBar: document.getElementById("video-controls-bar"),
-        videoPlayPauseBtn: document.getElementById("video-play-pause-btn"),
-        videoPpLabel: document.getElementById("video-pp-label"),
-        videoMuteBtn: document.getElementById("video-mute-btn"),
-        videoMuteLabel: document.getElementById("video-mute-label"),
+        videoSection: document.getElementById("videoSection"),
+        videoViewport: document.getElementById("videoViewport"),
+        romanticVideo: document.getElementById("romanticVideo"),
+        demoVideoCanvas: document.getElementById("demoVideoCanvas"),
+        videoPosterOverlay: document.getElementById("videoPosterOverlay"),
+        videoPosterImg: document.getElementById("videoPosterImg"),
+        vPlayPauseBtn: document.getElementById("vPlayPauseBtn"),
+        vPauseIcon: document.getElementById("vPauseIcon"),
+        vPlayIcon: document.getElementById("vPlayIcon"),
+        vProgressTrack: document.getElementById("vProgressTrack"),
+        vProgressFill: document.getElementById("vProgressFill"),
+        vMuteBtn: document.getElementById("vMuteBtn"),
+        vSoundOnIcon: document.getElementById("vSoundOnIcon"),
+        vSoundOffIcon: document.getElementById("vSoundOffIcon"),
+        toggleMissingVideoDemo: document.getElementById("toggleMissingVideoDemo"),
+
+        // Letter
+        letterSection: document.getElementById("letterSection"),
+        typedLetterText: document.getElementById("typedLetterText"),
+        typingCursor: document.getElementById("typingCursor"),
+        skipTypingBtn: document.getElementById("skipTypingBtn"),
 
         // Gallery & Lightbox
-        gallerySection: document.getElementById("gallery-section"),
-        galleryGrid: document.getElementById("gallery-grid"),
-        photoLightbox: document.getElementById("photo-lightbox"),
-        lightboxImg: document.getElementById("lightbox-img"),
-        lightboxCaption: document.getElementById("lightbox-caption"),
-        lightboxCounter: document.getElementById("lightbox-counter"),
-        lightboxCloseBtn: document.getElementById("lightbox-close-btn"),
-        lightboxPrevBtn: document.getElementById("lightbox-prev-btn"),
-        lightboxNextBtn: document.getElementById("lightbox-next-btn"),
+        gallerySection: document.getElementById("gallerySection"),
+        galleryGrid: document.getElementById("galleryGrid"),
+        lightboxModal: document.getElementById("lightboxModal"),
+        lightboxMediaBox: document.getElementById("lightboxMediaBox"),
+        lightboxTitle: document.getElementById("lightboxTitle"),
+        lightboxDesc: document.getElementById("lightboxDesc"),
+        closeLightboxBtn: document.getElementById("closeLightboxBtn"),
+        lightboxPrevBtn: document.getElementById("lightboxPrevBtn"),
+        lightboxNextBtn: document.getElementById("lightboxNextBtn"),
 
-        // Music Player
-        musicPlayerPill: document.getElementById("music-player-pill"),
-        musicToggleBtn: document.getElementById("music-toggle-btn"),
-        iconMusicPlay: document.getElementById("icon-music-play"),
-        iconMusicPause: document.getElementById("icon-music-pause"),
-        musicStatusLabel: document.getElementById("music-status-label"),
-        musicVolumeSlider: document.getElementById("music-volume-slider"),
-        bgAudio: document.getElementById("bg-audio"),
-
-        // Studio & QR Modal
-        openStudioBtn: document.getElementById("open-studio-btn"),
-        studioModal: document.getElementById("studio-modal"),
-        closeStudioBtn: document.getElementById("close-studio-btn"),
-        tabQrBtn: document.getElementById("tab-qr-btn"),
-        tabEditBtn: document.getElementById("tab-edit-btn"),
-        panelQr: document.getElementById("panel-qr"),
-        panelEdit: document.getElementById("panel-edit"),
-        qrUrlInput: document.getElementById("qr-url-input"),
-        generateQrBtn: document.getElementById("generate-qr-btn"),
-        qrWarningMsg: document.getElementById("qr-warning-msg"),
-        qrCodeRender: document.getElementById("qr-code-render"),
-        qrCaptionUrl: document.getElementById("qr-caption-url"),
-        downloadQrPngBtn: document.getElementById("download-qr-png-btn"),
-
-        // Quick Edit Inputs
-        editNameInput: document.getElementById("edit-name-input"),
-        editTitleInput: document.getElementById("edit-title-input"),
-        editLetterInput: document.getElementById("edit-letter-input"),
-        editFinaleInput: document.getElementById("edit-finale-input"),
-        saveCustomContentBtn: document.getElementById("save-custom-content-btn"),
+        // Final & QR Modal
+        replayExperienceBtn: document.getElementById("replayExperienceBtn"),
+        openQrModalBtn: document.getElementById("openQrModalBtn"),
+        qrModal: document.getElementById("qrModal"),
+        closeQrModalBtn: document.getElementById("closeQrModalBtn"),
+        qrUrlInput: document.getElementById("qrUrlInput"),
+        qrNameInput: document.getElementById("qrNameInput"),
+        qrLocalWarning: document.getElementById("qrLocalWarning"),
+        qrPreviewCanvas: document.getElementById("qrPreviewCanvas"),
+        qrEncodedUrlLabel: document.getElementById("qrEncodedUrlLabel"),
+        downloadQrPngBtn: document.getElementById("downloadQrPngBtn")
       };
 
-      /* -------------------------------------------------------------------
-         1. FLOATING HEARTS PARTICLE ENGINE
-         ------------------------------------------------------------------- */
-      function spawnFloatingHeart(burst = false) {
-        const heart = document.createElement("span");
-        const symbols = ["❤️", "💗", "💕", "🌸", "✨", "🤍"];
-        heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        heart.className = "floating-heart select-none";
+      /* -----------------------------------------------------------------------
+         A. POPULATE CONTENT FROM KUNJIM_CONFIG
+         ----------------------------------------------------------------------- */
+      function populateContent() {
+        document.title = `${recipientName.toUpperCase()} — Romantic QR Surprise ❤️`;
+        document.getElementById("envelopeBrandTag").textContent = KUNJIM_CONFIG.brandTag;
+        document.getElementById("peekRecipient").textContent = `${recipientName} uchun`;
+        document.getElementById("envelopePromptText").textContent = KUNJIM_CONFIG.envelope.prompt;
+        document.getElementById("envelopeBtnLabel").textContent = KUNJIM_CONFIG.envelope.buttonText;
 
-        const leftPos = burst ? 20 + Math.random() * 60 : Math.random() * 100;
-        const size = burst ? 16 + Math.random() * 14 : 11 + Math.random() * 12;
-        const duration = burst ? 3.5 + Math.random() * 2.5 : 7 + Math.random() * 6;
-        const sway = (Math.random() - 0.5) * 70 + "px";
-        const rot = (Math.random() - 0.5) * 45 + "deg";
+        document.getElementById("heroTag").textContent = KUNJIM_CONFIG.brandTag;
+        document.getElementById("heroRecipientBadge").textContent =
+          `${KUNJIM_CONFIG.hero.badgePrefix} ${recipientName} ${KUNJIM_CONFIG.hero.badgeSuffix}`;
+        document.getElementById("heroTitle").textContent = KUNJIM_CONFIG.hero.title;
+        document.getElementById("heroSubtitle").textContent = KUNJIM_CONFIG.hero.subtitle;
 
-        heart.style.left = `${leftPos}vw`;
-        heart.style.fontSize = `${size}px`;
-        heart.style.animationDuration = `${duration}s`;
-        heart.style.setProperty("--sway", sway);
-        heart.style.setProperty("--rot", rot);
-
-        dom.heartsCanvas.appendChild(heart);
-        setTimeout(() => heart.remove(), duration * 1000);
-      }
-
-      function burstHearts(count = 16) {
-        for (let i = 0; i < count; i++) {
-          setTimeout(() => spawnFloatingHeart(true), i * 65);
-        }
-      }
-
-      /* -------------------------------------------------------------------
-         2. APPLY CONTENT FROM CONFIG (js/content.js)
-         ------------------------------------------------------------------- */
-      function renderContent() {
-        // Check URL query overrides (e.g., ?name=Madina)
-        const params = new URLSearchParams(window.location.search);
-        const urlName = params.get("name");
-        if (urlName && urlName.trim().length > 0) {
-          CONTENT.recipientName = urlName.trim();
-        }
-
-        dom.introHeadline.textContent = CONTENT.introHeadline;
-        dom.envelopePreviewName.textContent = `${CONTENT.recipientName} uchun ❤️`;
-        dom.heroRecipientName.textContent = CONTENT.recipientName;
-        dom.heroMainTitle.textContent = CONTENT.heroTitle;
-        dom.heroSubtitle.textContent = CONTENT.heroSubtitle;
-        dom.letterDateLabel.textContent = CONTENT.letterDate;
-        dom.letterSignature.textContent = CONTENT.letterSignature;
-        dom.finaleMessage.textContent = CONTENT.finaleMessage;
-
-        // Render Romantic Quotes
-        dom.quotesContainer.innerHTML = "";
-        (CONTENT.quotes || []).forEach((q) => {
-          const card = document.createElement("div");
-          card.className =
-            "glass-card rounded-2xl px-4 py-3.5 flex items-start gap-3 transition hover:scale-[1.01]";
+        // Short Romantic Notes
+        const notesGrid = document.getElementById("notesGrid");
+        notesGrid.innerHTML = "";
+        KUNJIM_CONFIG.shortNotes.forEach((note, idx) => {
+          const card = document.createElement("article");
+          card.className = "note-card reveal-on-scroll";
+          card.style.transitionDelay = `${idx * 90}ms`;
           card.innerHTML = `
-            <span class="text-xl shrink-0 mt-0.5">${q.icon}</span>
-            <p class="text-xs sm:text-sm text-[#572B3D] leading-relaxed font-medium">${q.text}</p>
+            <div class="note-icon-badge" aria-hidden="true">${note.icon}</div>
+            <div>
+              <h3 class="note-card-title">${escapeHtml(note.title)}</h3>
+              <p class="note-card-text">${escapeHtml(note.text)}</p>
+            </div>
           `;
-          dom.quotesContainer.appendChild(card);
+          notesGrid.appendChild(card);
         });
 
-        // Setup Video Section (Auto-hide if disabled or fails to load)
-        setupVideoSection();
+        // Love Letter Headers
+        document.getElementById("letterTitle").textContent = KUNJIM_CONFIG.loveLetter.title;
+        document.getElementById("letterDateLabel").textContent = KUNJIM_CONFIG.loveLetter.dateLabel;
+        document.getElementById("letterSignature").textContent = KUNJIM_CONFIG.loveLetter.signature;
 
-        // Setup Photo Gallery (Auto-hide if empty)
-        setupGallerySection();
-
-        // Pre-fill Studio Inputs
-        dom.editNameInput.value = CONTENT.recipientName;
-        dom.editTitleInput.value = CONTENT.heroTitle;
-        dom.editLetterInput.value = CONTENT.loveLetter;
-        dom.editFinaleInput.value = CONTENT.finaleMessage;
+        // Final Surprise
+        document.getElementById("finalText").textContent = KUNJIM_CONFIG.finalSurprise.text;
+        document.getElementById("finalSubtext").textContent = KUNJIM_CONFIG.finalSurprise.subtext;
+        document.getElementById("replayBtnLabel").textContent = KUNJIM_CONFIG.finalSurprise.replayButtonText;
+        document.getElementById("footerRecipientName").textContent = recipientName.toUpperCase();
       }
 
-      /* -------------------------------------------------------------------
-         3. ENVELOPE OPEN & NAVIGATION TRANSITION (WITH HISTORY API)
-         ------------------------------------------------------------------- */
-      function openSurpriseExperience(pushHistory = true) {
-        if (state.isEnvelopeOpen) return;
-        state.isEnvelopeOpen = true;
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
 
-        // Animate Envelope Flap & Rising Letter
-        dom.interactiveEnvelope.classList.add("is-open");
-        burstHearts(18);
+      /* -----------------------------------------------------------------------
+         B. AMBIENT FLOATING HEARTS & GOLD SPARKLES
+         ----------------------------------------------------------------------- */
+      function initAmbientParticles() {
+        const symbols = ["❤️", "♡", "✦", "💕", "✧"];
+        const colors = ["#E11D48", "#D9385A", "#D4AF37", "#F43F5E", "#E8B4B8"];
+        const count = 16;
 
-        // Start gentle background music on direct user click gesture
-        startRomanticMusic();
+        for (let i = 0; i < count; i++) {
+          const span = document.createElement("span");
+          span.className = "ambient-particle";
+          const sym = symbols[i % symbols.length];
+          span.textContent = sym;
+          span.style.left = `${(i * 6.3 + Math.random() * 4) % 98}%`;
+          span.style.fontSize = `${11 + (i % 4) * 4}px`;
+          span.style.color = colors[i % colors.length];
+          span.style.setProperty("--p-opacity", (0.22 + (i % 3) * 0.1).toFixed(2));
+          span.style.setProperty("--p-drift", `${(i % 2 === 0 ? 1 : -1) * (18 + (i % 5) * 8)}px`);
+          span.style.setProperty("--p-rot", `${(i % 2 === 0 ? 1 : -1) * 28}deg`);
+          span.style.animationDuration = `${11 + (i % 6) * 2.2}s`;
+          span.style.animationDelay = `${-(i * 1.4)}s`;
+          el.ambientLayer.appendChild(span);
+        }
+      }
 
-        if (pushHistory && window.history && window.history.pushState) {
-          window.history.pushState({ view: "surprise" }, "", "#syurpriz");
+      function spawnHeartBurst(originX, originY, amount = 22) {
+        const icons = ["❤️", "💖", "💗", "✨", "💕"];
+        for (let i = 0; i < amount; i++) {
+          const heart = document.createElement("span");
+          heart.className = "burst-heart";
+          heart.textContent = icons[i % icons.length];
+          heart.style.left = `${originX}px`;
+          heart.style.top = `${originY}px`;
+          heart.style.fontSize = `${15 + Math.random() * 14}px`;
+
+          const angle = (Math.PI * 2 * i) / amount + (Math.random() - 0.5) * 0.4;
+          const dist = 75 + Math.random() * 145;
+          const bx = Math.cos(angle) * dist;
+          const by = Math.sin(angle) * dist - 45;
+          const brot = (Math.random() - 0.5) * 90;
+
+          heart.style.setProperty("--bx", `${bx.toFixed(1)}px`);
+          heart.style.setProperty("--by", `${by.toFixed(1)}px`);
+          heart.style.setProperty("--brot", `${brot.toFixed(0)}deg`);
+
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 1700);
+        }
+      }
+
+      /* -----------------------------------------------------------------------
+         C. SCREEN 1 -> SCREEN 2 ENVELOPE TRANSITION & HISTORY MANAGEMENT
+         ----------------------------------------------------------------------- */
+      function openEnvelopeExperience(pushHist = true) {
+        if (state.isEnvelopeOpened) return;
+        state.isEnvelopeOpened = true;
+
+        const rect = el.luxuryEnvelope.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        el.luxuryEnvelope.classList.add("is-opening");
+        spawnHeartBurst(cx, cy, 24);
+
+        if (pushHist) {
+          try {
+            history.pushState({ view: "main" }, "", "#surprise");
+          } catch (_) {}
         }
 
-        // Smooth transition from Envelope Screen to Main Romantic Page
         setTimeout(() => {
-          dom.envelopeScreen.style.opacity = "0";
-          dom.envelopeScreen.style.transform = "scale(0.96)";
-
-          setTimeout(() => {
-            dom.envelopeScreen.classList.add("hidden");
-            dom.mainExperience.classList.remove("hidden");
-            dom.musicPlayerPill.classList.remove("hidden");
-            dom.musicPlayerPill.classList.add("flex");
-
-            window.scrollTo({ top: 0, behavior: "instant" });
-            triggerScrollReveals();
-
-            // Start Typewriter effect automatically after brief moment
-            setTimeout(() => {
-              if (!state.hasTypedLetter) {
-                typeLoveLetter(CONTENT.loveLetter);
-              }
-            }, 650);
-          }, 550);
-        }, 850);
+          el.envelopeScreen.classList.add("is-dismissed");
+          el.mainExperience.classList.add("is-visible");
+          window.scrollTo({ top: 0, behavior: "instant" });
+          triggerScrollReveals();
+        }, 780);
       }
 
-      function resetToEnvelope(pushHistory = true) {
-        state.isEnvelopeOpen = false;
-        state.hasTypedLetter = false;
-        clearTimeout(state.typewriterTimer);
+      function resetToEnvelope() {
+        state.isEnvelopeOpened = false;
+        el.mainExperience.classList.remove("is-visible");
+        el.envelopeScreen.classList.remove("is-dismissed");
+        el.luxuryEnvelope.classList.remove("is-opening");
+
+        // Reset typewriter so it types freshly again on next scroll
+        clearInterval(state.letterTypingTimer);
+        state.letterTyped = false;
+        el.typedLetterText.textContent = "";
+        el.typingCursor.classList.remove("is-done");
+        el.skipTypingBtn.classList.remove("is-hidden");
 
         // Pause video if playing
-        if (dom.romanticVideo && !dom.romanticVideo.paused) {
-          dom.romanticVideo.pause();
-        }
-
-        if (pushHistory && window.history && window.history.pushState) {
-          window.history.pushState({ view: "envelope" }, "", window.location.pathname + window.location.search);
-        }
-
-        dom.mainExperience.classList.add("hidden");
-        dom.musicPlayerPill.classList.add("hidden");
-        dom.musicPlayerPill.classList.remove("flex");
-
-        dom.interactiveEnvelope.classList.remove("is-open");
-        dom.envelopeScreen.classList.remove("hidden");
-
-        requestAnimationFrame(() => {
-          dom.envelopeScreen.style.opacity = "1";
-          dom.envelopeScreen.style.transform = "scale(1)";
-        });
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        pauseVideoPlayback();
+        window.scrollTo({ top: 0, behavior: "instant" });
       }
 
-      // Handle Phone Hardware / Browser Back Button cleanly
-      window.addEventListener("popstate", (event) => {
-        if (dom.photoLightbox && !dom.photoLightbox.classList.contains("hidden")) {
-          closeLightbox();
-          return;
-        }
-        if (event.state && event.state.view === "surprise") {
-          openSurpriseExperience(false);
-        } else if (state.isEnvelopeOpen) {
-          resetToEnvelope(false);
+      el.openEnvelopeBtn.addEventListener("click", () => openEnvelopeExperience(true));
+      el.luxuryEnvelope.addEventListener("click", () => openEnvelopeExperience(true));
+      el.luxuryEnvelope.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openEnvelopeExperience(true);
         }
       });
 
-      /* -------------------------------------------------------------------
-         4. LOVE LETTER TYPEWRITER ANIMATION
-         ------------------------------------------------------------------- */
-      function typeLoveLetter(text) {
-        clearTimeout(state.typewriterTimer);
-        state.hasTypedLetter = true;
-        dom.loveLetterText.textContent = "";
-        dom.loveLetterText.classList.add("typewriter-cursor");
-
-        let index = 0;
-        const speed = 34; // ms per character
-
-        function step() {
-          if (index < text.length) {
-            dom.loveLetterText.textContent += text.charAt(index);
-            index++;
-            state.typewriterTimer = setTimeout(step, speed);
-          } else {
-            dom.loveLetterText.classList.remove("typewriter-cursor");
-          }
-        }
-        step();
-      }
-
-      /* -------------------------------------------------------------------
-         5. VIDEO SECTION (Mobile-Safe Play with Sound + Auto-Hide if Missing)
-         ------------------------------------------------------------------- */
-      function setupVideoSection() {
-        if (!CONTENT.video || !CONTENT.video.enabled || !CONTENT.video.src) {
-          dom.videoSection.classList.add("hidden");
-          return;
-        }
-
-        dom.videoSectionTitle.textContent = CONTENT.video.title || "Unutilmas lahza";
-        dom.videoSectionSubtitle.textContent = CONTENT.video.subtitle || "Ovozni yoqib tomosha qil";
-        dom.romanticVideo.poster = CONTENT.video.poster || "";
-        dom.romanticVideoSource.src = CONTENT.video.src;
-        dom.romanticVideo.load();
-
-        // Automatically hide video section if assets/romantic-video.mp4 is missing
-        const hideOnError = () => {
-          dom.videoSection.classList.add("hidden");
-        };
-
-        dom.romanticVideoSource.addEventListener("error", hideOnError, { once: true });
-        dom.romanticVideo.addEventListener("error", hideOnError, { once: true });
-
-        // User taps poster overlay -> plays video WITH sound (mobile policy compliant)
-        dom.videoPosterOverlay.addEventListener("click", async () => {
+      // Replay button at bottom of page
+      el.replayExperienceBtn.addEventListener("click", (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        spawnHeartBurst(r.left + r.width / 2, r.top + r.height / 2, 26);
+        setTimeout(() => {
           try {
-            // Pause background music while video plays so audio doesn't clash
-            if (state.isMusicPlaying) {
-              pauseRomanticMusic();
-            }
-            dom.romanticVideo.muted = false;
-            await dom.romanticVideo.play();
-            dom.videoPosterOverlay.classList.add("hidden");
-            dom.videoControlsBar.classList.remove("hidden");
-            dom.videoPpLabel.textContent = "Pauza ⏸";
-            dom.videoMuteLabel.textContent = "Ovoz: Yoqilgan 🔊";
-          } catch (err) {
-            // Fallback: play muted if browser restricts unmuted playback
-            dom.romanticVideo.muted = true;
-            dom.romanticVideo.play().catch(() => {});
-            dom.videoPosterOverlay.classList.add("hidden");
-            dom.videoControlsBar.classList.remove("hidden");
-            dom.videoMuteLabel.textContent = "Ovozni yoqish 🔇";
-          }
-        });
+            history.replaceState({ view: "envelope" }, "", window.location.pathname + window.location.search);
+          } catch (_) {}
+          resetToEnvelope();
+        }, 650);
+      });
 
-        dom.videoPlayPauseBtn.addEventListener("click", () => {
-          if (dom.romanticVideo.paused) {
-            dom.romanticVideo.play();
-            dom.videoPpLabel.textContent = "Pauza ⏸";
-          } else {
-            dom.romanticVideo.pause();
-            dom.videoPpLabel.textContent = "Davom etish ▶";
-          }
-        });
+      /* -----------------------------------------------------------------------
+         D. ROMANTIC MUSIC PLAYER (MP3 WITH BUILT-IN WEB AUDIO MUSIC-BOX FALLBACK)
+         ----------------------------------------------------------------------- */
+      let audioCtx = null;
+      let synthTimer = null;
+      let synthGain = null;
 
-        dom.videoMuteBtn.addEventListener("click", () => {
-          dom.romanticVideo.muted = !dom.romanticVideo.muted;
-          dom.videoMuteLabel.textContent = dom.romanticVideo.muted
-            ? "Ovozni yoqish 🔇"
-            : "Ovoz: Yoqilgan 🔊";
-        });
-
-        dom.romanticVideo.addEventListener("ended", () => {
-          dom.videoPosterOverlay.classList.remove("hidden");
-          dom.videoControlsBar.classList.add("hidden");
-        });
-      }
-
-      /* -------------------------------------------------------------------
-         6. PHOTO GALLERY & LIGHTBOX (Auto-Hides if Empty)
-         ------------------------------------------------------------------- */
-      function setupGallerySection() {
-        const items = Array.isArray(CONTENT.gallery) ? CONTENT.gallery : [];
-        if (items.length === 0) {
-          dom.gallerySection.classList.add("hidden");
+      function initMusicPlayer() {
+        if (!KUNJIM_CONFIG.music.enabled) {
+          el.musicPill.classList.add("hidden-pill");
           return;
         }
+        el.musicLabel.textContent = KUNJIM_CONFIG.music.label;
+        el.volumeSlider.value = String(state.volume);
+        el.bgAudio.volume = state.volume;
 
-        dom.gallerySection.classList.remove("hidden");
-        dom.galleryGrid.innerHTML = "";
-        let validImagesCount = 0;
-
-        items.forEach((item, idx) => {
-          const card = document.createElement("button");
-          card.type = "button";
-          card.className =
-            "group relative rounded-2xl overflow-hidden bg-white p-1.5 shadow-sm border border-blush-200/80 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-md focus:outline-none";
-
-          const img = document.createElement("img");
-          img.src = item.src;
-          img.alt = item.caption || "Romantik rasm";
-          img.loading = "lazy";
-          img.className =
-            "w-full aspect-[4/5] object-cover rounded-xl transition-transform duration-500 group-hover:scale-105";
-
-          img.onload = () => {
-            validImagesCount++;
-          };
-
-          img.onerror = () => {
-            card.remove();
-            if (dom.galleryGrid.children.length === 0) {
-              dom.gallerySection.classList.add("hidden");
-            }
-          };
-
-          const captionOverlay = document.createElement("div");
-          captionOverlay.className =
-            "pt-2 pb-1 px-1 text-[11px] font-medium text-[#572B3D] line-clamp-1";
-          captionOverlay.textContent = item.caption || "Xotira ✨";
-
-          card.appendChild(img);
-          card.appendChild(captionOverlay);
-          card.addEventListener("click", () => openLightbox(idx));
-
-          dom.galleryGrid.appendChild(card);
-        });
-      }
-
-      function openLightbox(index) {
-        if (!CONTENT.gallery || CONTENT.gallery.length === 0) return;
-        state.currentLightboxIndex = index;
-        updateLightboxView();
-        dom.photoLightbox.classList.remove("hidden");
-        dom.photoLightbox.classList.add("flex");
-      }
-
-      function closeLightbox() {
-        dom.photoLightbox.classList.add("hidden");
-        dom.photoLightbox.classList.remove("flex");
-      }
-
-      function updateLightboxView() {
-        const total = CONTENT.gallery.length;
-        const item = CONTENT.gallery[state.currentLightboxIndex];
-        if (!item) return;
-        dom.lightboxImg.src = item.src;
-        dom.lightboxCaption.textContent = item.caption || "";
-        dom.lightboxCounter.textContent = `${state.currentLightboxIndex + 1} / ${total}`;
-      }
-
-      /* -------------------------------------------------------------------
-         7. ROMANTIC BACKGROUND MUSIC (assets/music.mp3 + Gentle Piano Fallback)
-         ------------------------------------------------------------------- */
-      function startSynthesizedMusicBox() {
-        try {
-          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-          if (!AudioContextClass) return;
-
-          if (!state.audioCtx) {
-            state.audioCtx = new AudioContextClass();
-          }
-          if (state.audioCtx.state === "suspended") {
-            state.audioCtx.resume();
-          }
-
-          state.usingSynthesizedMusic = true;
-          // Gentle romantic arpeggio notes (Fmaj7 -> Cmaj7 -> Dm7 -> Bbmaj7)
-          const melodyFreqs = [
-            349.23, 440.0, 523.25, 659.25, // Fmaj7
-            261.63, 329.63, 392.0, 493.88, // Cmaj7
-            293.66, 349.23, 440.0, 523.25, // Dm7
-            233.08, 293.66, 349.23, 440.0, // Bbmaj7
-          ];
-          let stepIdx = 0;
-
-          const playNote = () => {
-            if (!state.isMusicPlaying || !state.audioCtx) return;
-            const now = state.audioCtx.currentTime;
-            const osc = state.audioCtx.createOscillator();
-            const gain = state.audioCtx.createGain();
-
-            osc.type = "sine";
-            osc.frequency.setValueAtTime(melodyFreqs[stepIdx % melodyFreqs.length], now);
-
-            const vol = parseFloat(dom.musicVolumeSlider.value || 0.65) * 0.14;
-            gain.gain.setValueAtTime(0.0001, now);
-            gain.gain.exponentialRampToValueAtTime(Math.max(0.001, vol), now + 0.08);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.65);
-
-            osc.connect(gain);
-            gain.connect(state.audioCtx.destination);
-
-            osc.start(now);
-            osc.stop(now + 1.7);
-            stepIdx++;
-          };
-
-          playNote();
-          clearInterval(state.synthInterval);
-          state.synthInterval = setInterval(playNote, 720);
-        } catch (e) {
-          // Audio blocked silently
+        if (KUNJIM_CONFIG.music.src) {
+          el.bgAudio.src = KUNJIM_CONFIG.music.src;
+          el.bgAudio.addEventListener("error", () => {
+            // If assets/music.mp3 is not present yet, seamlessly enable built-in melody
+            state.usingSynthFallback = true;
+          }, { once: true });
+        } else {
+          state.usingSynthFallback = true;
         }
       }
 
-      function startRomanticMusic() {
-        const vol = parseFloat(dom.musicVolumeSlider.value || CONTENT.music.defaultVolume);
-        dom.bgAudio.volume = vol;
+      function startRomanticSynth() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+        if (!synthGain) {
+          synthGain = audioCtx.createGain();
+          synthGain.connect(audioCtx.destination);
+        }
+        synthGain.gain.value = state.isMuted ? 0 : state.volume * 0.22;
 
-        if (!dom.bgAudio.src && CONTENT.music.src) {
-          dom.bgAudio.src = CONTENT.music.src;
+        // Gentle romantic music-box arpeggio (Fmaj7 -> Cmaj7 -> Dm7 -> Bbmaj7)
+        const melodyNotes = [
+          349.23, 440.00, 523.25, 659.25, 523.25, 440.00,
+          329.63, 392.00, 493.88, 587.33, 493.88, 392.00,
+          293.66, 349.23, 440.00, 523.25, 440.00, 349.23,
+          233.08, 349.23, 440.00, 523.25, 440.00, 349.23
+        ];
+        let step = 0;
+
+        function playNote() {
+          if (!state.isMusicPlaying) return;
+          const now = audioCtx.currentTime;
+          const osc = audioCtx.createOscillator();
+          const noteGain = audioCtx.createGain();
+
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(melodyNotes[step % melodyNotes.length], now);
+
+          noteGain.gain.setValueAtTime(0.0001, now);
+          noteGain.gain.exponentialRampToValueAtTime(0.45, now + 0.04);
+          noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.35);
+
+          osc.connect(noteGain);
+          noteGain.connect(synthGain);
+
+          osc.start(now);
+          osc.stop(now + 1.4);
+          step++;
+        }
+
+        playNote();
+        clearInterval(synthTimer);
+        synthTimer = setInterval(playNote, 560);
+      }
+
+      function stopRomanticSynth() {
+        clearInterval(synthTimer);
+        synthTimer = null;
+      }
+
+      async function toggleMusicPlayback() {
+        if (state.isMusicPlaying) {
+          state.isMusicPlaying = false;
+          el.bgAudio.pause();
+          stopRomanticSynth();
+          updateMusicUI();
+          return;
         }
 
         state.isMusicPlaying = true;
-        updateMusicUI(true);
+        updateMusicUI();
 
-        dom.bgAudio
-          .play()
-          .then(() => {
-            state.usingSynthesizedMusic = false;
-          })
-          .catch(() => {
-            // If assets/music.mp3 is not uploaded yet, seamlessly play gentle synthesized piano melody
-            startSynthesizedMusicBox();
-          });
-      }
-
-      function pauseRomanticMusic() {
-        state.isMusicPlaying = false;
-        updateMusicUI(false);
-        dom.bgAudio.pause();
-        clearInterval(state.synthInterval);
-      }
-
-      function updateMusicUI(playing) {
-        if (playing) {
-          dom.iconMusicPlay.classList.add("hidden");
-          dom.iconMusicPause.classList.remove("hidden");
-          dom.musicStatusLabel.textContent = "Musiqa ijroda ♪";
+        if (!state.usingSynthFallback && el.bgAudio.src) {
+          try {
+            await el.bgAudio.play();
+          } catch (_) {
+            state.usingSynthFallback = true;
+            startRomanticSynth();
+          }
         } else {
-          dom.iconMusicPlay.classList.remove("hidden");
-          dom.iconMusicPause.classList.add("hidden");
-          dom.musicStatusLabel.textContent = "Musiqa pauzada";
+          startRomanticSynth();
         }
       }
 
-      /* -------------------------------------------------------------------
-         8. SCROLL REVEAL OBSERVER
-         ------------------------------------------------------------------- */
-      function triggerScrollReveals() {
-        const sections = document.querySelectorAll(".reveal-section");
-        if (!("IntersectionObserver" in window)) {
-          sections.forEach((s) => s.classList.add("is-visible"));
+      function updateMusicUI() {
+        el.musicPill.classList.toggle("is-playing", state.isMusicPlaying);
+        el.iconPlay.style.display = state.isMusicPlaying ? "none" : "block";
+        el.iconPause.style.display = state.isMusicPlaying ? "block" : "none";
+        el.iconVolOn.style.display = state.isMuted ? "none" : "block";
+        el.iconVolOff.style.display = state.isMuted ? "block" : "none";
+      }
+
+      el.musicToggleBtn.addEventListener("click", toggleMusicPlayback);
+
+      el.muteToggleBtn.addEventListener("click", () => {
+        state.isMuted = !state.isMuted;
+        el.bgAudio.muted = state.isMuted;
+        if (synthGain) {
+          synthGain.gain.value = state.isMuted ? 0 : state.volume * 0.22;
+        }
+        updateMusicUI();
+      });
+
+      el.volumeSlider.addEventListener("input", (e) => {
+        state.volume = parseFloat(e.target.value);
+        state.isMuted = state.volume === 0;
+        el.bgAudio.volume = state.volume;
+        el.bgAudio.muted = state.isMuted;
+        if (synthGain) {
+          synthGain.gain.value = state.isMuted ? 0 : state.volume * 0.22;
+        }
+        updateMusicUI();
+      });
+
+      /* -----------------------------------------------------------------------
+         E. VIDEO SECTION 🎬 (MP4 PLAYER + AUTO-HIDE / PREVIEW DEMO FALLBACK)
+         ----------------------------------------------------------------------- */
+      function initVideoSection() {
+        if (!KUNJIM_CONFIG.video.enabled) {
+          el.videoSection.classList.add("is-hidden");
           return;
         }
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12 }
-        );
+        document.getElementById("videoPosterTitle").textContent = KUNJIM_CONFIG.video.posterTitle;
+        document.getElementById("videoCaptionText").textContent = KUNJIM_CONFIG.video.caption;
 
-        sections.forEach((sec) => observer.observe(sec));
-      }
-
-      /* -------------------------------------------------------------------
-         9. PRINT-READY HIGH-CONTRAST BLACK & WHITE QR CODE GENERATOR
-         ------------------------------------------------------------------- */
-      function generateHighResQR(targetUrl) {
-        const cleanUrl = (targetUrl || "").trim();
-        dom.qrCodeRender.innerHTML = "";
-        dom.qrWarningMsg.classList.add("hidden");
-
-        if (!cleanUrl) {
-          dom.qrWarningMsg.textContent = "Iltimos, avval HTTPS havolani kiriting.";
-          dom.qrWarningMsg.classList.remove("hidden");
-          return;
+        if (KUNJIM_CONFIG.video.poster) {
+          el.videoPosterImg.src = KUNJIM_CONFIG.video.poster;
+          el.videoPosterImg.style.display = "block";
         }
 
-        // Warn if localhost or file:// protocol is used
-        if (
-          cleanUrl.startsWith("file://") ||
-          cleanUrl.includes("localhost") ||
-          cleanUrl.includes("127.0.0.1")
-        ) {
-          dom.qrWarningMsg.textContent =
-            "⚠️ Diqqat: Bu mahalliy manzil. Kinder qadog‘iga yopishtirish uchun saytni internetga (HTTPS) joylab, o‘sha havolani kiriting!";
-          dom.qrWarningMsg.classList.remove("hidden");
-        }
+        el.romanticVideo.src = KUNJIM_CONFIG.video.src;
 
-        if (typeof QRCode !== "undefined") {
-          new QRCode(dom.qrCodeRender, {
-            text: cleanUrl,
-            width: 512,
-            height: 512,
-            colorDark: "#000000",
-            colorLight: "#FFFFFF",
-            correctLevel: QRCode.CorrectLevel.H,
-          });
-
-          // Scale display size cleanly while keeping 512x512 crisp canvas for PNG export
-          const qrImg = dom.qrCodeRender.querySelector("img");
-          const qrCanvas = dom.qrCodeRender.querySelector("canvas");
-          if (qrImg) {
-            qrImg.style.width = "190px";
-            qrImg.style.height = "190px";
-            qrImg.style.display = "block";
-          }
-          if (qrCanvas) {
-            qrCanvas.style.width = "190px";
-            qrCanvas.style.height = "190px";
-          }
-        }
-
-        dom.qrCaptionUrl.textContent = cleanUrl;
-      }
-
-      function downloadQRAsPNG() {
-        const canvas = dom.qrCodeRender.querySelector("canvas");
-        const img = dom.qrCodeRender.querySelector("img");
-        let dataUrl = "";
-
-        if (canvas) {
-          // Add white quiet-zone padding around QR for reliable camera scanning on Kinder wrapper
-          const exportCanvas = document.createElement("canvas");
-          const pad = 48;
-          exportCanvas.width = canvas.width + pad * 2;
-          exportCanvas.height = canvas.height + pad * 2;
-          const ctx = exportCanvas.getContext("2d");
-          ctx.fillStyle = "#FFFFFF";
-          ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-          ctx.drawImage(canvas, pad, pad);
-          dataUrl = exportCanvas.toDataURL("image/png");
-        } else if (img && img.src) {
-          dataUrl = img.src;
-        }
-
-        if (!dataUrl) return;
-
-        const link = document.createElement("a");
-        link.href = dataUrl;
-        link.download = `kunjim-qr-${CONTENT.recipientName.toLowerCase().replace(/\s+/g, "-")}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-
-      /* -------------------------------------------------------------------
-         10. EVENT LISTENERS & INITIALIZATION
-         ------------------------------------------------------------------- */
-      function bindEvents() {
-        // Envelope Open Triggers
-        dom.openSurpriseBtn.addEventListener("click", () => openSurpriseExperience(true));
-        dom.interactiveEnvelope.addEventListener("click", () => openSurpriseExperience(true));
-        dom.interactiveEnvelope.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openSurpriseExperience(true);
-          }
+        // If MP4 exists and loads metadata -> use real MP4 player
+        el.romanticVideo.addEventListener("loadedmetadata", () => {
+          state.videoUsingDemo = false;
+          el.demoVideoCanvas.style.display = "none";
+          el.romanticVideo.style.display = "block";
         });
 
-        // Replay Love Letter Typewriter
-        dom.replayLetterBtn.addEventListener("click", () => {
-          typeLoveLetter(CONTENT.loveLetter);
-        });
-
-        // Replay Entire Experience from Finale
-        dom.replayAllBtn.addEventListener("click", () => {
-          burstHearts(20);
-          setTimeout(() => resetToEnvelope(true), 450);
-        });
-
-        // Music Controls
-        dom.musicToggleBtn.addEventListener("click", () => {
-          if (state.isMusicPlaying) {
-            pauseRomanticMusic();
+        // If assets/romantic-video.mp4 is missing -> either auto-hide or show demo preview
+        el.romanticVideo.addEventListener("error", () => {
+          if (KUNJIM_CONFIG.video.showDemoWhenMissing) {
+            enableDemoVideoCanvas();
           } else {
-            startRomanticMusic();
+            el.videoSection.classList.add("is-hidden");
           }
         });
 
-        dom.musicVolumeSlider.addEventListener("input", (e) => {
-          const val = parseFloat(e.target.value);
-          dom.bgAudio.volume = val;
+        // Update progress bar for real video
+        el.romanticVideo.addEventListener("timeupdate", () => {
+          if (!el.romanticVideo.duration) return;
+          const pct = (el.romanticVideo.currentTime / el.romanticVideo.duration) * 100;
+          el.vProgressFill.style.width = `${pct}%`;
         });
 
-        // Lightbox Controls
-        dom.lightboxCloseBtn.addEventListener("click", closeLightbox);
-        dom.photoLightbox.addEventListener("click", (e) => {
-          if (e.target === dom.photoLightbox) closeLightbox();
-        });
-        dom.lightboxPrevBtn.addEventListener("click", () => {
-          const total = CONTENT.gallery.length;
-          state.currentLightboxIndex = (state.currentLightboxIndex - 1 + total) % total;
-          updateLightboxView();
-        });
-        dom.lightboxNextBtn.addEventListener("click", () => {
-          const total = CONTENT.gallery.length;
-          state.currentLightboxIndex = (state.currentLightboxIndex + 1) % total;
-          updateLightboxView();
-        });
-
-        // Creator Studio & QR Modal
-        dom.openStudioBtn.addEventListener("click", () => {
-          dom.studioModal.classList.remove("hidden");
-          dom.studioModal.classList.add("flex");
-
-          const currentLocation = window.location.href.split("#")[0];
-          const isPublicHttps =
-            currentLocation.startsWith("https://") && !currentLocation.includes("localhost");
-          const initialUrl = isPublicHttps ? currentLocation : CONTENT.defaultPublicUrl;
-          dom.qrUrlInput.value = initialUrl;
-          generateHighResQR(initialUrl);
-        });
-
-        dom.closeStudioBtn.addEventListener("click", () => {
-          dom.studioModal.classList.add("hidden");
-          dom.studioModal.classList.remove("flex");
-        });
-
-        dom.tabQrBtn.addEventListener("click", () => {
-          dom.panelQr.classList.remove("hidden");
-          dom.panelEdit.classList.add("hidden");
-          dom.tabQrBtn.className = "py-2 rounded-xl text-xs font-semibold bg-white text-blush-700 shadow-sm";
-          dom.tabEditBtn.className = "py-2 rounded-xl text-xs font-semibold text-[#7C4D60]";
-        });
-
-        dom.tabEditBtn.addEventListener("click", () => {
-          dom.panelEdit.classList.remove("hidden");
-          dom.panelQr.classList.add("hidden");
-          dom.tabEditBtn.className = "py-2 rounded-xl text-xs font-semibold bg-white text-blush-700 shadow-sm";
-          dom.tabQrBtn.className = "py-2 rounded-xl text-xs font-semibold text-[#7C4D60]";
-        });
-
-        dom.generateQrBtn.addEventListener("click", () => {
-          generateHighResQR(dom.qrUrlInput.value);
-        });
-
-        dom.downloadQrPngBtn.addEventListener("click", downloadQRAsPNG);
-
-        dom.saveCustomContentBtn.addEventListener("click", () => {
-          CONTENT.recipientName = dom.editNameInput.value.trim() || "Kunjim";
-          CONTENT.heroTitle = dom.editTitleInput.value.trim() || CONTENT.heroTitle;
-          CONTENT.loveLetter = dom.editLetterInput.value.trim() || CONTENT.loveLetter;
-          CONTENT.finaleMessage = dom.editFinaleInput.value.trim() || CONTENT.finaleMessage;
-
-          renderContent();
-          if (state.isEnvelopeOpen) {
-            typeLoveLetter(CONTENT.loveLetter);
-          }
-
-          dom.studioModal.classList.add("hidden");
-          dom.studioModal.classList.remove("flex");
-          burstHearts(12);
+        el.romanticVideo.addEventListener("ended", () => {
+          el.videoPosterOverlay.classList.remove("is-hidden");
+          el.vPauseIcon.style.display = "none";
+          el.vPlayIcon.style.display = "block";
         });
       }
 
-      // Initialize App on Load
-      window.addEventListener("DOMContentLoaded", () => {
-        renderContent();
-        bindEvents();
+      function enableDemoVideoCanvas() {
+        state.videoUsingDemo = true;
+        el.romanticVideo.style.display = "none";
+        el.demoVideoCanvas.style.display = "block";
+        el.toggleMissingVideoDemo.style.display = "inline-block";
 
-        // Start gentle ambient floating hearts
-        for (let i = 0; i < 6; i++) {
-          setTimeout(() => spawnFloatingHeart(false), i * 500);
+        // Allow user to test auto-hide behavior with 1 tap
+        el.toggleMissingVideoDemo.addEventListener("click", () => {
+          cancelAnimationFrame(state.demoVideoAnimId);
+          el.videoSection.classList.add("is-hidden");
+        });
+      }
+
+      function startDemoCanvasAnimation() {
+        const canvas = el.demoVideoCanvas;
+        const ctx = canvas.getContext("2d");
+        canvas.width = 540;
+        canvas.height = 720;
+        let t = 0;
+
+        function drawFrame() {
+          if (!state.videoUsingDemo) return;
+          t += 0.025;
+
+          const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+          grad.addColorStop(0, "#4C0519");
+          grad.addColorStop(0.5, "#881337");
+          grad.addColorStop(1, "#BE123C");
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          // Soft bokeh orbs
+          for (let i = 0; i < 14; i++) {
+            const bx = canvas.width * 0.5 + Math.cos(t * 0.6 + i * 1.1) * (140 + i * 7);
+            const by = canvas.height * 0.5 + Math.sin(t * 0.5 + i * 0.9) * (200 + i * 6);
+            const r = 18 + (i % 4) * 14;
+            ctx.beginPath();
+            ctx.arc(bx, by, r, 0, Math.PI * 2);
+            ctx.fillStyle = i % 2 === 0 ? "rgba(255, 228, 230, 0.14)" : "rgba(251, 191, 36, 0.12)";
+            ctx.fill();
+          }
+
+          // Center romantic message
+          ctx.fillStyle = "rgba(255, 253, 249, 0.95)";
+          ctx.font = "600 32px 'Cormorant Garamond', Georgia, serif";
+          ctx.textAlign = "center";
+          ctx.fillText(`Azizim ${recipientName} uchun ❤️`, canvas.width / 2, canvas.height / 2 - 12);
+
+          ctx.fillStyle = "rgba(255, 228, 230, 0.8)";
+          ctx.font = "400 16px 'Plus Jakarta Sans', sans-serif";
+          ctx.fillText("assets/romantic-video.mp4 joylanganda", canvas.width / 2, canvas.height / 2 + 24);
+          ctx.fillText("shu yerda shaxsiy videongiz ijro etiladi", canvas.width / 2, canvas.height / 2 + 48);
+
+          const fakePct = ((t * 8) % 100);
+          el.vProgressFill.style.width = `${fakePct}%`;
+
+          state.demoVideoAnimId = requestAnimationFrame(drawFrame);
         }
-        setInterval(() => spawnFloatingHeart(false), 1800);
+        drawFrame();
+      }
 
-        // Open QR Creator automatically if ?admin=1 is in URL
-        const params = new URLSearchParams(window.location.search);
-        if (params.get("admin") === "1") {
-          dom.openStudioBtn.click();
+      async function playVideoWithSound() {
+        el.videoPosterOverlay.classList.add("is-hidden");
+        el.videoViewport.classList.add("has-started");
+        el.vPauseIcon.style.display = "block";
+        el.vPlayIcon.style.display = "none";
+
+        if (state.videoUsingDemo) {
+          startDemoCanvasAnimation();
+          return;
+        }
+
+        try {
+          el.romanticVideo.muted = false;
+          await el.romanticVideo.play();
+        } catch (_) {
+          // Fallback if browser requires muted start first
+          el.romanticVideo.muted = true;
+          await el.romanticVideo.play();
+        }
+      }
+
+      function pauseVideoPlayback() {
+        if (state.videoUsingDemo) {
+          cancelAnimationFrame(state.demoVideoAnimId);
+        } else if (!el.romanticVideo.paused) {
+          el.romanticVideo.pause();
+        }
+        el.vPauseIcon.style.display = "none";
+        el.vPlayIcon.style.display = "block";
+      }
+
+      el.videoPosterOverlay.addEventListener("click", playVideoWithSound);
+      el.vPlayPauseBtn.addEventListener("click", () => {
+        if (state.videoUsingDemo) {
+          if (el.vPauseIcon.style.display !== "none") {
+            pauseVideoPlayback();
+          } else {
+            playVideoWithSound();
+          }
+          return;
+        }
+        if (el.romanticVideo.paused) {
+          playVideoWithSound();
+        } else {
+          pauseVideoPlayback();
         }
       });
+
+      el.vMuteBtn.addEventListener("click", () => {
+        if (state.videoUsingDemo) return;
+        el.romanticVideo.muted = !el.romanticVideo.muted;
+        el.vSoundOnIcon.style.display = el.romanticVideo.muted ? "none" : "block";
+        el.vSoundOffIcon.style.display = el.romanticVideo.muted ? "block" : "none";
+      });
+
+      el.vProgressTrack.addEventListener("click", (e) => {
+        if (state.videoUsingDemo || !el.romanticVideo.duration) return;
+        const rect = el.vProgressTrack.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        el.romanticVideo.currentTime = ratio * el.romanticVideo.duration;
+      });
+
+      /* -----------------------------------------------------------------------
+         F. LOVE LETTER TYPEWRITER ANIMATION 💌
+         ----------------------------------------------------------------------- */
+      function startLetterTypewriter() {
+        if (state.letterTyped) return;
+        state.letterTyped = true;
+
+        const fullText = KUNJIM_CONFIG.loveLetter.text;
+        let idx = 0;
+        el.typedLetterText.textContent = "";
+        el.typingCursor.classList.remove("is-done");
+
+        state.letterTypingTimer = setInterval(() => {
+          idx++;
+          el.typedLetterText.textContent = fullText.slice(0, idx);
+          if (idx >= fullText.length) {
+            finishLetterTypewriter();
+          }
+        }, 28);
+      }
+
+      function finishLetterTypewriter() {
+        clearInterval(state.letterTypingTimer);
+        state.letterTyped = true;
+        el.typedLetterText.textContent = KUNJIM_CONFIG.loveLetter.text;
+        el.typingCursor.classList.add("is-done");
+        el.skipTypingBtn.classList.add("is-hidden");
+      }
+
+      el.skipTypingBtn.addEventListener("click", finishLetterTypewriter);
+
+      /* -----------------------------------------------------------------------
+         G. PHOTO GALLERY & LIGHTBOX MODAL 📸
+         ----------------------------------------------------------------------- */
+      function createRomanticIllustrationSvg(theme = "rose", index = 0) {
+        const palettes = {
+          rose: { bg1: "#FFF0F5", bg2: "#FADADD", accent: "#E11D48", gold: "#D4AF37" },
+          gold: { bg1: "#FFFDF9", bg2: "#F7E7CE", accent: "#D9385A", gold: "#C59B27" },
+          blush: { bg1: "#FDF2F8", bg2: "#FCE7F3", accent: "#BE185D", gold: "#D4AF37" }
+        };
+        const p = palettes[theme] || palettes.rose;
+
+        return `
+          <svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="artBg_${index}" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="${p.bg1}" />
+                <stop offset="100%" stop-color="${p.bg2}" />
+              </linearGradient>
+            </defs>
+            <rect width="400" height="300" fill="url(#artBg_${index})" />
+            <rect x="16" y="16" width="368" height="268" rx="14" fill="none" stroke="${p.gold}" stroke-opacity="0.45" stroke-width="1.2" />
+            <circle cx="200" cy="132" r="56" fill="#FFFFFF" fill-opacity="0.72" />
+            <path d="M200 162 C200 162 162 138 162 114 C162 102 171 94 182 94 C190 94 197 99 200 105 C203 99 210 94 218 94 C229 94 238 102 238 114 C238 138 200 162 200 162 Z" fill="${p.accent}" fill-opacity="0.88" />
+            <path d="M125 222 Q200 196 275 222" stroke="${p.gold}" stroke-width="1.2" fill="none" />
+            <text x="200" y="246" text-anchor="middle" fill="#7A4958" font-family="Georgia, serif" font-style="italic" font-size="16">
+              ${escapeHtml(recipientName)} • Xotira #${index + 1}
+            </text>
+          </svg>
+        `;
+      }
+
+      function initGallery() {
+        const items = Array.isArray(KUNJIM_CONFIG.gallery.items) ? KUNJIM_CONFIG.gallery.items : [];
+        if (!KUNJIM_CONFIG.gallery.enabled || items.length === 0) {
+          el.gallerySection.classList.add("is-hidden");
+          return;
+        }
+
+        state.activeGalleryItems = items;
+        document.getElementById("galleryTitle").textContent = KUNJIM_CONFIG.gallery.title;
+        document.getElementById("gallerySubtitle").textContent = KUNJIM_CONFIG.gallery.subtitle;
+
+        if (items.length % 2 === 1) {
+          el.galleryGrid.classList.add("odd-count");
+        }
+
+        el.galleryGrid.innerHTML = "";
+        items.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.className = "gallery-card";
+          card.setAttribute("role", "button");
+          card.setAttribute("tabindex", "0");
+          card.setAttribute("aria-label", item.title || `Rasm ${index + 1}`);
+
+          const mediaBox = document.createElement("div");
+          mediaBox.className = "gallery-frame-media";
+
+          // Render bespoke romantic artwork immediately, and overlay real <img> if file exists
+          mediaBox.innerHTML = createRomanticIllustrationSvg(item.artTheme, index);
+
+          if (item.src) {
+            const img = document.createElement("img");
+            img.src = item.src;
+            img.alt = item.title || "Xotira surati";
+            img.loading = "lazy";
+            img.style.position = "absolute";
+            img.style.inset = "0";
+            img.addEventListener("error", () => {
+              img.remove(); // Keeps clean bespoke artwork if local image isn't added yet
+              item._fallbackUsed = true;
+            });
+            mediaBox.appendChild(img);
+          } else {
+            item._fallbackUsed = true;
+          }
+
+          const zoomBadge = document.createElement("span");
+          zoomBadge.className = "gallery-zoom-badge";
+          zoomBadge.innerHTML = "⤢";
+
+          const caption = document.createElement("div");
+          caption.className = "gallery-card-caption";
+          caption.textContent = item.title || "";
+
+          card.appendChild(mediaBox);
+          card.appendChild(zoomBadge);
+          card.appendChild(caption);
+
+          card.addEventListener("click", () => openLightbox(index, true));
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              openLightbox(index, true);
+            }
+          });
+
+          el.galleryGrid.appendChild(card);
+        });
+      }
+
+      function renderLightboxSlide(index) {
+        const total = state.activeGalleryItems.length;
+        if (!total) return;
+        state.lightboxIndex = (index + total) % total;
+        const item = state.activeGalleryItems[state.lightboxIndex];
+
+        el.lightboxMediaBox.innerHTML = createRomanticIllustrationSvg(item.artTheme, state.lightboxIndex);
+        if (item.src && !item._fallbackUsed) {
+          const img = document.createElement("img");
+          img.src = item.src;
+          img.alt = item.title || "";
+          img.style.position = "absolute";
+          img.style.inset = "0";
+          img.addEventListener("error", () => img.remove());
+          el.lightboxMediaBox.appendChild(img);
+        }
+
+        el.lightboxTitle.textContent = item.title || "";
+        el.lightboxDesc.textContent = item.caption || "";
+      }
+
+      function openLightbox(index, pushHist = true) {
+        renderLightboxSlide(index);
+        el.lightboxModal.classList.add("is-open");
+        if (pushHist) {
+          try {
+            history.pushState({ view: "lightbox", index }, "", "#gallery");
+          } catch (_) {}
+        }
+      }
+
+      function closeLightbox(fromPopState = false) {
+        if (!el.lightboxModal.classList.contains("is-open")) return;
+        el.lightboxModal.classList.remove("is-open");
+        if (!fromPopState && window.location.hash === "#gallery") {
+          try {
+            history.back();
+          } catch (_) {}
+        }
+      }
+
+      el.closeLightboxBtn.addEventListener("click", () => closeLightbox(false));
+      el.lightboxModal.addEventListener("click", (e) => {
+        if (e.target === el.lightboxModal) closeLightbox(false);
+      });
+      el.lightboxPrevBtn.addEventListener("click", () => renderLightboxSlide(state.lightboxIndex - 1));
+      el.lightboxNextBtn.addEventListener("click", () => renderLightboxSlide(state.lightboxIndex + 1));
+
+      // Swipe support on Lightbox
+      let touchStartX = 0;
+      el.lightboxMediaBox.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      el.lightboxMediaBox.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 42) {
+          renderLightboxSlide(state.lightboxIndex + (dx < 0 ? 1 : -1));
+        }
+      }, { passive: true });
+
+      /* -----------------------------------------------------------------------
+         H. INTERSECTION OBSERVER FOR SCROLL REVEALS & TYPEWRITER TRIGGER
+         ----------------------------------------------------------------------- */
+      function triggerScrollReveals() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              if (entry.target.id === "letterSection") {
+                startLetterTypewriter();
+              }
+            }
+          });
+        }, { threshold: 0.16 });
+
+        document.querySelectorAll(".reveal-on-scroll").forEach((node) => observer.observe(node));
+      }
+
+      /* -----------------------------------------------------------------------
+         I. BROWSER BACK BUTTON & KEYBOARD NAVIGATION
+         ----------------------------------------------------------------------- */
+      window.addEventListener("popstate", (e) => {
+        if (el.lightboxModal.classList.contains("is-open")) {
+          closeLightbox(true);
+          return;
+        }
+        if (el.qrModal.classList.contains("is-open")) {
+          closeQrModal(true);
+          return;
+        }
+        if (state.isEnvelopeOpened && (!e.state || e.state.view === "envelope")) {
+          resetToEnvelope();
+        }
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeLightbox(false);
+          closeQrModal(false);
+        } else if (el.lightboxModal.classList.contains("is-open")) {
+          if (e.key === "ArrowLeft") renderLightboxSlide(state.lightboxIndex - 1);
+          if (e.key === "ArrowRight") renderLightboxSlide(state.lightboxIndex + 1);
+        }
+      });
+
+      /* -----------------------------------------------------------------------
+         J. PRINT-READY PURE BLACK & WHITE QR CODE ENCODER (ISO/IEC 18004)
+            Generates crisp 1000x1000px PNG ready for Kinder packaging
+         ----------------------------------------------------------------------- */
+      const QRGenerator = (() => {
+        const EXP = new Uint8Array(512);
+        const LOG = new Uint8Array(256);
+        let x = 1;
+        for (let i = 0; i < 255; i++) {
+          EXP[i] = x;
+          LOG[x] = i;
+          x <<= 1;
+          if (x & 0x100) x ^= 0x11d;
+        }
+        for (let i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+
+        function gfMul(a, b) {
+          return (a === 0 || b === 0) ? 0 : EXP[LOG[a] + LOG[b]];
+        }
+
+        function rsGeneratorPoly(degree) {
+          let poly = [1];
+          for (let i = 0; i < degree; i++) {
+            const next = new Array(poly.length + 1).fill(0);
+            const root = EXP[i];
+            for (let j = 0; j < poly.length; j++) {
+              next[j] ^= poly[j];
+              next[j + 1] ^= gfMul(poly[j], root);
+            }
+            poly = next;
+          }
+          return poly;
+        }
+
+        function rsComputeEcc(dataBytes, eccLen) {
+          const gen = rsGeneratorPoly(eccLen);
+          const remainder = new Array(eccLen).fill(0);
+          for (let i = 0; i < dataBytes.length; i++) {
+            const factor = dataBytes[i] ^ remainder.shift();
+            remainder.push(0);
+            for (let j = 0; j < eccLen; j++) {
+              remainder[j] ^= gfMul(gen[j + 1], factor);
+            }
+          }
+          return remainder;
+        }
+
+        // Version specs for ECC Level M (Versions 1..10)
+        // [version, size, totalDataBytes, blocksGroup1, dataPerBlock1, blocksGroup2, dataPerBlock2, eccPerBlock, alignCenters]
+        const VERSION_SPECS_M = [
+          null,
+          [1, 21, 16, 1, 16, 0, 0, 10, []],
+          [2, 25, 28, 1, 28, 0, 0, 16, [6, 18]],
+          [3, 29, 44, 1, 44, 0, 0, 26, [6, 22]],
+          [4, 33, 64, 2, 32, 0, 0, 18, [6, 26]],
+          [5, 37, 86, 2, 43, 0, 0, 24, [6, 30]],
+          [6, 41, 108, 4, 27, 0, 0, 16, [6, 34]],
+          [7, 45, 124, 4, 31, 0, 0, 18, [6, 22, 38]],
+          [8, 49, 154, 2, 38, 2, 39, 22, [6, 24, 42]],
+          [9, 53, 182, 3, 36, 2, 37, 22, [6, 26, 46]],
+          [10, 57, 216, 4, 43, 1, 44, 26, [6, 28, 50]]
+        ];
+
+        const FORMAT_INFO_M = [
+          0x5412, 0x5125, 0x5E7C, 0x5B4B, 0x45F9, 0x40CE, 0x4F97, 0x4AA0
+        ];
+
+        const VERSION_INFO_BITS = {
+          7: 0x07C94,
+          8: 0x085BC,
+          9: 0x09A99,
+          10: 0x0A4D3
+        };
+
+        function encode(text) {
+          const utf8Bytes = new TextEncoder().encode(text);
+          let spec = null;
+          for (let v = 1; v <= 10; v++) {
+            const countBits = v <= 9 ? 8 : 16;
+            const overheadBits = 4 + countBits + 4;
+            const maxDataBytes = VERSION_SPECS_M[v][2];
+            if (Math.ceil((overheadBits + utf8Bytes.length * 8) / 8) <= maxDataBytes) {
+              spec = VERSION_SPECS_M[v];
+              break;
+            }
+          }
+          if (!spec) {
+            throw new Error("URL juda uzun (maksimal 210 belgi).");
+          }
+
+          const [version, size, totalDataBytes, g1Blocks, g1Data, g2Blocks, g2Data, eccPerBlock, alignCenters] = spec;
+          const bits = [];
+          const pushBits = (val, len) => {
+            for (let i = len - 1; i >= 0; i--) bits.push((val >>> i) & 1);
+          };
+
+          // Mode: Byte (0100)
+          pushBits(0b0100, 4);
+          pushBits(utf8Bytes.length, version <= 9 ? 8 : 16);
+          for (const b of utf8Bytes) pushBits(b, 8);
+
+          // Terminator & byte alignment
+          const maxBits = totalDataBytes * 8;
+          const termLen = Math.min(4, maxBits - bits.length);
+          pushBits(0, termLen);
+          while (bits.length % 8 !== 0) bits.push(0);
+
+          const dataCodewords = [];
+          for (let i = 0; i < bits.length; i += 8) {
+            let byte = 0;
+            for (let b = 0; b < 8; b++) byte = (byte << 1) | bits[i + b];
+            dataCodewords.push(byte);
+          }
+
+          const padBytes = [0xEC, 0x11];
+          let pIdx = 0;
+          while (dataCodewords.length < totalDataBytes) {
+            dataCodewords.push(padBytes[pIdx % 2]);
+            pIdx++;
+          }
+
+          // Split into RS blocks & interleave
+          const dataBlocks = [];
+          const eccBlocks = [];
+          let offset = 0;
+          for (let b = 0; b < g1Blocks; b++) {
+            const slice = dataCodewords.slice(offset, offset + g1Data);
+            offset += g1Data;
+            dataBlocks.push(slice);
+            eccBlocks.push(rsComputeEcc(slice, eccPerBlock));
+          }
+          for (let b = 0; b < g2Blocks; b++) {
+            const slice = dataCodewords.slice(offset, offset + g2Data);
+            offset += g2Data;
+            dataBlocks.push(slice);
+            eccBlocks.push(rsComputeEcc(slice, eccPerBlock));
+          }
+
+          const finalCodewords = [];
+          const maxBlockDataLen = Math.max(g1Data, g2Data);
+          for (let i = 0; i < maxBlockDataLen; i++) {
+            for (let b = 0; b < dataBlocks.length; b++) {
+              if (i < dataBlocks[b].length) finalCodewords.push(dataBlocks[b][i]);
+            }
+          }
+          for (let i = 0; i < eccPerBlock; i++) {
+            for (let b = 0; b < eccBlocks.length; b++) {
+              finalCodewords.push(eccBlocks[b][i]);
+            }
+          }
+
+          // Build QR Module Matrix
+          const modules = Array.from({ length: size }, () => new Uint8Array(size));
+          const isFunction = Array.from({ length: size }, () => new Uint8Array(size));
+
+          const setFuncModule = (x, y, val) => {
+            if (x >= 0 && x < size && y >= 0 && y < size) {
+              modules[y][x] = val ? 1 : 0;
+              isFunction[y][x] = 1;
+            }
+          };
+
+          const drawFinder = (fx, fy) => {
+            for (let dy = -1; dy <= 7; dy++) {
+              for (let dx = -1; dx <= 7; dx++) {
+                const xx = fx + dx;
+                const yy = fy + dy;
+                if (xx < 0 || xx >= size || yy < 0 || yy >= size) continue;
+                const onBorder = dx === 0 || dx === 6 || dy === 0 || dy === 6;
+                const inCenter = dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4;
+                const isSep = dx === -1 || dx === 7 || dy === -1 || dy === 7;
+                setFuncModule(xx, yy, !isSep && (onBorder || inCenter) ? 1 : 0);
+              }
+            }
+          };
+
+          drawFinder(0, 0);
+          drawFinder(size - 7, 0);
+          drawFinder(0, size - 7);
+
+          // Alignment patterns
+          for (const cy of alignCenters) {
+            for (const cx of alignCenters) {
+              const nearFinder =
+                (cx === 6 && cy === 6) ||
+                (cx === 6 && cy === size - 7) ||
+                (cx === size - 7 && cy === 6);
+              if (nearFinder) continue;
+              for (let dy = -2; dy <= 2; dy++) {
+                for (let dx = -2; dx <= 2; dx++) {
+                  const dark = Math.max(Math.abs(dx), Math.abs(dy)) !== 1;
+                  setFuncModule(cx + dx, cy + dy, dark ? 1 : 0);
+                }
+              }
+            }
+          }
+
+          // Timing patterns
+          for (let i = 8; i < size - 8; i++) {
+            setFuncModule(i, 6, i % 2 === 0 ? 1 : 0);
+            setFuncModule(6, i, i % 2 === 0 ? 1 : 0);
+          }
+
+          // Reserve format & version areas
+          for (let i = 0; i < 9; i++) {
+            if (i !== 6) {
+              setFuncModule(8, i, 0);
+              setFuncModule(i, 8, 0);
+            }
+          }
+          for (let i = 0; i < 8; i++) {
+            setFuncModule(size - 1 - i, 8, 0);
+            setFuncModule(8, size - 1 - i, 0);
+          }
+          setFuncModule(8, size - 8, 1);
+
+          if (version >= 7) {
+            const vBits = VERSION_INFO_BITS[version];
+            for (let i = 0; i < 18; i++) {
+              const bit = (vBits >>> i) & 1;
+              const a = Math.floor(i / 3);
+              const b = (i % 3) + size - 11;
+              setFuncModule(b, a, bit);
+              setFuncModule(a, b, bit);
+            }
+          }
+
+          // Zig-zag data bit placement
+          let bitIdx = 0;
+          const totalDataBits = finalCodewords.length * 8;
+          let upward = true;
+
+          for (let right = size - 1; right >= 1; right -= 2) {
+            if (right === 6) right = 5;
+            for (let vert = 0; vert < size; vert++) {
+              const y = upward ? size - 1 - vert : vert;
+              for (let j = 0; j < 2; j++) {
+                const x = right - j;
+                if (!isFunction[y][x]) {
+                  let bit = 0;
+                  if (bitIdx < totalDataBits) {
+                    bit = (finalCodewords[bitIdx >>> 3] >>> (7 - (bitIdx & 7))) & 1;
+                    bitIdx++;
+                  }
+                  modules[y][x] = bit;
+                }
+              }
+            }
+            upward = !upward;
+          }
+
+          // Choose best mask (evaluate penalty across 8 masks)
+          const maskCond = [
+            (x, y) => (x + y) % 2 === 0,
+            (x, y) => y % 2 === 0,
+            (x, y) => x % 3 === 0,
+            (x, y) => (x + y) % 3 === 0,
+            (x, y) => (Math.floor(y / 2) + Math.floor(x / 3)) % 2 === 0,
+            (x, y) => ((x * y) % 2) + ((x * y) % 3) === 0,
+            (x, y) => (((x * y) % 2) + ((x * y) % 3)) % 2 === 0,
+            (x, y) => (((x + y) % 2) + ((x * y) % 3)) % 2 === 0
+          ];
+
+          let bestMask = 0;
+          let lowestPenalty = Infinity;
+
+          for (let m = 0; m < 8; m++) {
+            const trial = modules.map((row, y) =>
+              row.map((val, x) => (!isFunction[y][x] && maskCond[m](x, y) ? val ^ 1 : val))
+            );
+            // Simple balance + run penalty evaluation
+            let darkCount = 0;
+            let penalty = 0;
+            for (let y = 0; y < size; y++) {
+              let runColor = trial[y][0];
+              let runLen = 1;
+              for (let x = 0; x < size; x++) {
+                if (trial[y][x]) darkCount++;
+                if (x > 0) {
+                  if (trial[y][x] === runColor) {
+                    runLen++;
+                    if (runLen === 5) penalty += 3;
+                    else if (runLen > 5) penalty += 1;
+                  } else {
+                    runColor = trial[y][x];
+                    runLen = 1;
+                  }
+                }
+              }
+            }
+            const pctDark = (darkCount * 100) / (size * size);
+            penalty += Math.abs(pctDark - 50) * 2;
+            if (penalty < lowestPenalty) {
+              lowestPenalty = penalty;
+              bestMask = m;
+            }
+          }
+
+          // Apply best mask & write Format Info
+          for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+              if (!isFunction[y][x] && maskCond[bestMask](x, y)) {
+                modules[y][x] ^= 1;
+              }
+            }
+          }
+
+          const fmt = FORMAT_INFO_M[bestMask];
+          for (let i = 0; i <= 5; i++) setFuncModule(8, i, (fmt >>> i) & 1);
+          setFuncModule(8, 7, (fmt >>> 6) & 1);
+          setFuncModule(8, 8, (fmt >>> 7) & 1);
+          setFuncModule(7, 8, (fmt >>> 8) & 1);
+          for (let i = 9; i < 15; i++) setFuncModule(14 - i, 8, (fmt >>> i) & 1);
+
+          for (let i = 0; i < 8; i++) setFuncModule(size - 1 - i, 8, (fmt >>> i) & 1);
+          for (let i = 8; i < 15; i++) setFuncModule(8, size - 15 + i, (fmt >>> i) & 1);
+
+          return { size, modules };
+        }
+
+        function drawToCanvas(canvas, text, pxSize) {
+          const { size, modules } = encode(text);
+          const quietZone = 4;
+          const totalModules = size + quietZone * 2;
+          canvas.width = pxSize;
+          canvas.height = pxSize;
+
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#FFFFFF";
+          ctx.fillRect(0, 0, pxSize, pxSize);
+
+          const cell = pxSize / totalModules;
+          ctx.fillStyle = "#000000";
+
+          for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+              if (modules[y][x]) {
+                const rx = Math.floor((x + quietZone) * cell);
+                const ry = Math.floor((y + quietZone) * cell);
+                const rw = Math.ceil((x + quietZone + 1) * cell) - rx;
+                const rh = Math.ceil((y + quietZone + 1) * cell) - ry;
+                ctx.fillRect(rx, ry, rw, rh);
+              }
+            }
+          }
+        }
+
+        return { drawToCanvas };
+      })();
+
+      function buildTargetQrUrl() {
+        let rawUrl = el.qrUrlInput.value.trim();
+        if (!rawUrl) {
+          rawUrl = "https://kunjim-surprise.vercel.app";
+        }
+        const customName = el.qrNameInput.value.trim();
+
+        const isLocal =
+          rawUrl.startsWith("file://") ||
+          rawUrl.includes("localhost") ||
+          rawUrl.includes("127.0.0.1") ||
+          rawUrl.startsWith("about:");
+
+        el.qrLocalWarning.classList.toggle("is-visible", isLocal);
+
+        try {
+          const u = new URL(rawUrl);
+          if (customName) {
+            u.searchParams.set("name", customName);
+          } else {
+            u.searchParams.delete("name");
+          }
+          return u.toString();
+        } catch (_) {
+          return rawUrl;
+        }
+      }
+
+      function refreshQrPreview() {
+        const targetUrl = buildTargetQrUrl();
+        el.qrEncodedUrlLabel.textContent = targetUrl;
+        try {
+          QRGenerator.drawToCanvas(el.qrPreviewCanvas, targetUrl, 300);
+        } catch (err) {
+          el.qrEncodedUrlLabel.textContent = err.message;
+        }
+      }
+
+      function openQrModal(pushHist = true) {
+        const currentHref = window.location.href.split("#")[0];
+        if (!el.qrUrlInput.value) {
+          el.qrUrlInput.value = currentHref.startsWith("http")
+            ? currentHref
+            : "https://kunjim-surprise.vercel.app";
+        }
+        if (!el.qrNameInput.value) {
+          el.qrNameInput.value = recipientName;
+        }
+        refreshQrPreview();
+        el.qrModal.classList.add("is-open");
+
+        if (pushHist) {
+          try {
+            history.pushState({ view: "qr" }, "", "#qr");
+          } catch (_) {}
+        }
+      }
+
+      function closeQrModal(fromPopState = false) {
+        if (!el.qrModal.classList.contains("is-open")) return;
+        el.qrModal.classList.remove("is-open");
+        if (!fromPopState && window.location.hash === "#qr") {
+          try {
+            history.back();
+          } catch (_) {}
+        }
+      }
+
+      el.openQrModalBtn.addEventListener("click", () => openQrModal(true));
+      el.closeQrModalBtn.addEventListener("click", () => closeQrModal(false));
+      el.qrModal.addEventListener("click", (e) => {
+        if (e.target === el.qrModal) closeQrModal(false);
+      });
+      el.qrUrlInput.addEventListener("input", refreshQrPreview);
+      el.qrNameInput.addEventListener("input", refreshQrPreview);
+
+      el.downloadQrPngBtn.addEventListener("click", () => {
+        const targetUrl = buildTargetQrUrl();
+        const exportCanvas = document.createElement("canvas");
+        QRGenerator.drawToCanvas(exportCanvas, targetUrl, 1000);
+
+        const link = document.createElement("a");
+        const safeSlug = (el.qrNameInput.value.trim() || "kunjim")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-");
+        link.download = `kinder-qr-${safeSlug}.png`;
+        link.href = exportCanvas.toDataURL("image/png");
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
+
+      /* -----------------------------------------------------------------------
+         INITIALIZE ALL MODULES ON LOAD
+         ----------------------------------------------------------------------- */
+      try {
+        history.replaceState({ view: "envelope" }, "", window.location.pathname + window.location.search);
+      } catch (_) {}
+
+      populateContent();
+      initAmbientParticles();
+      initMusicPlayer();
+      initVideoSection();
+      initGallery();
+
+      // Open QR modal directly if ?qr=1 is passed
+      if (urlParams.get("qr") === "1") {
+        openEnvelopeExperience(false);
+        setTimeout(() => openQrModal(false), 900);
+      }
     })();
   </script>
 </body>
