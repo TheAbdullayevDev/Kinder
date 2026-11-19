@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#FFF0F5" />
   <meta name="description" content="Senga kichkina bir romantik syurprizim bor ❤️" />
-  <title>ZARINA — Romantic Surprise ❤️</title>
+  <title>Romantic Surprise ❤️</title>
 
   <!-- Google Fonts: Cormorant Garamond (Luxury Display), Great Vibes (Romantic Script), Plus Jakarta Sans (Clean Uzbek Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1645,7 +1645,7 @@
   </aside>
 
   <!-- Hidden HTML5 Audio Element (loads assets/music.mp3 if available) -->
-  <audio id="bgAudio" preload="none" loop></audio>
+  <audio id="bgAudio" src="assets/music.mp3" preload="auto" loop></audio>
 
   <!-- ========================================================================
        SCREEN 1: OPENING CLOSED ENVELOPE SCREEN
@@ -1671,7 +1671,7 @@
       <div class="luxury-envelope" id="luxuryEnvelope" role="button" tabindex="0" aria-label="Konvertni ochish">
         <!-- Inner Peek Letter -->
         <div class="envelope-letter-peek">
-          <div class="peek-script" id="peekRecipient">ZARINA uchun</div>
+          <div class="peek-script" id="peekRecipient">SAIDA uchun</div>
           <div class="peek-line"></div>
           <div class="peek-sub">Samimiy mehr bilan ❤️</div>
         </div>
@@ -1745,7 +1745,7 @@
 
       <div>
         <div class="recipient-pill">
-          <span class="recipient-script" id="heroRecipientBadge">Azizim ZARINA uchun</span>
+          <span class="recipient-script" id="heroRecipientBadge">Azizim SAIDA uchun</span>
         </div>
       </div>
 
@@ -1899,7 +1899,7 @@
 
     <!-- FOOTER & PRINT-READY QR GENERATOR TRIGGER -->
     <footer class="app-footer container">
-      <div>Mehr bilan tayyorlandi • <strong id="footerRecipientName">ZARINA</strong> ❤️</div>
+      <div>Mehr bilan tayyorlandi • <strong id="footerRecipientName">SAIDA</strong> ❤️</div>
       <div class="footer-links">
         <button type="button" class="footer-qr-trigger" id="openQrModalBtn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1952,7 +1952,7 @@
           type="url"
           class="qr-input"
           id="qrUrlInput"
-          placeholder="https://ZARINA-surprise.vercel.app"
+          placeholder="https://SAIDA-surprise.vercel.app"
           autocomplete="off"
         />
         <div class="qr-warning" id="qrLocalWarning">
@@ -1966,7 +1966,7 @@
           type="text"
           class="qr-input"
           id="qrNameInput"
-          placeholder="Masalan: ZARINA"
+          placeholder="Masalan: SAIDA"
         />
       </div>
 
@@ -1994,12 +1994,12 @@
   <script>
     /**
      * =========================================================================
-     * 1. ZARINA_CONFIG (Barcha matnlar, ism, video, musiqa va rasmlarni shu yerdan
+     * 1. SAIDA_CONFIG (Barcha matnlar, ism, video, musiqa va rasmlarni shu yerdan
      *    oson o'zgartirishingiz mumkin)
      * =========================================================================
      */
-    const ZARINA_CONFIG = {
-      recipientName: "ZARINA", // URL orqali ham o'zgartirish mumkin: ?name=Madina
+    const SAIDA_CONFIG = {
+      recipientName: "SAIDA", // URL orqali ham o'zgartirish mumkin: ?name=Madina
       brandTag: "Kinder Chocolate • Maxsus Syurpriz",
 
       envelope: {
@@ -2098,21 +2098,22 @@
      * 2. APPLICATION CONTROLLER (app.js)
      * =========================================================================
      */
-    (function initZARINAApp() {
+    (function initSAIDAApp() {
       // Allow recipient name override via URL parameter (?name=Madina)
       const urlParams = new URLSearchParams(window.location.search);
       const customNameParam = urlParams.get("name");
       const recipientName = (customNameParam && customNameParam.trim())
         ? customNameParam.trim().slice(0, 32)
-        : ZARINA_CONFIG.recipientName;
+        : SAIDA_CONFIG.recipientName;
 
       // State
       const state = {
         isEnvelopeOpened: false,
         isMusicPlaying: false,
         isMuted: false,
-        volume: ZARINA_CONFIG.music.defaultVolume,
+        volume: SAIDA_CONFIG.music.defaultVolume,
         usingSynthFallback: false,
+        resumeMusicAfterVideo: false,
         letterTyped: false,
         letterTypingTimer: null,
         lightboxIndex: 0,
@@ -2189,25 +2190,25 @@
       };
 
       /* -----------------------------------------------------------------------
-         A. POPULATE CONTENT FROM ZARINA_CONFIG
+         A. POPULATE CONTENT FROM SAIDA_CONFIG
          ----------------------------------------------------------------------- */
       function populateContent() {
         document.title = `${recipientName.toUpperCase()} — Romantic QR Surprise ❤️`;
-        document.getElementById("envelopeBrandTag").textContent = ZARINA_CONFIG.brandTag;
+        document.getElementById("envelopeBrandTag").textContent = SAIDA_CONFIG.brandTag;
         document.getElementById("peekRecipient").textContent = `${recipientName} uchun`;
-        document.getElementById("envelopePromptText").textContent = ZARINA_CONFIG.envelope.prompt;
-        document.getElementById("envelopeBtnLabel").textContent = ZARINA_CONFIG.envelope.buttonText;
+        document.getElementById("envelopePromptText").textContent = SAIDA_CONFIG.envelope.prompt;
+        document.getElementById("envelopeBtnLabel").textContent = SAIDA_CONFIG.envelope.buttonText;
 
-        document.getElementById("heroTag").textContent = ZARINA_CONFIG.brandTag;
+        document.getElementById("heroTag").textContent = SAIDA_CONFIG.brandTag;
         document.getElementById("heroRecipientBadge").textContent =
-          `${ZARINA_CONFIG.hero.badgePrefix} ${recipientName} ${ZARINA_CONFIG.hero.badgeSuffix}`;
-        document.getElementById("heroTitle").textContent = ZARINA_CONFIG.hero.title;
-        document.getElementById("heroSubtitle").textContent = ZARINA_CONFIG.hero.subtitle;
+          `${SAIDA_CONFIG.hero.badgePrefix} ${recipientName} ${SAIDA_CONFIG.hero.badgeSuffix}`;
+        document.getElementById("heroTitle").textContent = SAIDA_CONFIG.hero.title;
+        document.getElementById("heroSubtitle").textContent = SAIDA_CONFIG.hero.subtitle;
 
         // Short Romantic Notes
         const notesGrid = document.getElementById("notesGrid");
         notesGrid.innerHTML = "";
-        ZARINA_CONFIG.shortNotes.forEach((note, idx) => {
+        SAIDA_CONFIG.shortNotes.forEach((note, idx) => {
           const card = document.createElement("article");
           card.className = "note-card reveal-on-scroll";
           card.style.transitionDelay = `${idx * 90}ms`;
@@ -2222,14 +2223,14 @@
         });
 
         // Love Letter Headers
-        document.getElementById("letterTitle").textContent = ZARINA_CONFIG.loveLetter.title;
-        document.getElementById("letterDateLabel").textContent = ZARINA_CONFIG.loveLetter.dateLabel;
-        document.getElementById("letterSignature").textContent = ZARINA_CONFIG.loveLetter.signature;
+        document.getElementById("letterTitle").textContent = SAIDA_CONFIG.loveLetter.title;
+        document.getElementById("letterDateLabel").textContent = SAIDA_CONFIG.loveLetter.dateLabel;
+        document.getElementById("letterSignature").textContent = SAIDA_CONFIG.loveLetter.signature;
 
         // Final Surprise
-        document.getElementById("finalText").textContent = ZARINA_CONFIG.finalSurprise.text;
-        document.getElementById("finalSubtext").textContent = ZARINA_CONFIG.finalSurprise.subtext;
-        document.getElementById("replayBtnLabel").textContent = ZARINA_CONFIG.finalSurprise.replayButtonText;
+        document.getElementById("finalText").textContent = SAIDA_CONFIG.finalSurprise.text;
+        document.getElementById("finalSubtext").textContent = SAIDA_CONFIG.finalSurprise.subtext;
+        document.getElementById("replayBtnLabel").textContent = SAIDA_CONFIG.finalSurprise.replayButtonText;
         document.getElementById("footerRecipientName").textContent = recipientName.toUpperCase();
       }
 
@@ -2294,9 +2295,12 @@
       /* -----------------------------------------------------------------------
          C. SCREEN 1 -> SCREEN 2 ENVELOPE TRANSITION & HISTORY MANAGEMENT
          ----------------------------------------------------------------------- */
-      function openEnvelopeExperience(pushHist = true) {
+      function openEnvelopeExperience(pushHist = true, startMusic = true) {
         if (state.isEnvelopeOpened) return;
         state.isEnvelopeOpened = true;
+
+        // Start music directly from the visitor's tap (mobile browsers require a gesture).
+        if (startMusic) startMusicPlayback();
 
         const rect = el.luxuryEnvelope.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
@@ -2366,16 +2370,16 @@
       let synthGain = null;
 
       function initMusicPlayer() {
-        if (!ZARINA_CONFIG.music.enabled) {
+        if (!SAIDA_CONFIG.music.enabled) {
           el.musicPill.classList.add("hidden-pill");
           return;
         }
-        el.musicLabel.textContent = ZARINA_CONFIG.music.label;
+        el.musicLabel.textContent = SAIDA_CONFIG.music.label;
         el.volumeSlider.value = String(state.volume);
         el.bgAudio.volume = state.volume;
 
-        if (ZARINA_CONFIG.music.src) {
-          el.bgAudio.src = ZARINA_CONFIG.music.src;
+        if (SAIDA_CONFIG.music.src) {
+          el.bgAudio.src = SAIDA_CONFIG.music.src;
           el.bgAudio.addEventListener("error", () => {
             // If assets/music.mp3 is not present yet, seamlessly enable built-in melody
             state.usingSynthFallback = true;
@@ -2439,14 +2443,8 @@
         synthTimer = null;
       }
 
-      async function toggleMusicPlayback() {
-        if (state.isMusicPlaying) {
-          state.isMusicPlaying = false;
-          el.bgAudio.pause();
-          stopRomanticSynth();
-          updateMusicUI();
-          return;
-        }
+      async function startMusicPlayback() {
+        if (!SAIDA_CONFIG.music.enabled || state.isMusicPlaying) return;
 
         state.isMusicPlaying = true;
         updateMusicUI();
@@ -2460,6 +2458,36 @@
           }
         } else {
           startRomanticSynth();
+        }
+      }
+
+      function pauseMusicPlayback() {
+        if (!state.isMusicPlaying) return;
+        state.isMusicPlaying = false;
+        el.bgAudio.pause();
+        stopRomanticSynth();
+        updateMusicUI();
+      }
+
+      function pauseMusicForVideo() {
+        // Resume only if the background music was playing before the video began.
+        state.resumeMusicAfterVideo = state.isMusicPlaying;
+        if (state.isMusicPlaying) pauseMusicPlayback();
+      }
+
+      function resumeMusicAfterVideo() {
+        const shouldResume = state.resumeMusicAfterVideo;
+        state.resumeMusicAfterVideo = false;
+        if (shouldResume) startMusicPlayback();
+      }
+
+      async function toggleMusicPlayback() {
+        // A manual music-button tap overrides the automatic video resume decision.
+        state.resumeMusicAfterVideo = false;
+        if (state.isMusicPlaying) {
+          pauseMusicPlayback();
+        } else {
+          await startMusicPlayback();
         }
       }
 
@@ -2497,20 +2525,20 @@
          E. VIDEO SECTION 🎬 (MP4 PLAYER + AUTO-HIDE / PREVIEW DEMO FALLBACK)
          ----------------------------------------------------------------------- */
       function initVideoSection() {
-        if (!ZARINA_CONFIG.video.enabled) {
+        if (!SAIDA_CONFIG.video.enabled) {
           el.videoSection.classList.add("is-hidden");
           return;
         }
 
-        document.getElementById("videoPosterTitle").textContent = ZARINA_CONFIG.video.posterTitle;
-        document.getElementById("videoCaptionText").textContent = ZARINA_CONFIG.video.caption;
+        document.getElementById("videoPosterTitle").textContent = SAIDA_CONFIG.video.posterTitle;
+        document.getElementById("videoCaptionText").textContent = SAIDA_CONFIG.video.caption;
 
-        if (ZARINA_CONFIG.video.poster) {
-          el.videoPosterImg.src = ZARINA_CONFIG.video.poster;
+        if (SAIDA_CONFIG.video.poster) {
+          el.videoPosterImg.src = SAIDA_CONFIG.video.poster;
           el.videoPosterImg.style.display = "block";
         }
 
-        el.romanticVideo.src = ZARINA_CONFIG.video.src;
+        el.romanticVideo.src = SAIDA_CONFIG.video.src;
 
         // If MP4 exists and loads metadata -> use real MP4 player
         el.romanticVideo.addEventListener("loadedmetadata", () => {
@@ -2521,7 +2549,7 @@
 
         // If assets/romantic-video.mp4 is missing -> either auto-hide or show demo preview
         el.romanticVideo.addEventListener("error", () => {
-          if (ZARINA_CONFIG.video.showDemoWhenMissing) {
+          if (SAIDA_CONFIG.video.showDemoWhenMissing) {
             enableDemoVideoCanvas();
           } else {
             el.videoSection.classList.add("is-hidden");
@@ -2539,6 +2567,7 @@
           el.videoPosterOverlay.classList.remove("is-hidden");
           el.vPauseIcon.style.display = "none";
           el.vPlayIcon.style.display = "block";
+          resumeMusicAfterVideo();
         });
       }
 
@@ -2550,7 +2579,7 @@
 
         // Allow user to test auto-hide behavior with 1 tap
         el.toggleMissingVideoDemo.addEventListener("click", () => {
-          cancelAnimationFrame(state.demoVideoAnimId);
+          pauseVideoPlayback();
           el.videoSection.classList.add("is-hidden");
         });
       }
@@ -2604,6 +2633,7 @@
       }
 
       async function playVideoWithSound() {
+        pauseMusicForVideo();
         el.videoPosterOverlay.classList.add("is-hidden");
         el.videoViewport.classList.add("has-started");
         el.vPauseIcon.style.display = "block";
@@ -2618,9 +2648,15 @@
           el.romanticVideo.muted = false;
           await el.romanticVideo.play();
         } catch (_) {
-          // Fallback if browser requires muted start first
-          el.romanticVideo.muted = true;
-          await el.romanticVideo.play();
+          // Fallback if browser requires muted start first.
+          try {
+            el.romanticVideo.muted = true;
+            await el.romanticVideo.play();
+          } catch (_) {
+            // If the video cannot start, restore the background music.
+            el.videoPosterOverlay.classList.remove("is-hidden");
+            pauseVideoPlayback();
+          }
         }
       }
 
@@ -2632,6 +2668,7 @@
         }
         el.vPauseIcon.style.display = "none";
         el.vPlayIcon.style.display = "block";
+        resumeMusicAfterVideo();
       }
 
       el.videoPosterOverlay.addEventListener("click", playVideoWithSound);
@@ -2672,7 +2709,7 @@
         if (state.letterTyped) return;
         state.letterTyped = true;
 
-        const fullText = ZARINA_CONFIG.loveLetter.text;
+        const fullText = SAIDA_CONFIG.loveLetter.text;
         let idx = 0;
         el.typedLetterText.textContent = "";
         el.typingCursor.classList.remove("is-done");
@@ -2689,7 +2726,7 @@
       function finishLetterTypewriter() {
         clearInterval(state.letterTypingTimer);
         state.letterTyped = true;
-        el.typedLetterText.textContent = ZARINA_CONFIG.loveLetter.text;
+        el.typedLetterText.textContent = SAIDA_CONFIG.loveLetter.text;
         el.typingCursor.classList.add("is-done");
         el.skipTypingBtn.classList.add("is-hidden");
       }
@@ -2728,15 +2765,15 @@
       }
 
       function initGallery() {
-        const items = Array.isArray(ZARINA_CONFIG.gallery.items) ? ZARINA_CONFIG.gallery.items : [];
-        if (!ZARINA_CONFIG.gallery.enabled || items.length === 0) {
+        const items = Array.isArray(SAIDA_CONFIG.gallery.items) ? SAIDA_CONFIG.gallery.items : [];
+        if (!SAIDA_CONFIG.gallery.enabled || items.length === 0) {
           el.gallerySection.classList.add("is-hidden");
           return;
         }
 
         state.activeGalleryItems = items;
-        document.getElementById("galleryTitle").textContent = ZARINA_CONFIG.gallery.title;
-        document.getElementById("gallerySubtitle").textContent = ZARINA_CONFIG.gallery.subtitle;
+        document.getElementById("galleryTitle").textContent = SAIDA_CONFIG.gallery.title;
+        document.getElementById("gallerySubtitle").textContent = SAIDA_CONFIG.gallery.subtitle;
 
         if (items.length % 2 === 1) {
           el.galleryGrid.classList.add("odd-count");
@@ -3254,7 +3291,7 @@
       function buildTargetQrUrl() {
         let rawUrl = el.qrUrlInput.value.trim();
         if (!rawUrl) {
-          rawUrl = "https://ZARINA-surprise.vercel.app";
+          rawUrl = "https://SAIDA-surprise.vercel.app";
         }
         const customName = el.qrNameInput.value.trim();
 
@@ -3294,7 +3331,7 @@
         if (!el.qrUrlInput.value) {
           el.qrUrlInput.value = currentHref.startsWith("http")
             ? currentHref
-            : "https://ZARINA-surprise.vercel.app";
+            : "https://SAIDA-surprise.vercel.app";
         }
         if (!el.qrNameInput.value) {
           el.qrNameInput.value = recipientName;
@@ -3333,7 +3370,7 @@
         QRGenerator.drawToCanvas(exportCanvas, targetUrl, 1000);
 
         const link = document.createElement("a");
-        const safeSlug = (el.qrNameInput.value.trim() || "ZARINA")
+        const safeSlug = (el.qrNameInput.value.trim() || "SAIDA")
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-");
         link.download = `kinder-qr-${safeSlug}.png`;
@@ -3358,7 +3395,7 @@
 
       // Open QR modal directly if ?qr=1 is passed
       if (urlParams.get("qr") === "1") {
-        openEnvelopeExperience(false);
+        openEnvelopeExperience(false, false);
         setTimeout(() => openQrModal(false), 900);
       }
     })();
