@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#FFF0F5" />
   <meta name="description" content="Senga kichkina bir romantik syurprizim bor ❤️" />
-  <title>KUNJIM — Romantic QR Surprise ❤️</title>
+  <title>ZARINA — Romantic Surprise ❤️</title>
 
   <!-- Google Fonts: Cormorant Garamond (Luxury Display), Great Vibes (Romantic Script), Plus Jakarta Sans (Clean Uzbek Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1671,7 +1671,7 @@
       <div class="luxury-envelope" id="luxuryEnvelope" role="button" tabindex="0" aria-label="Konvertni ochish">
         <!-- Inner Peek Letter -->
         <div class="envelope-letter-peek">
-          <div class="peek-script" id="peekRecipient">Kunjim uchun</div>
+          <div class="peek-script" id="peekRecipient">ZARINA uchun</div>
           <div class="peek-line"></div>
           <div class="peek-sub">Samimiy mehr bilan ❤️</div>
         </div>
@@ -1745,7 +1745,7 @@
 
       <div>
         <div class="recipient-pill">
-          <span class="recipient-script" id="heroRecipientBadge">Azizim Kunjim uchun</span>
+          <span class="recipient-script" id="heroRecipientBadge">Azizim ZARINA uchun</span>
         </div>
       </div>
 
@@ -1899,7 +1899,7 @@
 
     <!-- FOOTER & PRINT-READY QR GENERATOR TRIGGER -->
     <footer class="app-footer container">
-      <div>Mehr bilan tayyorlandi • <strong id="footerRecipientName">KUNJIM</strong> ❤️</div>
+      <div>Mehr bilan tayyorlandi • <strong id="footerRecipientName">ZARINA</strong> ❤️</div>
       <div class="footer-links">
         <button type="button" class="footer-qr-trigger" id="openQrModalBtn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1952,7 +1952,7 @@
           type="url"
           class="qr-input"
           id="qrUrlInput"
-          placeholder="https://kunjim-surprise.vercel.app"
+          placeholder="https://ZARINA-surprise.vercel.app"
           autocomplete="off"
         />
         <div class="qr-warning" id="qrLocalWarning">
@@ -1966,7 +1966,7 @@
           type="text"
           class="qr-input"
           id="qrNameInput"
-          placeholder="Masalan: Kunjim"
+          placeholder="Masalan: ZARINA"
         />
       </div>
 
@@ -1994,12 +1994,12 @@
   <script>
     /**
      * =========================================================================
-     * 1. KUNJIM_CONFIG (Barcha matnlar, ism, video, musiqa va rasmlarni shu yerdan
+     * 1. ZARINA_CONFIG (Barcha matnlar, ism, video, musiqa va rasmlarni shu yerdan
      *    oson o'zgartirishingiz mumkin)
      * =========================================================================
      */
-    const KUNJIM_CONFIG = {
-      recipientName: "Kunjim", // URL orqali ham o'zgartirish mumkin: ?name=Madina
+    const ZARINA_CONFIG = {
+      recipientName: "ZARINA", // URL orqali ham o'zgartirish mumkin: ?name=Madina
       brandTag: "Kinder Chocolate • Maxsus Syurpriz",
 
       envelope: {
@@ -2098,20 +2098,20 @@
      * 2. APPLICATION CONTROLLER (app.js)
      * =========================================================================
      */
-    (function initKunjimApp() {
+    (function initZARINAApp() {
       // Allow recipient name override via URL parameter (?name=Madina)
       const urlParams = new URLSearchParams(window.location.search);
       const customNameParam = urlParams.get("name");
       const recipientName = (customNameParam && customNameParam.trim())
         ? customNameParam.trim().slice(0, 32)
-        : KUNJIM_CONFIG.recipientName;
+        : ZARINA_CONFIG.recipientName;
 
       // State
       const state = {
         isEnvelopeOpened: false,
         isMusicPlaying: false,
         isMuted: false,
-        volume: KUNJIM_CONFIG.music.defaultVolume,
+        volume: ZARINA_CONFIG.music.defaultVolume,
         usingSynthFallback: false,
         letterTyped: false,
         letterTypingTimer: null,
@@ -2189,25 +2189,25 @@
       };
 
       /* -----------------------------------------------------------------------
-         A. POPULATE CONTENT FROM KUNJIM_CONFIG
+         A. POPULATE CONTENT FROM ZARINA_CONFIG
          ----------------------------------------------------------------------- */
       function populateContent() {
         document.title = `${recipientName.toUpperCase()} — Romantic QR Surprise ❤️`;
-        document.getElementById("envelopeBrandTag").textContent = KUNJIM_CONFIG.brandTag;
+        document.getElementById("envelopeBrandTag").textContent = ZARINA_CONFIG.brandTag;
         document.getElementById("peekRecipient").textContent = `${recipientName} uchun`;
-        document.getElementById("envelopePromptText").textContent = KUNJIM_CONFIG.envelope.prompt;
-        document.getElementById("envelopeBtnLabel").textContent = KUNJIM_CONFIG.envelope.buttonText;
+        document.getElementById("envelopePromptText").textContent = ZARINA_CONFIG.envelope.prompt;
+        document.getElementById("envelopeBtnLabel").textContent = ZARINA_CONFIG.envelope.buttonText;
 
-        document.getElementById("heroTag").textContent = KUNJIM_CONFIG.brandTag;
+        document.getElementById("heroTag").textContent = ZARINA_CONFIG.brandTag;
         document.getElementById("heroRecipientBadge").textContent =
-          `${KUNJIM_CONFIG.hero.badgePrefix} ${recipientName} ${KUNJIM_CONFIG.hero.badgeSuffix}`;
-        document.getElementById("heroTitle").textContent = KUNJIM_CONFIG.hero.title;
-        document.getElementById("heroSubtitle").textContent = KUNJIM_CONFIG.hero.subtitle;
+          `${ZARINA_CONFIG.hero.badgePrefix} ${recipientName} ${ZARINA_CONFIG.hero.badgeSuffix}`;
+        document.getElementById("heroTitle").textContent = ZARINA_CONFIG.hero.title;
+        document.getElementById("heroSubtitle").textContent = ZARINA_CONFIG.hero.subtitle;
 
         // Short Romantic Notes
         const notesGrid = document.getElementById("notesGrid");
         notesGrid.innerHTML = "";
-        KUNJIM_CONFIG.shortNotes.forEach((note, idx) => {
+        ZARINA_CONFIG.shortNotes.forEach((note, idx) => {
           const card = document.createElement("article");
           card.className = "note-card reveal-on-scroll";
           card.style.transitionDelay = `${idx * 90}ms`;
@@ -2222,14 +2222,14 @@
         });
 
         // Love Letter Headers
-        document.getElementById("letterTitle").textContent = KUNJIM_CONFIG.loveLetter.title;
-        document.getElementById("letterDateLabel").textContent = KUNJIM_CONFIG.loveLetter.dateLabel;
-        document.getElementById("letterSignature").textContent = KUNJIM_CONFIG.loveLetter.signature;
+        document.getElementById("letterTitle").textContent = ZARINA_CONFIG.loveLetter.title;
+        document.getElementById("letterDateLabel").textContent = ZARINA_CONFIG.loveLetter.dateLabel;
+        document.getElementById("letterSignature").textContent = ZARINA_CONFIG.loveLetter.signature;
 
         // Final Surprise
-        document.getElementById("finalText").textContent = KUNJIM_CONFIG.finalSurprise.text;
-        document.getElementById("finalSubtext").textContent = KUNJIM_CONFIG.finalSurprise.subtext;
-        document.getElementById("replayBtnLabel").textContent = KUNJIM_CONFIG.finalSurprise.replayButtonText;
+        document.getElementById("finalText").textContent = ZARINA_CONFIG.finalSurprise.text;
+        document.getElementById("finalSubtext").textContent = ZARINA_CONFIG.finalSurprise.subtext;
+        document.getElementById("replayBtnLabel").textContent = ZARINA_CONFIG.finalSurprise.replayButtonText;
         document.getElementById("footerRecipientName").textContent = recipientName.toUpperCase();
       }
 
@@ -2366,16 +2366,16 @@
       let synthGain = null;
 
       function initMusicPlayer() {
-        if (!KUNJIM_CONFIG.music.enabled) {
+        if (!ZARINA_CONFIG.music.enabled) {
           el.musicPill.classList.add("hidden-pill");
           return;
         }
-        el.musicLabel.textContent = KUNJIM_CONFIG.music.label;
+        el.musicLabel.textContent = ZARINA_CONFIG.music.label;
         el.volumeSlider.value = String(state.volume);
         el.bgAudio.volume = state.volume;
 
-        if (KUNJIM_CONFIG.music.src) {
-          el.bgAudio.src = KUNJIM_CONFIG.music.src;
+        if (ZARINA_CONFIG.music.src) {
+          el.bgAudio.src = ZARINA_CONFIG.music.src;
           el.bgAudio.addEventListener("error", () => {
             // If assets/music.mp3 is not present yet, seamlessly enable built-in melody
             state.usingSynthFallback = true;
@@ -2497,20 +2497,20 @@
          E. VIDEO SECTION 🎬 (MP4 PLAYER + AUTO-HIDE / PREVIEW DEMO FALLBACK)
          ----------------------------------------------------------------------- */
       function initVideoSection() {
-        if (!KUNJIM_CONFIG.video.enabled) {
+        if (!ZARINA_CONFIG.video.enabled) {
           el.videoSection.classList.add("is-hidden");
           return;
         }
 
-        document.getElementById("videoPosterTitle").textContent = KUNJIM_CONFIG.video.posterTitle;
-        document.getElementById("videoCaptionText").textContent = KUNJIM_CONFIG.video.caption;
+        document.getElementById("videoPosterTitle").textContent = ZARINA_CONFIG.video.posterTitle;
+        document.getElementById("videoCaptionText").textContent = ZARINA_CONFIG.video.caption;
 
-        if (KUNJIM_CONFIG.video.poster) {
-          el.videoPosterImg.src = KUNJIM_CONFIG.video.poster;
+        if (ZARINA_CONFIG.video.poster) {
+          el.videoPosterImg.src = ZARINA_CONFIG.video.poster;
           el.videoPosterImg.style.display = "block";
         }
 
-        el.romanticVideo.src = KUNJIM_CONFIG.video.src;
+        el.romanticVideo.src = ZARINA_CONFIG.video.src;
 
         // If MP4 exists and loads metadata -> use real MP4 player
         el.romanticVideo.addEventListener("loadedmetadata", () => {
@@ -2521,7 +2521,7 @@
 
         // If assets/romantic-video.mp4 is missing -> either auto-hide or show demo preview
         el.romanticVideo.addEventListener("error", () => {
-          if (KUNJIM_CONFIG.video.showDemoWhenMissing) {
+          if (ZARINA_CONFIG.video.showDemoWhenMissing) {
             enableDemoVideoCanvas();
           } else {
             el.videoSection.classList.add("is-hidden");
@@ -2672,7 +2672,7 @@
         if (state.letterTyped) return;
         state.letterTyped = true;
 
-        const fullText = KUNJIM_CONFIG.loveLetter.text;
+        const fullText = ZARINA_CONFIG.loveLetter.text;
         let idx = 0;
         el.typedLetterText.textContent = "";
         el.typingCursor.classList.remove("is-done");
@@ -2689,7 +2689,7 @@
       function finishLetterTypewriter() {
         clearInterval(state.letterTypingTimer);
         state.letterTyped = true;
-        el.typedLetterText.textContent = KUNJIM_CONFIG.loveLetter.text;
+        el.typedLetterText.textContent = ZARINA_CONFIG.loveLetter.text;
         el.typingCursor.classList.add("is-done");
         el.skipTypingBtn.classList.add("is-hidden");
       }
@@ -2728,15 +2728,15 @@
       }
 
       function initGallery() {
-        const items = Array.isArray(KUNJIM_CONFIG.gallery.items) ? KUNJIM_CONFIG.gallery.items : [];
-        if (!KUNJIM_CONFIG.gallery.enabled || items.length === 0) {
+        const items = Array.isArray(ZARINA_CONFIG.gallery.items) ? ZARINA_CONFIG.gallery.items : [];
+        if (!ZARINA_CONFIG.gallery.enabled || items.length === 0) {
           el.gallerySection.classList.add("is-hidden");
           return;
         }
 
         state.activeGalleryItems = items;
-        document.getElementById("galleryTitle").textContent = KUNJIM_CONFIG.gallery.title;
-        document.getElementById("gallerySubtitle").textContent = KUNJIM_CONFIG.gallery.subtitle;
+        document.getElementById("galleryTitle").textContent = ZARINA_CONFIG.gallery.title;
+        document.getElementById("gallerySubtitle").textContent = ZARINA_CONFIG.gallery.subtitle;
 
         if (items.length % 2 === 1) {
           el.galleryGrid.classList.add("odd-count");
@@ -3254,7 +3254,7 @@
       function buildTargetQrUrl() {
         let rawUrl = el.qrUrlInput.value.trim();
         if (!rawUrl) {
-          rawUrl = "https://kunjim-surprise.vercel.app";
+          rawUrl = "https://ZARINA-surprise.vercel.app";
         }
         const customName = el.qrNameInput.value.trim();
 
@@ -3294,7 +3294,7 @@
         if (!el.qrUrlInput.value) {
           el.qrUrlInput.value = currentHref.startsWith("http")
             ? currentHref
-            : "https://kunjim-surprise.vercel.app";
+            : "https://ZARINA-surprise.vercel.app";
         }
         if (!el.qrNameInput.value) {
           el.qrNameInput.value = recipientName;
@@ -3333,7 +3333,7 @@
         QRGenerator.drawToCanvas(exportCanvas, targetUrl, 1000);
 
         const link = document.createElement("a");
-        const safeSlug = (el.qrNameInput.value.trim() || "kunjim")
+        const safeSlug = (el.qrNameInput.value.trim() || "ZARINA")
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-");
         link.download = `kinder-qr-${safeSlug}.png`;
